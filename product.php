@@ -3,6 +3,8 @@
   include('db_connect.php');
   $id= $_GET['id'];
   $select_id = "SELECT * FROM products WHERE product_id = $id";
+  $select_review = "SELECT product_id, user_id, first_name, comment, DATE_FORMAT( time_stamp,  '%M %d, %Y') AS time_stamp FROM reviews WHERE product_id ='".$id."' ORDER BY time_stamp ASC";
+  $review_result = $mysqli->query($select_review);
   $myProduct = $mysqli->query($select_id);
 ?>
 
@@ -81,36 +83,56 @@
                                     </div>
                                     <!-- need to put an isset if user is logged in here, if not display link to log in -->
                                     <?php if(isset($_SESSION['logged_in'])){
-										?>
+										                ?>
                                     <div class="tab-pane" id="review">
                                         <h3>Write a Review</h3>
-                                        <form class="form-vertical">
-                                            <fieldset>
-                                                <div class="control-group">
-                                                    <label class="control-label">Name</label>
-                                                    <div class="controls">
-                                                        <input type="text" class="col-lg-3 col-md-3 col-xs-12 col-sm-12 span3">
-                                                    </div>
-                                                </div>
-                                                <div class="control-group">
-                                                    <label class="control-label">Review</label>
-                                                    <div class="controls">
-                                                        <textarea rows="3"  class="col-lg-3 col-md-3 col-xs-12 col-sm-12 span3"></textarea>
-                                                    </div>
-                                                </div>
-                                            </fieldset>
-                                            <input type="submit" class="btn btn-orange" value="continue">
+                                        <?php 
+                                        echo '<form class="form-vertical" action="product.php?id='.$row->product_id.'" name="comment" method="post">'
+                                        ?>
+                                          <fieldset>
+                                            <div class="control-group">
+                                              <span class="rating">
+                                                <input type="radio" class="rating-input" id="rating-input-1-5" name="rating" value="1">
+                                                <label for="rating-input-1-5" class="rating-star"></label>
+                                                <input type="radio" class="rating-input" id="rating-input-1-4" name="rating" value="2">
+                                                <label for="rating-input-1-4" class="rating-star"></label>
+                                                <input type="radio" class="rating-input" id="rating-input-1-3" name="rating" value="3">
+                                                <label for="rating-input-1-3" class="rating-star"></label>
+                                                <input type="radio" class="rating-input" id="rating-input-1-2" name="rating" value="4">
+                                                <label for="rating-input-1-2" class="rating-star"></label>
+                                                <input type="radio" class="rating-input" id="rating-input-1-1" name="rating" value="5">
+                                                <label for="rating-input-1-1" class="rating-star"></label>
+                                              </span>
+                                              <div class="controls">
+                                                <textarea rows="3"  class="col-lg-3 col-md-3 col-xs-12 col-sm-12 span3" name="comment" id="commentid"></textarea>
+                                              </div>
+                                            </div>
+                                          </fieldset>
+                                            <input name="submit" type="submit" id="submit" class="btn btn-orange" value="Submit Review">
                                         </form>
+                                        <?php 
+                                        if(isset($_POST['submit'])) {
+                                          if(empty($_POST['comment'])  /*empty($_POST['rating'])*/) {
+                                            print "<span class='error'>Some fields missing!</span>";
+                                          } else {
+                                            $insert_review_query = "INSERT INTO reviews(comment, rating, product_id, time_stamp, user_id, first_name)
+                                            VALUES ('".$_POST['comment']."', '".$_POST['rating']."', '".$id."', NOW(), '".$_SESSION['logged_in_user_id']."','".$_SESSION['logged_in_firstname']."')";
+                                            $mysqli->query($insert_review_query);
+                                          }
+                                        }
+                                        ?>
+
                                     </div>
-                                     <?php }else{
-										 ?>
-                                         <div class="tab-pane" id="review">
+                                     <?php 
+                                        }else{
+										                  ?>
+                                        <div class="tab-pane" id="review">
                                         <h3>Write a Review</h3>
                                         <?php
-											echo '<h5 class="text-nopad">You must <a class="orange" href="register.php">Register</a> to leave a review!</h5><br>';
-											echo 'Already a member? <a class="orange" href="#myModal" data-toggle="modal"> &nbsp; Sign-in</a>';
-										}
-										?>
+                    											echo '<h5 class="text-nopad">You must <a class="orange" href="register.php">Register</a> to leave a review!</h5><br>';
+                    											echo 'Already a member? <a class="orange" href="#myModal" data-toggle="modal"> &nbsp; Sign-in</a>';
+                    										}
+                    										?>
                                     </div>
                                     
                                 </div>
@@ -131,23 +153,25 @@
     <!--  Related Products-->
     <section id="related" class="row mt40">
         <div class="container">
-            <h1 class="heading1"><span class="maintext">Related Products</span></h1>
-            <ul class="thumbnails">
-                                <li class="col-lg-3 col-md-3 col-xs-12 col-sm-6 span3"> <a class="prdocutname" href="product.php">My First Product</a>
-                                    <div class="thumbnail"> <a href="#"><img alt="" src="img/product2a.jpg"></a>
-                                        <div class="shortlinks">
-                                            <button  data-original-title="Cart" class="btn btn-orange tooltip-test"> <i class="icon-shopping-cart icon-white"></i> </button>
-                                            <button  data-original-title="Wishlist" class="btn btn-orange btn-small tooltip-test"> <i class="icon-heart icon-white"></i> </button>
-                                            <button  data-original-title="Compare" class="btn btn-orange btn-small tooltip-test"> <i class="icon-refresh icon-white"></i> </button>
-                                        </div>
-                                        <div class="price">
-                                            <div class="pricenew">$4459.00</div>
-                                            <div class="priceold">$5000.00</div>
-                                            <div class="ratingstar"> <i class="icon-star orange"> </i><i class="icon-star orange"> </i><i class="icon-star orange"> </i> <i class="icon-star-empty"></i> <i class="icon-star-empty"></i></div>
-                                        </div>
-                                        <a  class="btn btn-orange btn-small  addtocartbutton">Add to Cart</a> </div>
-                                </li>
-                            </ul>
+          <h1 class="heading1"><span class="maintext">Recent Reviews</span></h1>
+          <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 span5">
+            <div class="tab-pane active" id="description">
+              <?php if(!isset($_SESSION['logged_in'])){
+                    echo 'You must be logged in to view Product reviews.';
+                  }else{ 
+                    if(mysqli_num_rows($review_result)==0){
+                        print "There are currently no reviews for ".$row->product_name.".";
+                    }else{
+                     while($loop = $review_result->fetch_object()) {                     
+                         print "Posted by: ".$loop->first_name." on ".$loop->time_stamp."";
+                         print "<p>".$loop->comment."</p>";
+                      }
+                     }
+                   }
+                ?>
+              <br>
+            </div>
+          </div>
         </div>
     </section>
     <!-- Popular Brands-->
