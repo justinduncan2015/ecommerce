@@ -94,18 +94,6 @@
                                               <div class='ratingstar'>
                                                 <?php echo "<div class='rw-ui-container' data-urid=" . $row->product_id. "></div>"; ?>
                                               </div>
-                                              <!--<span class="rating">
-                                                <input type="radio" class="rating-input" id="rating-input-1-1" name="rating" value="1">
-                                                <label for="rating-input-1-1" class="rating-star"></label>
-                                                <input type="radio" class="rating-input" id="rating-input-1-2" name="rating" value="2">
-                                                <label for="rating-input-1-2" class="rating-star"></label>
-                                                <input type="radio" class="rating-input" id="rating-input-1-3" name="rating" value="3">
-                                                <label for="rating-input-1-3" class="rating-star"></label>
-                                                <input type="radio" class="rating-input" id="rating-input-1-4" name="rating" value="4">
-                                                <label for="rating-input-1-4" class="rating-star"></label>
-                                                <input type="radio" class="rating-input" id="rating-input-1-5" name="rating" value="5">
-                                                <label for="rating-input-1-5" class="rating-star"></label>
-                                              </span>-->
                                               <div class="controls">
                                                 <textarea rows="3"  class="col-lg-3 col-md-3 col-xs-12 col-sm-12 span3" name="comment" id="commentid"></textarea>
                                               </div>
