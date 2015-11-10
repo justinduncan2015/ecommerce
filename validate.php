@@ -30,13 +30,13 @@ document.register.telephone.onfocus = function(){
 	var phone = document.getElementById("telephone");
 	var hint4 = document.getElementById('hint4');
 	hint4.style.color = "green";
-	hint4.innerText = "Numbers Only No Spaces (ex: XXXXXXXXXX)";
+	hint4.innerText = "Numbers Only No Spaces (ex: 0123456789)";
 }
 document.register.mobile.onfocus = function(){
 	var mobile = document.getElementById("mobile");
 	var hint5 = document.getElementById('hint5');
 	hint5.style.color = "green";
-	hint5.innerText = "Numbers Only No Spaces (ex: XXXXXXXXXX)";
+	hint5.innerText = "Numbers Only No Spaces (ex: 0123456789)";
 }
 document.register.address1.onfocus = function(){
 	var address1 = document.getElementById("address1");
@@ -66,7 +66,7 @@ document.register.zip.onfocus = function(){
 	var zip = document.getElementById("zip");
 	var hint10 = document.getElementById('hint10');
 	hint10.style.color = "green";
-	hint10.innerText = "Numbers Only 5 Characters Maximum (ex: XXXXX)";
+	hint10.innerText = "Numbers Only (ex: 54321)";
 }
 document.register.username.onfocus = function(){
 	var username = document.getElementById("username");
@@ -338,14 +338,13 @@ checks.addEventListener('click',checkbox(),true);
 				}
 	}
 	//validating the for data after submit
-	function validateForm(){
-		if(first_name_valid && last_name_valid && email_valid && telephone_valid && mobile_valid && address1_valid && city_valid && state_valid && zip_valid && username_valid && pw1_valid && pw2_valid){
+	function validateForm(first_name_valid,last_name_valid,email_valid,telephone_valid,mobile_valid,address1_valid,city_valid,state_valid,zip_valid,username_valid,pw1_valid,pw2_valid){
+		if(first_name_valid == true && last_name_valid == true && email_valid == true && telephone_valid == true && mobile_valid == true && address1_valid == true && city_valid == true && state_valid == true && zip_valid == true && username_valid == true && pw1_valid == true && pw2_valid == true){
 		alert("success");	 	
 		return false;		 
 		}
 		else{
 		alert("Please fill out the entire form!");
-		print(first_name_valid,last_name_valid,email_valid)
 		return false;
 		}
 	}
