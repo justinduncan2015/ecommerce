@@ -1,6 +1,6 @@
 <?php
 if((isset($_POST['view'])&&($_POST['view']))||(isset($_POST['sort'])&&($_POST['sort']))){
-	header("location:catalog.php?page=1");
+	header("location:catalog.php?page=1?page=1");
 }
 if(isset($_SESSION['page'])){
                         $sort=$_SESSION['page'];
@@ -18,7 +18,7 @@ $current_url = urlencode($url="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_
   <nav class="subnav">
     <ul class="nav-pills categorymenu container">
       <li><a class="home" href="home.php"><i class="icon-home icon-white font18"></i> <span> Home</span></a></li>
-      <li><a class="active" href="catalog.php">Shop</a></li>
+      <li><a class="active" href="catalog.php?page=1">Shop</a></li>
       <li><a href="about.php">about</a></li>
       <li><a href="contact.php">Contact Us</a> </li>
       <?php
@@ -54,18 +54,18 @@ $current_url = urlencode($url="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_
             <ul class="nav nav-list categories">
               <li> <a href="category.php">Furniture</a>
                 <ul>
-                  <li> <a href="catalog.php">Kitchen </a> </li>
-                  <li> <a href="catalog.php">Outdoor </a> </li>
-                  <li> <a href="catalog.php">Living Room</a> </li>
-                  <li> <a href="catalog.php">Bed &amp; Bath</a> </li>
+                  <li> <a href="catalog.php?page=1">Kitchen </a> </li>
+                  <li> <a href="catalog.php?page=1">Outdoor </a> </li>
+                  <li> <a href="catalog.php?page=1">Living Room</a> </li>
+                  <li> <a href="catalog.php?page=1">Bed &amp; Bath</a> </li>
                 </ul>
               </li>
-              <li> <a href="catalog.php">Kitchen</a> </li>
-              <li> <a href="catalog.php">Electronics </a> </li>
-              <li> <a href="catalog.php">Bathroom </a> </li>
-              <li> <a href="catalog.php">Outdoor</a> </li>
-              <li> <a href="catalog.php">Living Room</a> </li>
-              <li> <a href="catalog.php">Miscellanious</a> </li>
+              <li> <a href="catalog.php?page=1">Kitchen</a> </li>
+              <li> <a href="catalog.php?page=1">Electronics </a> </li>
+              <li> <a href="catalog.php?page=1">Bathroom </a> </li>
+              <li> <a href="catalog.php?page=1">Outdoor</a> </li>
+              <li> <a href="catalog.php?page=1">Living Room</a> </li>
+              <li> <a href="catalog.php?page=1">Miscellanious</a> </li>
             </ul>
           </div>
           <!--  Hottest New Products -->
@@ -323,7 +323,7 @@ else{
                     <ul>
                         <li><a href="home.php">Home</a> </li>
                         <li><a href="client.php">My Account</a> </li>
-                        <li><a href="catalog.php">Shop</a> </li>
+                        <li><a href="catalog.php?page=1">Shop</a> </li>
                         <li><a href="contact.php">Contact Us</a> </li>
                         <li><a href="about.php">About</a></li>
                         <li><a href="cart.php">My Cart</a> </li>

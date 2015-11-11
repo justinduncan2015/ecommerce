@@ -219,19 +219,30 @@ function validateData(event){
 
 	}
 	}
-	document.register.address2.onblur = function(){		
+	document.register.address2.onblur = function(){	
+	if(this.value.match(/^[0-9]+\s+([a-zA-Z]+|[a-zA-Z]+\s[a-zA-Z]+)$/)){
 		hint7.innerText = "";
+		var check = document.createElement('i');
+		check.setAttribute('class',"green icon-thumbs-up");
+		hint7.appendChild(check);
 	}
-	//city check
-	document.register.city.onblur = function(){	
-	if(this.value.match(/^[a-zA-Z]$/)){
+	if(!this.value.match(/^[0-9]+\s+([a-zA-Z]+|[a-zA-Z]+\s[a-zA-Z]+)$/) || this.value.length === 0){
+		hint7.innerText = "";
+		var check = document.createElement('i');
+		check.setAttribute('class',"red icon-thumbs-down");
+		hint7.appendChild(check);
+
+	}
+	}
+	document.register.city.onblur = function (){	
+	if(this.value.match(/^[A-Za-z]*$/)){
 		hint8.innerText = "";
 		var check = document.createElement('i');
 		check.setAttribute('class',"green icon-thumbs-up");
-		hint8.appendChild(check);
+      	hint8.appendChild(check);
 		city_valid = true;
 	}
-	if(!this.value.match(/^[a-zA-Z]$/) || this.value.length === 0){
+	if(!this.value.match(/^[A-Za-z]*$/) || this.value.length === 0){
 		hint8.innerText = "";
 		var check = document.createElement('i');
 		check.setAttribute('class',"red icon-thumbs-down");
@@ -324,37 +335,7 @@ function validateData(event){
 	}
 	}
 	
-	
-	
-	
-var checks = document.getElementById('checkbox');
-checks.addEventListener('click',checkbox(),true);
-	function checkbox(){
-	            if(checks.checked) {
-
-					document.getElementById("button").disabled = false;
-                }else{
-					document.getElementById("button").disabled = true;
-				}
-	}
-	//validating the for data after submit
-	function validateForm(first_name_valid,last_name_valid,email_valid,telephone_valid,mobile_valid,address1_valid,city_valid,state_valid,zip_valid,username_valid,pw1_valid,pw2_valid){
-		if(first_name_valid == true && last_name_valid == true && email_valid == true && telephone_valid == true && mobile_valid == true && address1_valid == true && city_valid == true && state_valid == true && zip_valid == true && username_valid == true && pw1_valid == true && pw2_valid == true){
-		alert("success");	 	
-		return false;		 
-		}
-		else{
-		alert("Please fill out the entire form!");
-		return false;
-		}
-	}
-                document.getElementById('button').onclick = function() {
-					validateForm();
-                    return false;
-                }
-}
-function checkPass()
-{
+function checkPass(){
     //Store the password field objects into variables ...
     var pw1 = document.getElementById('pw1');
     var pw2 = document.getElementById('pw2');
@@ -380,12 +361,41 @@ function checkPass()
         hint13.innerHTML = "Passwords Do Not Match!"
 		pw2_valid = false;
     }
-}        
-            function load() 
-                {
-                    onFocus();
-                    validateData();   
+} 	
+	
+	
+var checks = document.getElementById('checkbox');
+checks.addEventListener('click',checkbox(),true);
+	function checkbox(){
+	            if(checks.checked) {
+
+					document.getElementById("button").disabled = false;
+                }else{
+					document.getElementById("button").disabled = true;
+				}
+	}
+	//validating the for data after submit
+	function validateForm(first_name_valid,last_name_valid,email_valid,telephone_valid,mobile_valid,address1_valid,city_valid,state_valid,zip_valid,username_valid,pw1_valid,pw2_valid){
+		if(first_name_valid == true && last_name_valid == true && email_valid == true && telephone_valid == true && mobile_valid == true && address1_valid == true && city_valid == true && state_valid == true && zip_valid == true && username_valid == true && pw1_valid == true && pw2_valid == true){
+		alert("success");	 	
+		return false;		 
+		}
+		else{
+		alert('first_name_valid');
+		return false;
+		}
+	}
+                document.getElementById('button').onclick = function() {
+					validateForm();
+                    return false;
                 }
+				
+}        
+
+function load() {
+	onFocus();
+	validateData();   
+	}
             window.onload = load;
 			</script>
 			

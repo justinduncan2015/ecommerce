@@ -122,7 +122,7 @@ include ('db_connect.php');
         <nav class="subnav">
             <ul class="nav-pills categorymenu container">
                 <li><a class="home" href="home.php"><i class="icon-home icon-white font18"></i> <span> Home</span></a></li>
-                <li><a href="catalog.php">Shop</a></li>
+                <li><a href="catalog.php?page=1">Shop</a></li>
                 <li><a href="about.php">about</a></li>
                 <li><a href="contact.php">Contact Us</a> </li>
                 <?php
@@ -238,7 +238,7 @@ echo "</tr>";
                 <ul>
                   <li> <a href="about.php">About </a> </li>
                   <li> <a href="admin.php">Admin </a> </li>
-                  <li> <a href="catalog.php">Catalog</a> </li>
+                  <li> <a href="catalog.php?page=1">Catalog</a> </li>
                   <li> <a href="checkout1.php">Checkout1</a> </li>
                   <li> <a href="checkout2.php">Checkout2 </a> </li>
                   <li> <a href="checkout3.php">Checkout3 </a> </li>

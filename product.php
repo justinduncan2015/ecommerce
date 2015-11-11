@@ -13,7 +13,7 @@
         <nav class="subnav">
             <ul class="nav-pills categorymenu container">
                 <li><a class="home" href="home.php"><i class="icon-home icon-white font18"></i> <span> Home</span></a></li>
-                <li><a class="active" href="catalog.php">Shop</a></li>
+                <li><a class="active" href="catalog.php?page=1">Shop</a></li>
                 <li><a href="about.php">about</a></li>
                 <li><a href="contact.php">Contact Us</a> </li>
                 <?php
@@ -40,7 +40,7 @@
           <a href="home.php">Home/ </a>
         </li>
         <li>
-          <a href="catalog.php">Shop&nbsp;/ </a>
+          <a href="catalog.php?page=1">Shop&nbsp;/ </a>
         </li>
         <li class="active">Product view</li>
       </ul>

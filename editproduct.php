@@ -1,11 +1,12 @@
 <?php
 include("db_connect.php");
+$pageTitle = 'Batchpad.com - Edit Products';
 include("header.php");
 
 	if(!isset($_SESSION['logged_in'])) {
 		?>
             <div id="categorymenu">
-        <nav class="subnav">
+        	<nav class="subnav">
             <ul class="nav-pills categorymenu container">
                 <li><a class="home" href="home.php"><i class="icon-home icon-white font18"></i> <span> Home</span></a></li>
                 <li><a href="catalog.php?page=1">Shop</a></li>
@@ -20,7 +21,7 @@ include("header.php");
             </ul>
         </nav>
     </div>
-    	<img class='fixed' src='img/error-404.png' alt='not found'><span>You need to be logged in to do this!</span>
+    	<img class='fixed' src='img/error-404.png' alt='not found'><span>You do not have access to do this!</span>
 
 <?php
 	}else if(isset($_SESSION['logged_in'])) {
@@ -61,103 +62,66 @@ include("header.php");
         <!-- Register Account-->
         <div class="col-lg-9 col-md-9 col-xs-12 col-sm-12">
         
-          <h1 class="heading1"><span class="maintext"> <i class="icon-signin"></i> Edit Personal Information</span></h1>
+          <h1 class="heading1"><span class="maintext"> <i class="icon-signin"></i> Edit Product Information</span></h1>
           <form class="form-horizontal form-custom" method="post" >
-            <h3 class="heading3">Edit Personal Information</h3>
+            <h3 class="heading3">Edit Product Information</h3>
             <div class="registerbox">
               <fieldset>
               <?php 
 			  	//selecting the user id from link on the referring page page
                	$id= $_GET['id'];
-  	  			$select_user = "SELECT * FROM users WHERE user_id = $id";
-      			$myUser = $mysqli->query($select_user);
-	 			$row = $myUser->fetch_object(); ?>
+  	  			$select_product = "SELECT * FROM products WHERE product_id = $id";
+      			$myProduct = $mysqli->query($select_product);
+	 			$row = $myProduct->fetch_object(); ?>
                 <div class="control-group">
-                  <label for="username" class="control-label"><span class="red">*</span> Username</label>
+                  <label for="first" class="control-label"><span class="red">*</span> Product Name</label>
                   <div class="controls">
-                    <?php echo '<input required name="username" maxlength="24" type="text" value='.$row->username.' >'; ?>
+                    <?php echo '<input required name="product_name" type="text" maxlength="24"  value="'.$row->product_name.'">'; ?>
                   </div>
                 </div>
                 <div class="control-group">
-                  <label for="first" class="control-label"><span class="red">*</span> First Name</label>
+                  <label for="last" class="control-label"><span class="red">*</span> Description</label>
                   <div class="controls">
-                    <?php echo '<input required name="first" type="text" maxlength="24"  value="'.$row->first_name.'">'; ?>
+                    <?php echo '<textarea rows="5" required name="description" maxlength="144">'.$row->description.'</textarea>'; ?>
                   </div>
                 </div>
                 <div class="control-group">
-                  <label for="last" class="control-label"><span class="red">*</span> Last Name</label>
+                  <label for="access" class="control-label"><span class="red">*</span> SKU</label>
                   <div class="controls">
-                    <?php echo '<input required name="last" maxlength="24" type="text"  value="'.$row->last_name.'">'; ?>
+                    <?php echo '<input required name="sku" maxlength="16" type="text"  value="'.$row->product_sku.'">'; ?>
                   </div>
                 </div>
-                <?php if(isset($_SESSION['logged_in_user_access'])&&($_SESSION['logged_in_user_access'] == "admin")) { ?>
+  
                 <div class="control-group">
-                  <label for="access" class="control-label"><span class="red">*</span> Access Level: superuser, admin, or customer</label>
+                  <label for="email" class="control-label"> Quantity on hand</label>
                   <div class="controls">
-                    <?php echo '<input required name="access" maxlength="16" type="text"  value="'.$row->access_level.'">'; ?>
-                  </div>
-                </div>
-                <?php } ?>
-                <div class="control-group">
-                  <label for="email" class="control-label"> E-mail Address</label>
-                  <div class="controls">
-                    <?php echo '<input required name="email" type="email" maxlength="64"  value="'.$row->email.'">'; ?>
+                    <?php echo '<input required name="qty" type="text" maxlength="10"  value="'.$row->qty_stock.'">'; ?>
                   </div>
                 </div>
                 <div class="control-group">
-                  <label for="address1" class="control-label"> Address1</label>
+                  <label for="address1" class="control-label"> Cost</label>
                   <div class="controls">
-                    <?php echo '<input required name="address1" maxlength="64" type="text"  value="'.$row->address1.'">'; ?>
+                    <?php echo '<input required name="cost" maxlength="10" type="text"  value="'.$row->cost.'">'; ?>
                   </div>
                 </div>
                 <div class="control-group">
-                  <label for="address2" class="control-label"> Address2</label>
+                  <label for="address2" class="control-label"> Price</label>
                   <div class="controls">
-                    <?php echo '<input required name="address2" maxlength="64" type="text"  value="'.$row->address2.'">'; ?>
+                    <?php echo '<input required name="price" maxlength="10" type="text"  value="'.$row->price.'">'; ?>
                   </div>
                 </div>
                 <div class="control-group">
-                  <label for="city" class="control-label"> City</label>
+                  <label for="city" class="control-label"> Image URL</label>
                   <div class="controls">
-                    <?php echo '<input required name="city" maxlength="16" type="text"  value="'.$row->city.'">'; ?>
+                    <?php echo '<input required name="img_url" maxlength="64" type="text"  value="'.$row->image_url.'">'; ?>
                   </div>
                 </div>
-                <div class="control-group">
-                    <label for="state" class="control-label"> State</label>
-                <div class="controls">
-                    <?php echo '<input required name="state" maxlength="2" type="text"  value="'.$row->state.'">'; ?>
-                </div>
-                </div>
-                <div class="control-group">
-                	<label for="zip" class="control-label"> Zip</label>
-                <div class="controls">
-                    <?php echo '<input required maxlength="5" name="zip" type="number"  value="'.$row->zip.'">'; ?>
-                </div>
-                </div>                
-                <div class="control-group">
-                  <label for="telephone" class="control-label"> Telephone</label>
-                  <div class="controls">
-                    <?php echo '<input required name="telephone" type="number" maxlength="10"  value="'.$row->telephone.'">'; ?>
-                  </div>
-                </div>
-                <div class="control-group">
-                  <label for="mobile" class="control-label"> Mobile</label>
-                  <div class="controls">
-                    <?php echo '<input required name="mobile" type="number" maxlength="10" value="'.$row->mobile.'">'; ?>
-                  </div>
-                </div>
-                <div class="control-group">
-                	<label for="company" class="control-label"> Company</label>
-                <div class="controls">
-                    <?php echo '<input required name="company" type="text" maxlength="20"  value="'.$row->company.'">'; ?>
-                </div>
-                </div> 
                 <div class="pull-left">
                 <?php
                 if(isset($_POST['submit'])) {
-				$insert_user_query = "UPDATE users SET username = '".$_POST['username']."', first_name = '".$_POST['first']."', last_name = '".$_POST['last']."', access_level = '".$_POST['access']."', email = '".$_POST['email']."', address1 = '".$_POST['address1']."', address2 = '".$_POST['address2']."', city = '".$_POST['city']."', state = '".$_POST['state']."', zip = '".$_POST['zip']."', telephone = '".$_POST['telephone']."', mobile = '".$_POST['mobile']."', company = '".$_POST['company']."' WHERE user_id = $id";
-				$mysqli->query($insert_user_query);
-				?> <script type="text/javascript"> alert('You have successfully Updated The Clients Information'); window.location = "admin.php";</script>
+				$insert_product_query = "UPDATE products SET product_name = '".$_POST['product_name']."', description = '".$_POST['description']."', product_sku = '".$_POST['sku']."', qty_stock = '".$_POST['qty']."', cost = '".$_POST['cost']."', price = '".$_POST['price']."', image_url = '".$_POST['img_url']."' WHERE product_id = $id";
+				$mysqli->query($insert_product_query);
+				?> <script type="text/javascript"> alert('You have successfully Updated The Product Information'); window.location = "admin.php";</script>
                 <?php } ?>
               <input class="btn btn-orange" name="submit" id="submit" type="submit" value="Update Information" />
               <input action="action" type="button" class="btn btn-danger" value="Cancel" onclick="window.history.go(-1); return false;" />

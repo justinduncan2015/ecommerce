@@ -116,7 +116,7 @@
         <nav class="subnav">
             <ul class="nav-pills categorymenu container">
                 <li><a href="home.php"><i class="icon-home icon-white font18"></i> <span> Home</span></a></li>
-                <li><a href="catalog.php">Shop</a></li>
+                <li><a href="catalog.php?page=1">Shop</a></li>
                 <li><a href="about.php">about</a></li>
                 <li><a href="contact.php">Contact Us</a> </li>
                 <li class="pull-right">
@@ -304,7 +304,7 @@
             </table>
             <div class="list-inline">
             <a href="checkout.php"><input type="submit" value="CheckOut" class="btn btn-orange pull-right mb10"></a>
-            <a href="catalog.php"><input type="submit" value="Continue Shopping" class="btn btn-orange pull-right mr10"></a>
+            <a href="catalog.php?page=1"><input type="submit" value="Continue Shopping" class="btn btn-orange pull-right mr10"></a>
             </div>
           </div>
         </div>
@@ -322,7 +322,7 @@
                     <ul>
                         <li><a href="home.php">Home</a> </li>
                         <li><a href="client.php">My Account</a> </li>
-                        <li><a href="catalog.php">Shop</a> </li>
+                        <li><a href="catalog.php?page=1">Shop</a> </li>
                         <li><a href="contact.php">Contact Us</a> </li>
                         <li><a href="about.php">About</a></li>
                         <li><a href="cart.php">My Cart</a> </li>

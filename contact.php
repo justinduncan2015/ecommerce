@@ -7,7 +7,7 @@ $_SESSION['sort'] = 'blank';
         <nav class="subnav">
             <ul class="nav-pills categorymenu container">
                 <li><a class="home" href="home.php"><i class="icon-home icon-white font18"></i> <span> Home</span></a></li>
-                <li><a href="catalog.php">Shop</a></li>
+                <li><a href="catalog.php?page=1">Shop</a></li>
                 <li><a href="about.php">about</a></li>
                 <li><a class="active" href="contact.php">Contact Us</a> </li>
                 <?php
@@ -118,7 +118,7 @@ $_SESSION['sort'] = 'blank';
                     <ul>
                         <li><a href="home.php">Home</a> </li>
                         <li><a href="client.php">My Account</a> </li>
-                        <li><a href="catalog.php">Shop</a> </li>
+                        <li><a href="catalog.php?page=1">Shop</a> </li>
                         <li><a href="contact.php">Contact Us</a> </li>
                         <li><a href="about.php">About</a></li>
                         <li><a href="cart.php">My Cart</a> </li>

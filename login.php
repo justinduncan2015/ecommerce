@@ -1,10 +1,11 @@
 <?php
 session_start();
 $pageTitle = 'Batchpad.com - Login';
-if(isset($_SESSION['url'])) 
+if(isset($_SESSION['url'])){ 
    $url = $_SESSION['url']; // holds url for last page visited.
-else 
+}else{ 
    $url = "home.php";
+}
 include("db_connect.php");?>
 <?php
           if(isset($_POST['submit'])&&(!isset($_SESSION['logged_in']))) {
@@ -98,7 +99,7 @@ include("db_connect.php");?>
         <nav class="subnav">
             <ul class="nav-pills categorymenu container">
                 <li><a class="home" href="home.php"><i class="icon-home icon-white font18"></i> <span> Home</span></a></li>
-                <li><a href="catalog.php">Shop</a></li>
+                <li><a href="catalog.php?page=1">Shop</a></li>
                 <li><a href="about.php">about</a></li>
                 <li><a href="contact.php">Contact Us</a> </li>
                 <?php

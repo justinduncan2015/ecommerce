@@ -1,9 +1,13 @@
-<?php include_once('header.php'); ?>
+<?php 
+$pageTitle = 'Batchpad.com - Register';
+include_once('header.php'); 
+
+?>
     <div id="categorymenu">
         <nav class="subnav">
             <ul class="nav-pills categorymenu container">
                 <li><a href="home.php"><i class="icon-home icon-white font18"></i> <span> Home</span></a></li>
-                <li><a href="catalog.php">Shop</a></li>
+                <li><a href="catalog.php?page=1">Shop</a></li>
                 <li><a href="about.php">about</a></li>
                 <li><a href="contact.php">Contact Us</a> </li>
                 <li class="pull-right">
@@ -101,7 +105,7 @@
                   <div class="controls">
                     <input name="city" maxlength="24" type="text" id="city">
                   	<span id="hint8"></span>
-                  </div>
+                </div>
                 </div>
                 <div class="control-group">
                     <label for="state" class="control-label"> State</label>
