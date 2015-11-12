@@ -84,7 +84,7 @@ $_SESSION['sort'] = 'blank';
               <p> 404 Not found Rd.‎ <br>
                 Melbourne, FL 32903<br>
                 <br>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.911485963354!2d-81.20224858544108!3d28.602432092194622!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88e7685d6a0a495f%3A0x5fd59b92b3c79bab!2sUniversity+of+Central+Florida!5e0!3m2!1sen!2sus!4v1445975750624" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>            </div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.911485963354!2d-81.20224858544108!3d28.602432092194622!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88e7685d6a0a495f%3A0x5fd59b92b3c79bab!2sUniversity+of+Central+Florida!5e0!3m2!1sen!2sus!4v1445975750624" frameborder="0" style="border:0" allowfullscreen></iframe>            </div>
           </aside>
         </div>
         
