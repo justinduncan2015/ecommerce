@@ -80,7 +80,7 @@ $_SESSION['sort'] = 'blank';
                 <div class="col-lg-4 col-md-4 col-xs-12 col-sm-12 span3">
           <aside>
             <div class="sidewidt">
-              <h2 class="heading2"><span> <i class="icon-envelope"></i> Adress Info</span></h2>
+              <h2 class="heading2"><span> <i class="icon-envelope"></i> Address Info</span></h2>
               <p> 404 Not found Rd.‎ <br>
                 Melbourne, FL 32903<br>
                 <br>
