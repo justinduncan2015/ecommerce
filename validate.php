@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html>
 <head>
@@ -7,7 +8,7 @@
 
 <body>
 <script type="text/javascript">
-function onFocus(){	
+function onFocus(){
 document.register.firstname.onfocus = function(){
 	var first = document.getElementById('firstname');
 	var hint1 = document.getElementById('hint1');	
@@ -78,7 +79,7 @@ document.register.pw1.onfocus = function(){
 	var pw1 = document.getElementById("pw1");
 	var hint12 = document.getElementById('hint12');
 	hint12.style.color = "green";
-	hint12.innerText = "Enter Your Login Password";
+	hint12.innerText = "Passwords must contain at least 6 characters, 1 alpha-numeric character, 1 number, and a special character. Max 20 chars.";
 }
 document.register.pw2.onfocus = function(){
 	var pw2 = document.getElementById("pw2");
@@ -103,20 +104,8 @@ function validateData(event){
 	var hint13 = document.getElementById('hint13');
 	var pw1 = document.getElementById('pw1');
     var pw2 = document.getElementById('pw2');
-	var first_name_valid = false;
-	var last_name_valid =  false;
-	var email_valid =      false;
-	var telephone_valid =  false;
-	var mobile_valid =     false;
-	var address1_valid =   false;
-	var city_valid =       false;
-	var state_valid =      false;
-	var zip_valid =        false;
-	var username_valid =   false;
-	var pw1_valid =        false;
-	var pw2_valid =        false;
-	
 	//first name check
+	
 	document.register.firstname.onblur = function (){	
 	if(this.value.match(/^[A-Za-z]*$/)){
 		hint1.innerText = "";
@@ -130,7 +119,6 @@ function validateData(event){
 		var check = document.createElement('i');
 		check.setAttribute('class',"red icon-thumbs-down");
 		hint1.appendChild(check);
-
 	}
 	}
 	//last name check
@@ -156,7 +144,6 @@ function validateData(event){
 		var check = document.createElement('i');
 		check.setAttribute('class',"green icon-thumbs-up");
 		hint4.appendChild(check);
-		telephone_valid = true;
 	}
 	if(!this.value.match(/^([0-9]{3})([0-9]{3})([0-9]{4})$/) || this.value.length === 0){
 		hint4.innerText = "";
@@ -174,7 +161,6 @@ function validateData(event){
 		var check = document.createElement('i');
 		check.setAttribute('class',"green icon-thumbs-up");
 		hint3.appendChild(check);
-		email_valid = true;
 		
 	}
 	if(!this.value.match(/^([A-Za-z0-9]+)(@)([A-Za-z0-9]+)(.)([a-z]+)$/) || this.value.length === 0){
@@ -192,14 +178,12 @@ function validateData(event){
 		var check = document.createElement('i');
 		check.setAttribute('class',"green icon-thumbs-up");
 		hint5.appendChild(check);
-		mobile_valid = true;
 	}
 	if(!this.value.match(/^([0-9]{3})([0-9]{3})([0-9]{4})$/) || this.value.length === 0){
 		hint5.innerText = "";
 		var check = document.createElement('i');
 		check.setAttribute('class',"red icon-thumbs-down");
 		hint5.appendChild(check);
-
 	}
 	}
 	//address1 check
@@ -209,7 +193,6 @@ function validateData(event){
 		var check = document.createElement('i');
 		check.setAttribute('class',"green icon-thumbs-up");
 		hint6.appendChild(check);
-		address1_valid = true;
 	}
 	if(!this.value.match(/^[0-9]+\s+([a-zA-Z]+|[a-zA-Z]+\s[a-zA-Z]+)$/) || this.value.length === 0){
 		hint6.innerText = "";
@@ -228,9 +211,6 @@ function validateData(event){
 	}
 	if(!this.value.match(/^[0-9]+\s+([a-zA-Z]+|[a-zA-Z]+\s[a-zA-Z]+)$/) || this.value.length === 0){
 		hint7.innerText = "";
-		var check = document.createElement('i');
-		check.setAttribute('class',"red icon-thumbs-down");
-		hint7.appendChild(check);
 
 	}
 	}
@@ -240,7 +220,6 @@ function validateData(event){
 		var check = document.createElement('i');
 		check.setAttribute('class',"green icon-thumbs-up");
       	hint8.appendChild(check);
-		city_valid = true;
 	}
 	if(!this.value.match(/^[A-Za-z]*$/) || this.value.length === 0){
 		hint8.innerText = "";
@@ -257,14 +236,12 @@ function validateData(event){
 		var check = document.createElement('i');
 		check.setAttribute('class',"green icon-thumbs-up");
 		hint9.appendChild(check);
-		state_valid = true;
 	}
 	if(!this.value.match(/^[a-zA-Z0-9]{2}$/) || this.value.length === 0){
 		hint9.innerText = "";
 		var check = document.createElement('i');
 		check.setAttribute('class',"red icon-thumbs-down");
 		hint9.appendChild(check);
-
 	}
 	}
 	//zip check
@@ -274,14 +251,12 @@ function validateData(event){
 		var check = document.createElement('i');
 		check.setAttribute('class',"green icon-thumbs-up");
 		hint10.appendChild(check);
-		zip_valid = true;
 	}
 	if(!this.value.match(/^[0-9]{5}$/) || this.value.length === 0){
 		hint10.innerText = "";
 		var check = document.createElement('i');
 		check.setAttribute('class',"red icon-thumbs-down");
 		hint10.appendChild(check);
-
 	}
 	}
 		//zip check
@@ -291,14 +266,12 @@ function validateData(event){
 		var check = document.createElement('i');
 		check.setAttribute('class',"green icon-thumbs-up");
 		hint11.appendChild(check);
-		username_valid = true;
 	}
 	if(!this.value.match(/^[a-zA-Z0-9_-]{3,16}$/) || this.value.length === 0){
 		hint11.innerText = "";
 		var check = document.createElement('i');
 		check.setAttribute('class',"red icon-thumbs-down");
 		hint11.appendChild(check);
-
 	}
 	}
 		//zip check
@@ -308,14 +281,12 @@ function validateData(event){
 		var check = document.createElement('i');
 		check.setAttribute('class',"green icon-thumbs-up");
 		hint12.appendChild(check);
-		pw1_valid = true;
 	}
 	if(!this.value.match(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/) || this.value.length === 0){
 		hint12.innerText = "";
 		var check = document.createElement('i');
 		check.setAttribute('class',"red icon-thumbs-down");
 		hint12.appendChild(check);
-
 	}
 	}
 	document.register.pw2.onblur = function(){	
@@ -324,17 +295,24 @@ function validateData(event){
 		var check = document.createElement('i');
 		check.setAttribute('class',"green icon-thumbs-up");
 		hint13.appendChild(check);
-		pw2_valid = true;
 	}
 	if(!this.value.match(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/) || this.value.length === 0){
-		hint13.innerText = "";
-		var check = document.createElement('i');
-		check.setAttribute('class',"red icon-thumbs-down");
-		hint13.appendChild(check);
-		pw2_valid = false;
+		hint13.innerText = "Passwords must match!";
 	}
-	}
+	} 	
 	
+	
+var checks = document.getElementById('checkbox');
+checks.addEventListener('click',checkbox(),false);
+	function checkbox(){
+	            if(checks.checked) {
+
+					document.getElementById("button").disabled = false;
+                }else{
+					document.getElementById("button").disabled = true;
+				}
+	}				
+}  
 function checkPass(){
     //Store the password field objects into variables ...
     var pw1 = document.getElementById('pw1');
@@ -361,44 +339,14 @@ function checkPass(){
         hint13.innerHTML = "Passwords Do Not Match!"
 		pw2_valid = false;
     }
-} 	
-	
-	
-var checks = document.getElementById('checkbox');
-checks.addEventListener('click',checkbox(),true);
-	function checkbox(){
-	            if(checks.checked) {
-
-					document.getElementById("button").disabled = false;
-                }else{
-					document.getElementById("button").disabled = true;
-				}
-	}
-	//validating the for data after submit
-	function validateForm(first_name_valid,last_name_valid,email_valid,telephone_valid,mobile_valid,address1_valid,city_valid,state_valid,zip_valid,username_valid,pw1_valid,pw2_valid){
-		if(first_name_valid == true && last_name_valid == true && email_valid == true && telephone_valid == true && mobile_valid == true && address1_valid == true && city_valid == true && state_valid == true && zip_valid == true && username_valid == true && pw1_valid == true && pw2_valid == true){
-		alert("success");	 	
-		return false;		 
-		}
-		else{
-		alert('first_name_valid');
-		return false;
-		}
-	}
-                document.getElementById('button').onclick = function() {
-					validateForm();
-                    return false;
-                }
-				
-}        
+}      
 
 function load() {
 	onFocus();
 	validateData();   
 	}
             window.onload = load;
-			</script>
-			
+</script>		
 <!--Google Analytics-->
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

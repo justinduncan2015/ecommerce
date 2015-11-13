@@ -1,4 +1,5 @@
 <?php
+$pageTitle = 'Batchpad.com - Edit User';
 include("db_connect.php");
 include("header.php");
 
@@ -101,19 +102,19 @@ include("header.php");
                 <div class="control-group">
                   <label for="email" class="control-label"> E-mail Address</label>
                   <div class="controls">
-                    <?php echo '<input required name="email" type="email" maxlength="64"  value="'.$row->email.'">'; ?>
+                    <?php echo '<input name="email" type="email" maxlength="64"  value="'.$row->email.'">'; ?>
                   </div>
                 </div>
                 <div class="control-group">
                   <label for="address1" class="control-label"> Address1</label>
                   <div class="controls">
-                    <?php echo '<input required name="address1" maxlength="64" type="text"  value="'.$row->address1.'">'; ?>
+                    <?php echo '<input name="address1" maxlength="64" type="text"  value="'.$row->address1.'">'; ?>
                   </div>
                 </div>
                 <div class="control-group">
                   <label for="address2" class="control-label"> Address2</label>
                   <div class="controls">
-                    <?php echo '<input required name="address2" maxlength="64" type="text"  value="'.$row->address2.'">'; ?>
+                    <?php echo '<input name="address2" maxlength="64" type="text"  value="'.$row->address2.'">'; ?>
                   </div>
                 </div>
                 <div class="control-group">
@@ -125,31 +126,31 @@ include("header.php");
                 <div class="control-group">
                     <label for="state" class="control-label"> State</label>
                 <div class="controls">
-                    <?php echo '<input required name="state" maxlength="2" type="text"  value="'.$row->state.'">'; ?>
+                    <?php echo '<input name="state" maxlength="2" type="text"  value="'.$row->state.'">'; ?>
                 </div>
                 </div>
                 <div class="control-group">
                 	<label for="zip" class="control-label"> Zip</label>
                 <div class="controls">
-                    <?php echo '<input required maxlength="5" name="zip" type="number"  value="'.$row->zip.'">'; ?>
+                    <?php echo '<input maxlength="5" name="zip" type="number"  value="'.$row->zip.'">'; ?>
                 </div>
                 </div>                
                 <div class="control-group">
                   <label for="telephone" class="control-label"> Telephone</label>
                   <div class="controls">
-                    <?php echo '<input required name="telephone" type="number" maxlength="10"  value="'.$row->telephone.'">'; ?>
+                    <?php echo '<input  name="telephone" type="number" maxlength="10"  value="'.$row->telephone.'">'; ?>
                   </div>
                 </div>
                 <div class="control-group">
                   <label for="mobile" class="control-label"> Mobile</label>
                   <div class="controls">
-                    <?php echo '<input required name="mobile" type="number" maxlength="10" value="'.$row->mobile.'">'; ?>
+                    <?php echo '<input name="mobile" type="number" maxlength="10" value="'.$row->mobile.'">'; ?>
                   </div>
                 </div>
                 <div class="control-group">
                 	<label for="company" class="control-label"> Company</label>
                 <div class="controls">
-                    <?php echo '<input required name="company" type="text" maxlength="20"  value="'.$row->company.'">'; ?>
+                    <?php echo '<input name="company" type="text" maxlength="20"  value="'.$row->company.'">'; ?>
                 </div>
                 </div> 
                 <div class="pull-left">

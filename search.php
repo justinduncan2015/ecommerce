@@ -1,6 +1,7 @@
 <?php
+$pageTitle = 'Batchpad.com - Search Results';
 if((isset($_POST['view'])&&($_POST['view']))||(isset($_POST['sort'])&&($_POST['sort']))){
-	header("location:catalog.php?page=1?page=1");
+	header("location:catalog.php?page=1");
 }
 if(isset($_SESSION['page'])){
                         $sort=$_SESSION['page'];

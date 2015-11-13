@@ -2,7 +2,7 @@
 session_start();
 $pageTitle = 'Batchpad.com - Login';
 if(isset($_SESSION['url'])){ 
-   $url = $_SESSION['url']; // holds url for last page visited.
+   $url = $_SERVER['url']; // holds url for last page visited.
 }else{ 
    $url = "home.php";
 }
@@ -33,7 +33,7 @@ include("db_connect.php");?>
 						$_SESSION['logged_in_telephone']    = $row->telephone;
 						$_SESSION['logged_in_mobile']       = $row->mobile;
 						$_SESSION['logged_in_company']      = $row->company;
-						header("location: ".$url);	
+						header("location: ". $url);	
 					}
 				}
 			}

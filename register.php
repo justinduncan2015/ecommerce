@@ -1,7 +1,36 @@
 <?php 
 $pageTitle = 'Batchpad.com - Register';
-include_once('header.php'); 
+include_once('header.php');
+?>
+<?php
+//when the page is submitted, runs this to clean and set data
+if((isset($_POST['submit']))&&(preg_match("/^[a-zA-Z]*$/",$_POST["firstname"]))){
+	$firstname = clean_input($_POST["firstname"]);
+	$lastname = clean_input($_POST["lastname"]);
+	$email = clean_input($_POST["email"]);
+	$telephone = clean_input($_POST["telephone"]);
+	$mobile = clean_input($_POST["mobile"]);
+	$address1 = clean_input($_POST["address1"]);
+	$city = clean_input($_POST["city"]);
+	$state = clean_input($_POST["state"]);
+	$zip = clean_input($_POST["zip"]);
+	$username = clean_input($_POST["username"]);	
+	$password = clean_input($_POST["pw1"]);
+	$insert_user_query = "INSERT INTO users (username, password, first_name, last_name, email, address1, address2, city, state, zip, telephone, mobile, company) VALUES ('".$_POST['username']."', '".md5($_POST['pw1'])."', '".$_POST['firstname']."', '".$_POST['lastname']."','".$_POST['email']."','".$_POST['address1']."','".$_POST['address2']."','".$_POST['city']."','".$_POST['state']."','".$_POST['zip']."','".$_POST['telephone']."','".$_POST['mobile']."','".$_POST['company']."')";
+				$mysqli->query($insert_user_query);
+	header('Location: thankyou.php');
+}
+if((isset($_POST['submit']))&&(!preg_match("/^[a-zA-Z]*$/",$_POST["firstname"]))){
+	?> 
+		<script type="text/javascript"> alert('You have to fill in all fields');</script>
+	<?php
+}
 
+function clean_input($data) {
+   $data = trim($data);
+   $data = stripslashes($data);
+   return $data;
+}
 ?>
     <div id="categorymenu">
         <nav class="subnav">
@@ -35,35 +64,35 @@ include_once('header.php');
         <!-- Register Account-->
         <div class="col-lg-9 col-md-9 col-xs-12 col-sm-12">
           <h1 class="heading1"><span class="maintext"> <i class="icon-signin"></i> Register Account</span></h1>
-          <form class="form-horizontal form-custom" name="register" id="register" method="post">
+          <form class="form-horizontal form-custom" name="register" id="register" method="post" >
             <h3 class="heading3">Your Personal Details</h3>
             <div class="registerbox">
               <fieldset>
                 <div class="control-group">
-                  <label for="first" class="control-label"><span class="red">*</span> First Name</label>
+                  <label for="firstname" class="control-label"><span class="red">*</span> First Name</label>
                   <div class="controls">
-                    <input required name="firstname" maxlength="20" id="firstname" type="text"  class="">
+                    <input required name="firstname" maxlength="20" id="firstname" type="text">
                     <span id="hint1"></span>
                   </div>
                 </div>
                 <div class="control-group">
                   <label for="last" class="control-label"><span class="red">*</span> Last Name</label>
                   <div class="controls">
-                    <input required name="lastname" maxlength="20" type="text" id="lastname"  class="">
+                    <input  name="lastname" maxlength="20" type="text" id="lastname">
                   <span id="hint2"></span>
                   </div>
                 </div>
                 <div class="control-group">
                   <label for="email" class="control-label"><span class="red">*</span> E-mail Address</label>
                   <div class="controls">
-                    <input name="email" required maxlength="36" type="email" id="email" class="">
+                    <input name="email"  maxlength="36" type="email" id="email">
                   <span id="hint3"></span>
                   </div>
                 </div>
                 <div class="control-group">
                   <label for="telephone" class="control-label"> Telephone</label>
                   <div class="controls">
-                    <input name="telephone" required maxlength="10" type="text" id="telephone">
+                    <input name="telephone" maxlength="10" type="text" id="telephone">
                   <span id="hint4"></span>
                   </div>
                 </div>
@@ -129,21 +158,21 @@ include_once('header.php');
               <div class="control-group">
                   <label for="username" class="control-label"><span class="red">*</span> Username</label>
                   <div class="controls">
-                    <input required name="username" type="text" id="username">
+                    <input name="username" type="text" id="username">
                     <span id="hint11"></span>
                   </div>
                 </div>
                 <div class="control-group">
                   <label for="pw1" class="control-label"><span class="red">*</span> Password</label>
                   <div class="controls">
-                    <input required name="pw1" type="password"  class="" id="pw1">
+                    <input name="pw1" type="password"  class="" id="pw1">
                     <span id="hint12"></span>
                   </div>
                 </div>
                 <div class="control-group">
                   <label for="pw2" class="control-label"><span class="red">*</span>Confirm Password</label>
                   <div class="controls">
-                    <input required name="pw2" type="password" id="pw2" onKeyUp="checkPass(); return false;">
+                    <input name="pw2" type="password" id="pw2" onKeyUp="checkPass(); return false;">
                     <span id="hint13"></span>
                   </div>
                 </div>
@@ -151,7 +180,7 @@ include_once('header.php');
             </div>
             <div class="pull-right"
               <label class="checkbox inline">
-                <input name="checkbox" id="checkbox" type="checkbox" onClick="validateData()"/>
+                <input name="checkbox" id="checkbox" type="checkbox" onClick="validateData();"/>
               </label>
               I have read and agree to the <a href="policies.php" >Privacy Policy</a>
               &nbsp;

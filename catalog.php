@@ -1,12 +1,13 @@
 <?php
 if((isset($_POST['view'])&&($_POST['view']))||(isset($_POST['sort'])&&($_POST['sort']))){
-	header("location:catalog.php?page=1?page=1");
+	header("location:catalog.php?page=1");
 }
 if(isset($_SESSION['page'])){
                         $sort=$_SESSION['page'];
                     }else{
 						$_SESSION['page']='1';
 					}
+$pageTitle = 'Batchpad.com - Catalog';
 include("db_connect.php");
 include("header.php");
 

@@ -1,4 +1,6 @@
-<?php include("db_connect.php");
+<?php 
+$pageTitle = 'Batchpad.com - Contact Us';
+include("db_connect.php");
 include("header.php");
 $_SESSION['view'] = 12;
 $_SESSION['sort'] = 'blank';                                       

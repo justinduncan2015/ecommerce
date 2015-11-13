@@ -1,4 +1,5 @@
 <?php
+$pageTitle = 'Batchpad.com - Products';
   include('header.php');
   include('db_connect.php');
   $id= $_GET['id'];

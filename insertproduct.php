@@ -1,4 +1,5 @@
 <?php
+$pageTitle = 'Batchpad.com - Insert Product';
 include("db_connect.php");
 include("header.php");
 
