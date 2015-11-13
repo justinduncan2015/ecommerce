@@ -2,7 +2,7 @@
 session_start();
 $pageTitle = 'Batchpad.com - Login';
 if(isset($_SESSION['url'])){ 
-   $url = $_SERVER['url']; // holds url for last page visited.
+   $url = $_SESSION['url']; // holds url for last page visited.
 }else{ 
    $url = "home.php";
 }
