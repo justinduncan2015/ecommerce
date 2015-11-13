@@ -130,6 +130,25 @@
     rw.src = p + "//" + a + "external" + f + ".js?ck=" + ck;
     s.parentNode.insertBefore(rw, s);
     }(document, new Date(), "script", "rating-widget.com/"));</script>
+    <script type="text/javascript">
+$(document).ready(function() {
+    var x_timer;    
+    $("#username").keyup(function (e){
+        clearTimeout(x_timer);
+        var user_name = $(this).val();
+        x_timer = setTimeout(function(){
+            check_username_ajax(user_name);
+        }, 1000);
+    }); 
+
+function check_username_ajax(username){
+    $("#hint11").html('<img src="img/loading.gif"/>');
+    $.post('validate.php', {'username':username}, function(data) {
+      $("#hint11").html(data);
+    });
+}
+});
+</script>
 <?php
 mysqli_close($mysqli);
 ?>

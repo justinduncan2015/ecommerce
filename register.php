@@ -1,10 +1,9 @@
 <?php 
 $pageTitle = 'Batchpad.com - Register';
 include_once('header.php');
-?>
-<?php
+
 //when the page is submitted, runs this to clean and set data
-if((isset($_POST['submit']))&&(preg_match("/^[a-zA-Z]*$/",$_POST["firstname"]))){
+if(isset($_POST['submit'])){
 	$firstname = clean_input($_POST["firstname"]);
 	$lastname = clean_input($_POST["lastname"]);
 	$email = clean_input($_POST["email"]);
@@ -16,14 +15,19 @@ if((isset($_POST['submit']))&&(preg_match("/^[a-zA-Z]*$/",$_POST["firstname"])))
 	$zip = clean_input($_POST["zip"]);
 	$username = clean_input($_POST["username"]);	
 	$password = clean_input($_POST["pw1"]);
+	$query = mysql_query("SELECT username FROM Users WHERE username='".$username."'");
+	//if data entered passes validation
+	if((preg_match("/^[a-zA-Z]*$/",$_POST["firstname"]))&&(preg_match("/^[a-zA-Z]*$/",$_POST["lastname"]))&&(preg_match("/^([0-9]{3})([0-9]{3})([0-9]{4})$/",$_POST["telephone"]))&&(preg_match("/^([0-9]{3})([0-9]{3})([0-9]{4})$/",$_POST["mobile"]))&&(preg_match("/^([A-Za-z0-9]+)(@)([A-Za-z0-9]+)(.)([a-z]+)$/",$_POST["email"]))&&(preg_match("/^[0-9]+\s+([a-zA-Z]+|[a-zA-Z]+\s[a-zA-Z]+)$/",$_POST["address1"]))&&(preg_match("/^[A-Za-z]*$/",$_POST["city"]))&&(preg_match("/^[a-zA-Z]{2}$/",$_POST["state"]))&&(preg_match("/^[0-9]{5}$/",$_POST["zip"]))&&(preg_match("/^[a-zA-Z0-9_-]{3,16}$/",$_POST["username"]))&&(preg_match("/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/",$_POST["pw1"]))&&($_POST["pw1"]===$_POST["pw2"])){
+	
 	$insert_user_query = "INSERT INTO users (username, password, first_name, last_name, email, address1, address2, city, state, zip, telephone, mobile, company) VALUES ('".$_POST['username']."', '".md5($_POST['pw1'])."', '".$_POST['firstname']."', '".$_POST['lastname']."','".$_POST['email']."','".$_POST['address1']."','".$_POST['address2']."','".$_POST['city']."','".$_POST['state']."','".$_POST['zip']."','".$_POST['telephone']."','".$_POST['mobile']."','".$_POST['company']."')";
 				$mysqli->query($insert_user_query);
 	header('Location: thankyou.php');
-}
-if((isset($_POST['submit']))&&(!preg_match("/^[a-zA-Z]*$/",$_POST["firstname"]))){
-	?> 
+	
+}elseif((preg_match("/^[a-zA-Z]*$/",$_POST["firstname"]))||(preg_match("/^[a-zA-Z]*$/",$_POST["lastname"]))||(preg_match("/^([0-9]{3})([0-9]{3})([0-9]{4})$/",$_POST["telephone"]))||(preg_match("/^([0-9]{3})([0-9]{3})([0-9]{4})$/",$_POST["mobile"]))||(preg_match("/^([A-Za-z0-9]+)(@)([A-Za-z0-9]+)(.)([a-z]+)$/",$_POST["email"]))||(preg_match("/^[0-9]+\s+([a-zA-Z]+|[a-zA-Z]+\s[a-zA-Z]+)$/",$_POST["address1"]))||(preg_match("/^[A-Za-z]*$/",$_POST["city"]))||(preg_match("/^[a-zA-Z]{2}$/",$_POST["state"]))||(preg_match("/^[0-9]{5}$/",$_POST["zip"]))||(preg_match("/^[a-zA-Z0-9_-]{3,16}$/",$_POST["username"]))||(preg_match("/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/",$_POST["pw1"]))||($_POST["pw1"]===$_POST["pw2"])){
+	?>
 		<script type="text/javascript"> alert('You have to fill in all fields');</script>
 	<?php
+}
 }
 
 function clean_input($data) {
@@ -212,13 +216,14 @@ function clean_input($data) {
 </div>
 <?php } ?>
 <!--Google Analytics-->
-<script>
+<script type="text/javascript">
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
   ga('create', 'UA-69797602-1', 'auto');
   ga('send', 'pageview');
+
 </script>
 
 <?php 

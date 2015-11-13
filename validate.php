@@ -1,4 +1,24 @@
-
+<?php 
+include('db_connect.php');
+if(isset($_POST["username"]))
+{
+    if(!isset($_SERVER['HTTP_X_REQUESTED_WITH']) AND strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) != 'xmlhttprequest') {
+        die();
+    }
+    
+    $usernamecheck = filter_var($_POST["username"], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW|FILTER_FLAG_STRIP_HIGH);
+    
+    $statement = $mysqli->prepare("SELECT username FROM users WHERE username=?");
+    $statement->bind_param('s', $usernamecheck);
+    $statement->execute();
+    $statement->bind_result($usernamecheck);
+    if($statement->fetch()){
+        die('<span class="red" style="color:red;"><i class="red icon-thumbs-down"> Username is already taken</p>');
+    }else{
+        die('<span class="green" style="color:green;"><i class="green icon-thumbs-up"> Username is available!</p>');
+    }
+}
+?>
 <!doctype html>
 <html>
 <head>
@@ -69,17 +89,11 @@ document.register.zip.onfocus = function(){
 	hint10.style.color = "green";
 	hint10.innerText = "Numbers Only (ex: 54321)";
 }
-document.register.username.onfocus = function(){
-	var username = document.getElementById("username");
-	var hint11 = document.getElementById('hint11');
-	hint11.style.color = "green";
-	hint11.innerText = "Enter Your Login Username";
-}
 document.register.pw1.onfocus = function(){
 	var pw1 = document.getElementById("pw1");
 	var hint12 = document.getElementById('hint12');
 	hint12.style.color = "green";
-	hint12.innerText = "Passwords must contain at least 6 characters, 1 alpha-numeric character, 1 number, and a special character. Max 20 chars.";
+	hint12.innerText = "Passwords must contain at least 6 characters,<br>1 alpha-numeric character, 1 number, <br>and a special character. Max 20 chars.";
 }
 document.register.pw2.onfocus = function(){
 	var pw2 = document.getElementById("pw2");
@@ -257,21 +271,6 @@ function validateData(event){
 		var check = document.createElement('i');
 		check.setAttribute('class',"red icon-thumbs-down");
 		hint10.appendChild(check);
-	}
-	}
-		//zip check
-	document.register.username.onblur = function(){	
-	if(this.value.match(/^[a-zA-Z0-9_-]{3,16}$/)){
-		hint11.innerText = "";
-		var check = document.createElement('i');
-		check.setAttribute('class',"green icon-thumbs-up");
-		hint11.appendChild(check);
-	}
-	if(!this.value.match(/^[a-zA-Z0-9_-]{3,16}$/) || this.value.length === 0){
-		hint11.innerText = "";
-		var check = document.createElement('i');
-		check.setAttribute('class',"red icon-thumbs-down");
-		hint11.appendChild(check);
 	}
 	}
 		//zip check

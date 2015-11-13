@@ -1,4 +1,5 @@
 <?php 
+$pageTitle = "Batchpad.com - Thank you!";
 include('header.php');
 $pageTitle = 'Batchpad.com - Register';
 ?>
@@ -35,12 +36,12 @@ $pageTitle = 'Batchpad.com - Register';
 <script type="text/javascript">
 function countdown() {
     var i = document.getElementById('counter');
-    if (parseInt(i.innerHTML)<=0) {
+    if (parseInt(i.innerHTML)<=1) {
         location.href = 'home.php';
     }
     i.innerHTML = parseInt(i.innerHTML)-1;
 }
-setInterval(function(){ countdown(); },1000);
+setInterval(function(){ countdown(); },800);
 </script>
        
       </div>
