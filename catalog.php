@@ -54,20 +54,12 @@ $current_url = urlencode($url="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_
           <div class="sidewidt">
             <h1 class="heading1"><span class="maintext"><i class="icon-th-list"></i> Categories</span></h1>
             <ul class="nav nav-list categories">
-              <li> <a href="category.php">Furniture</a>
-                <ul>
-                  <li> <a href="catalog.php">Kitchen </a> </li>
-                  <li> <a href="catalog.php">Outdoor </a> </li>
-                  <li> <a href="catalog.php">Living Room</a> </li>
-                  <li> <a href="catalog.php">Bed &amp; Bath</a> </li>
-                </ul>
-              </li>
-              <li> <a href="catalog.php">Kitchen</a> </li>
-              <li> <a href="catalog.php">Electronics </a> </li>
-              <li> <a href="catalog.php">Bathroom </a> </li>
-              <li> <a href="catalog.php">Outdoor</a> </li>
-              <li> <a href="catalog.php">Living Room</a> </li>
-              <li> <a href="catalog.php">Miscellanious</a> </li>
+              <li><a href="#" id="navFurn" class="categoryBtnFurniture">Furniture</a></li>
+              <li><a href="#" id="navKit" class="categoryBtnKitchen">Kitchen</a> </li>
+              <li><a href="#" id="navElect" class="categoryBtnElectronics">Electronics </a> </li>
+              <li><a href="#" id="navBath" class="categoryBtnBathroom">Bathroom </a> </li>
+              <li><a href="#" id="navBed" class="categoryBtnBedroom">Bedroom</a> </li>
+              <li><a href="#" id="navLiv" class="categoryBtnLivingroom">Living Room</a> </li>
             </ul>
           </div>
           <!--  Hottest New Products -->
@@ -90,144 +82,121 @@ $current_url = urlencode($url="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_
         </aside>
         <!-- Sidebar End-->
 		    <!-- Category End-->
-        
         <div class="col-lg-9 col-md-9 col-xs-12 col-sm-12">	 
           <!-- Category Products-->
           <section id="category">
             <h1 class="heading1"><span class="maintext"> <i class="icon-money"></i> Catalog</span></h1>
             <div class="row">
-            <div class="sorting well">
-            
-            <?php 
-			
-			if(isset($_SESSION['sort'])){
-                        $sort=$_SESSION['sort'];
-                    }
-
-                    else{$_SESSION['sort']='blank';
-					
-					}
-			
-			(isset($_POST["sort"])) ? ($sort = $_POST["sort"]) &&($_SESSION['sort']=$_POST["sort"]) : $sort=$_SESSION['sort'];?>
-            <div class="pull-left">
-            <form id="sort_form" class="form-inline" method="post" onchange="change2()">
-            Sort By:
-                <select id="sort" name="sort" class="span2">
-                  <option <?php if ($sort == 'blank' ) echo 'selected' ; ?> value='blank'>--</option>
-                  <option <?php if ($sort == 'Name' ) echo 'selected' ; ?> value='Name'>Name: A-Z</option>
-                  <option <?php if ($sort == 'Price' ) echo 'selected' ; ?> value='Price'>Price: Low to high</option>
-                </select>
-            </form>
-            <?php
-			
-			if(isset($_SESSION['view'])&&($_SESSION['view']>12)){
-				$view=$_SESSION['view'];
-			}else{
-				$_SESSION['view']=12;
-			}
-				
-                ?>
+              <div class="sorting well">
+              <?php
+			          if(isset($_SESSION['sort'])){
+                  $sort=$_SESSION['sort'];
+                }else{
+                  $_SESSION['sort']='blank';
+                }
+			          (isset($_POST["sort"])) ? ($sort = $_POST["sort"]) &&($_SESSION['sort']=$_POST["sort"]) : $sort=$_SESSION['sort']
+              ?>
+                <div class="pull-left">
+                  <form id="sort_form" class="form-inline" method="post" onchange="change2()">
+                    Sort By:
+                    <select id="sort" name="sort" class="span2">
+                      <option <?php if ($sort == 'blank' ) echo 'selected' ; ?> value='blank'>--</option>
+                      <option <?php if ($sort == 'Name' ) echo 'selected' ; ?> value='Name'>Name: A-Z</option>
+                      <option <?php if ($sort == 'Price' ) echo 'selected' ; ?> value='Price'>Price: Low to high</option>
+                    </select>
+                  </form>
+                  <?php
+			              if(isset($_SESSION['view'])&&($_SESSION['view']>12)){
+				              $view=$_SESSION['view'];
+			              }else{
+				              $_SESSION['view']=12;
+			              }
+                  ?>
                 </div>
         		    <!-- amount of products sidebar --> 
                 <?php
 				          ((isset($_POST['view'])) ? ($view = $_POST['view'])&&($_SESSION['view']=$_POST['view']) : $view=$_SESSION['view']);
 				        ?>
                 <div class="pull-right">
-                
-                <form id="view_form" method="post" onchange="change()" class="pull-right">
-                View:
+                  <form id="view_form" method="post" onchange="change()" class="pull-right">
+                    View:
                     <select class="span1" id="view" name="view">
                       <option <?php if ($view == 12 ) echo 'selected' ; ?> value="12">12</option>
                       <option <?php if ($view == 24 ) echo 'selected' ; ?> value="24">24</option>
                       <option <?php if ($view == 36 ) echo 'selected' ; ?> value="36">36</option>
                     </select>
                     <?php 
-				$page = (int) $_GET['page'];
-                if ($page < 1) $page = 1;
-                $startResults = ($page - 1) * $view;
-                $numberOfRows = mysqli_num_rows($mysqli->query('SELECT * FROM products'));
-                $totalPages = ceil($numberOfRows / $view);
-				
-				 
-				if($sort=='Name'){
-					
-                    $all = "SELECT * FROM products
-                     ORDER BY product_name ASC LIMIT $startResults, $view";
-                }
-
-                elseif($sort=='Price'){
-                    $all = "SELECT * FROM products
-                     ORDER BY cost ASC LIMIT $startResults, $view";
-                }
-
-                else{
-                    $all = "SELECT * FROM products LIMIT $startResults, $view";
-					
-                }
-				
-				$new = 'SELECT * FROM products WHERE new = "yes"';
-				$myAll = $mysqli->query($all);
-			
-						$last = "SELECT product_id FROM products ORDER BY product_id DESC";
-            			$myLast = $mysqli->query($last);
-            			$amount = $myLast->fetch_object();
-                        if(($startResults+$view)>($amount->product_id)){
-                     print " ".($startResults+1)."-".($amount->product_id)." of ".$amount->product_id."\n";
-                    }
-                    else{
+				              $page = (int) $_GET['page'];
+                      if ($page < 1) $page = 1;
+                      $startResults = ($page - 1) * $view;
+                      $numberOfRows = mysqli_num_rows($mysqli->query('SELECT * FROM products'));
+                      $totalPages = ceil($numberOfRows / $view);
+				              if($sort=='Name'){
+                        $all = "SELECT * FROM products ORDER BY product_name ASC LIMIT $startResults, $view";
+                      }elseif($sort=='Price'){
+                        $all = "SELECT * FROM products ORDER BY cost ASC LIMIT $startResults, $view";
+                      }else{
+                        $all = "SELECT * FROM products LIMIT $startResults, $view";
+                      }
+              				$new = 'SELECT * FROM products WHERE new = "yes"';
+              				$myAll = $mysqli->query($all);
+						          $last = "SELECT product_id FROM products ORDER BY product_id DESC";
+            			    $myLast = $mysqli->query($last);
+            			    $amount = $myLast->fetch_object();
+                      if(($startResults+$view)>($amount->product_id)){
+                        print " ".($startResults+1)."-".($amount->product_id)." of ".$amount->product_id."\n";
+                      }else{
                         print " ".($startResults+1)."-".($startResults+$view)." of ".$amount->product_id."\n";
-                    }
-                    
-            		?>
-                </form>
+                      }    
+            		    ?>
+                  </form>
                 </div>
-                </div>
+              </div>
             <!-- amount of items to view END -->
-         </div>
-         <!-- sort by and view number of items div END -->            
+            </div>
+            <!-- sort by and view number of items div END -->            
                 <!-- Category-->
                 <section id="categorygrid">
                   <ul class="thumbnails list row" style="display:block" >
                   <?php
-if($view==24){
-	$zero=1;
-        $limit_zero=23;
-
-        while(($row = $myAll->fetch_object())&&($zero<=$limit_zero)){
-							$zero++;
-				  ?>
-                    <li>
-                      <div class="thumbnail">
-                        <div class="row">
-                         <form method="post" 
-                      
-                      <? if($row->qty_stock>0){print "action='cart_update.php'";} 
-                else{echo "action='".$_SERVER['PHP_SELF']."#'";}?>>
-                    
-                    
-                <?
-                 print "\t\t\t\t\t<div class='product_image'>\n";
-                 echo "<div class='col-lg-4 col-md-4 col-xs-12 col-sm-6 span3'><a href='product.php?id=".$row->product_id."'><img src=\"".$row->image_url."\" alt=\"".$row->product_name." Image\"></a></div>";      
-                 echo "<div class='col-lg-6 col-md-6 col-xs-12 col-sm-12'><a class='prdocutname' href='product.php?id=".$row->product_id."'>" .$row->product_name. "</a>";
-                 echo "<div class='productdiscrption'>" .$row->description. "<br></div>";
-                  if($row->qty_stock<=0)
-                        {echo "\t\t\t\t\t<p><span class='red'>Out of Stock</span> | $".$row->price."</p>\n";}
-                  else{
-                        echo "\t\t\t\t\t<p><span class='green'>In Stock</span> | $".$row->price."</p></div>\n";  
-                        };
-              
-               echo "<div class='rw-ui-container' data-urid=" . $row->product_id. "></div>";
-                echo "\t\t\t\t\t<div>\n";
-                echo "<input type='hidden' name='product_qty' value='1' />";
-                echo "<input type='hidden' name='product_code' value=".$row->product_sku." />";
-                echo "<input type='hidden' name='type' value='add' />";
-                echo "<input type='hidden' name='return_url' value=".$current_url." />"; 
-                echo "\t\t\t\t\t\t<button type='submit'class='btn btn-orange btn-small addtocartbutton'>Add to Cart</button>\n"; 
-                echo "\t\t\t\t\t</div>\n";?>
-               </form>
-               </div>
-               </div>
-               </li>
+                    if($view==24){
+	                  $zero=1;
+                    $limit_zero=23;
+                    while(($row = $myAll->fetch_object())&&($zero<=$limit_zero)){
+							        $zero++;
+                    echo "<li>";
+                      echo "<div class='thumbnail'>";
+                        echo "<div class='row'>";
+                          echo "<form method='post'".$row->category."";
+                            if($row->qty_stock>0){
+                            print "action='cart_update.php'";
+                            }else{
+                              echo "action='".$_SERVER['PHP_SELF']."#'";
+                            }
+                          ?>>  
+                          <?
+                          print "\t\t\t\t\t<div class='product_image'>\n";
+                          echo "<div class='col-lg-4 col-md-4 col-xs-12 col-sm-6 span3'><a href='product.php?id=".$row->product_id."'><img src=\"".$row->image_url."\" alt=\"".$row->product_name." Image\"></a></div>";      
+                          echo "<div class='col-lg-6 col-md-6 col-xs-12 col-sm-12'><a class='prdocutname' href='product.php?id=".$row->product_id."'>" .$row->product_name. "</a>";
+                          echo "<div class='productdiscrption'>" .$row->description. "<br></div>";
+                          if($row->qty_stock<=0)
+                                {echo "\t\t\t\t\t<p><span class='red'>Out of Stock</span> | $".$row->price."</p>\n";}
+                          else{
+                                echo "\t\t\t\t\t<p><span class='green'>In Stock</span> | $".$row->price."</p></div>\n";  
+                                };
+                        
+                         echo "<div class='rw-ui-container' data-urid=" . $row->product_id. "></div>";
+                          echo "\t\t\t\t\t<div>\n";
+                          echo "<input type='hidden' name='product_qty' value='1' />";
+                          echo "<input type='hidden' name='product_code' value=".$row->product_sku." />";
+                          echo "<input type='hidden' name='type' value='add' />";
+                          echo "<input type='hidden' name='return_url' value=".$current_url." />"; 
+                          echo "\t\t\t\t\t\t<button type='submit'class='btn btn-orange btn-small addtocartbutton'>Add to Cart</button>\n"; 
+                          echo "\t\t\t\t\t</div>\n";?>
+                         </form>
+                         </div>
+                         </div>
+                         </li>
                             
                <?
                       
@@ -242,17 +211,17 @@ elseif($view==36){
 
         while(($row = $myAll->fetch_object())&&($zero<=$limit_zero)){
               $zero++;
-          ?>
-                    <li>
-                      <div class="thumbnail">
-                        <div class="row">
-                         <form method="post" 
-                      
-                      <? if($row->qty_stock>0){print "action='cart_update.php'";} 
-                else{echo "action='".$_SERVER['PHP_SELF']."#'";}?>>
+                    echo "<li>";
+                      echo "<div class='thumbnail'>";
+                        echo "<div class='row'>";
+                         echo "<form method='post' ".$row->category.""; 
+                      if($row->qty_stock>0){
+                        print "action='cart_update.php'";
+                      }else{
+                        echo "action='".$_SERVER['PHP_SELF']."#'";
+                      }
+                      echo ">";
                     
-                    
-                <?
                  print "\t\t\t\t\t<div class='product_image'>\n";
                  echo "<div class='col-lg-4 col-md-4 col-xs-12 col-sm-6 span3'><a href='product.php?id=".$row->product_id."'><img src=\"".$row->image_url."\" alt=\"".$row->product_name." Image\"></a></div>";      
                  echo "<div class='col-lg-6 col-md-6 col-xs-12 col-sm-12'><a class='prdocutname' href='product.php?id=".$row->product_id."'>" .$row->product_name. "</a>";
@@ -368,169 +337,71 @@ else{
     </div>
   </section>
 </div>
-
-<footer id="footer">
-    <section class="footersocial">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-3 col-xs-12 col-sm-6 span3 info">
-                    <h2> <i class="icon-link"></i> SiteMap </h2>
-                    <ul>
-                        <li><a href="home.php">Home</a> </li>
-                        <li><a href="client.php">My Account</a> </li>
-                        <li><a href="catalog.php">Shop</a> </li>
-                        <li><a href="contact.php">Contact Us</a> </li>
-                        <li><a href="about.php">About</a></li>
-                        <li><a href="cart.php">My Cart</a> </li>
-                        <li><a href="register.php">Sign-Up</a> </li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-3 col-xs-12 col-sm-6 span3 contact">
-                    <h2> <i class="icon-phone-sign"></i> Contact Info </h2>
-                    <ul>
-                        <li class="location"> 404 Not found Rd.‎ Melbourne, Fl 32903</li>
-                        <li class="phone">(800)555-7890 &nbsp; (877)555-7890</li>
-                        <li class="mobile"> #Bachpad</li>
-                        <li class="email"> sales@batchpad.com</li>
-                    </ul>
-                </div>
-                <!-- Testimonial-->
-                <div class="col-lg-3 col-md-3 col-xs-12 col-sm-12 span3">
-                    <div class="sidewidt">
-                        <h2 class="heading2"><span><i class="icon-edit"></i> Testimonials</span></h2>
-                        <div class="flexslider" id="testimonialsidebar">
-                            <ul class="slides">
-                                <li>"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."<br>"Lorem Ipsum is simply dummy text of the printing and industry.<br><br>
-                                    <span class="pull-left orange">By : Lorem Ipsum</span> 
-                                </li>
-                                <li>"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."<br>"Lorem Ipsum is simply dummy text of the printing and industry.<br><br>
-                                    <span class="pull-left orange">By : Lorem Ipsum</span> 
-                                </li>
-                                <li>"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."<br>"Lorem Ipsum is simply dummy text of the printing and industry.<br><br>
-                                    <span class="pull-left orange">By : Lorem Ipsum</span> 
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-xs-12 col-sm-6 span3 facebook">
-                    <h2> <i class="icon-facebook-sign"></i> Facebook </h2>
-                    <div class="seperator"></div>
-                    <div class="seperator1"></div>
-                    <div id="fb-root"></div>
-                    <div class="fb-like-box" data-href="https://www.facebook.com/BachelorHaus" data-width="292" data-show-faces="true" data-colorscheme="dark" data-stream="false" data-show-border="false" data-header="false"  data-height="240"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="copyrightbottom">
-        <div class="container">
-            <div class="row">
-            <div class="col-lg-3 col-md-3 col-xs-12 col-sm-12 span5 col-lg-3 col-md-3 col-xs-12 col-sm-12 paymentsicons"></div>
-                <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12 textcenter"> This site is not official and is an assignment for a UCF Digital Media course - Designed by Justin Duncan </div>
-                <div class="col-lg-3 col-md-3 col-xs-12 col-sm-12 span5 col-lg-3 col-md-3 col-xs-12 col-sm-12 paymentsicons"> <img title="PayPal" alt="paypal" src="img/payment_paypal.png"> <img title="American Express" alt="american-express" src="img/payment_american.png"><img title="Maestro" alt="maestro" src="img/payment_maestro.png"> <img title="Discover" alt="discover" src="img/payment_discover.png"> </div>
-            </div>
-        </div>
-    </section>
-    <a id="gotop" href="#">Back to top</a>
-</footer>
-<!-- javascript
-    ================================================== --> 
-<!-- Placed at the end of the document so the pages load faster --> 
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
-<script src="js/jquery.js"></script>
-<script src="js/jquery-migrate.min.js"></script> 
-<script type="text/javascript" src="js/jquery.easing.js"></script> 
-<script src="js/respond.min.js"></script> 
-<script src="js/bootstrap.min.js"></script> 
-<script  src="js/jquery.prettyPhoto.js"></script> 
-<script defer src="js/jquery.flexslider.js"></script> 
-<script src="layerslider/js/greensock.js" type="text/javascript"></script> 
-<script src="layerslider/js/layerslider.transitions.js" type="text/javascript"></script> 
-<script src="layerslider/js/layerslider.kreaturamedia.jquery.js" type="text/javascript"></script> 
-<script type="text/javascript" src="js/jquery.tweet.js"></script> 
-<script  src="js/zoomsl-3.0.min.js"></script> <script  type="text/javascript" src="js/jquery.validate.js"></script> 
-<script type="text/javascript"  src="js/jquery.carouFredSel-6.1.0-packed.js"></script> 
-<script type="text/javascript"  src="js/jquery.mousewheel.min.js"></script> 
-<script type="text/javascript"  src="js/jquery.touchSwipe.min.js"></script> 
-<script type="text/javascript" src="js/jquery.gmap.js"></script>
-<script type="text/javascript" src="js/jquery.countdown.js"></script>
-<script defer src="js/custom.js"></script>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-<script type="text/javascript">(function(d, t, e, m){
-    
-    // Async Rating-Widget initialization.
-    window.RW_Async_Init = function(){
-                
-        RW.init({
-            huid: "259474",
-            uid: "3b0bc03895785eed657c9e205359ca03",
-            source: "website",
-            options: {
-                "advanced": {
-                    "font": {
-                        "hover": {
-                            "color": "#B7D086"
-                        },
-                        "size": "12px",
-                        "bold": true,
-                        "color": "#B7D086"
-                    }
-                },
-                "size": "tiny",
-                "label": {
-                    "background": "#427E53"
-                },
-                "style": "oxygen_green",
-                "isDummy": false
-            } 
-        });
-        RW.render();
-    };
-        // Append Rating-Widget JavaScript library.
-    var rw, s = d.getElementsByTagName(e)[0], id = "rw-js",
-        l = d.location, ck = "Y" + t.getFullYear() + 
-        "M" + t.getMonth() + "D" + t.getDate(), p = l.protocol,
-        f = ((l.search.indexOf("DBG=") > -1) ? "" : ".min"),
-        a = ("https:" == p ? "secure." + m + "js/" : "js." + m);
-    if (d.getElementById(id)) return;              
-    rw = d.createElement(e);
-    rw.id = id; rw.async = true; rw.type = "text/javascript";
-    rw.src = p + "//" + a + "external" + f + ".js?ck=" + ck;
-    s.parentNode.insertBefore(rw, s);
-    }(document, new Date(), "script", "rating-widget.com/"));
-    
-	
-	function change(){
-    	document.getElementById("view_form").submit();
-		
-	}
-
-	function change2(){
-    	document.getElementById("sort_form").submit();
-		
-	}
-    
-    </script>
-
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-69797602-1', 'auto');
-  ga('send', 'pageview');
-</script>
+$(document).ready(function() {
+  
+  $(".categoryBtnFurniture").on("click", function(){
+    hideProducts();
+    $(".furniture").show();
+  });
 
+  $(".categoryBtnKitchen").on("click", function(){
+    hideProducts();
+    $(".kitchen").show();
+  });
+
+  $(".categoryBtnElectronics").on("click", function(){
+    hideProducts();
+    $(".electronic").show();
+  });
+
+  $(".categoryBtnBathroom").on("click", function(){
+    hideProducts();
+    $(".bathroom").show();
+  });
+
+  $(".categoryBtnBedroom").on("click", function(){
+    hideProducts();
+    $(".bedroom").show();
+  });
+
+  $(".categoryBtnLivingroom").on("click", function(){
+    hideProducts();
+    $(".livingroom").show();
+  });
+
+  $("#navFurn").on("click", function(){
+    hideProducts();
+    $(".furniture").show();
+  });
+
+  $("#navKit").on("click", function(){
+    hideProducts();
+    $(".kitchen").show();
+  });
+
+  $("#navElect").on("click", function(){
+    hideProducts();
+    $(".electronic").show();
+  });
+
+  $("#navBath").on("click", function(){
+    hideProducts();
+    $(".bathroom").show();
+  });
+
+  $("#navBed").on("click", function(){
+    hideProducts();
+    $(".bedroom").show();
+  });
+
+  $("#navLiv").on("click", function(){
+    hideProducts();
+    $(".livingroom").show();
+  });
+
+});
+</script>
 <?php
-mysql_close($con);
+include('footer.php');
 ?>
-</body>
-</html>
