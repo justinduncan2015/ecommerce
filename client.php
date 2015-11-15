@@ -32,8 +32,8 @@
           	<?php echo "<li><b>First Name:</b> &nbsp; &nbsp; ".$row->first_name."</li><br>"; ?>
             <?php echo "<li><b>Last Name:</b> &nbsp; &nbsp; ".$row->last_name."</li><br>"; ?>
             <?php echo "<li><b>E-mail:</b> &nbsp; &nbsp; ".$row->email."</li><br>"; ?>
-            <?php echo "<li><b>Billing Address:</b> &nbsp; &nbsp; ".$row->address1."</li><br>"; ?>
-            <?php echo "<li><b>Shipping Address:</b> &nbsp; &nbsp; ".$row->address2."</li><br>"; ?>
+            <?php echo "<li><b>Address 1:</b> &nbsp; &nbsp; ".$row->address1."</li><br>"; ?>
+            <?php echo "<li><b>Address 2:</b> &nbsp; &nbsp; ".$row->address2."</li><br>"; ?>
             <?php echo "<li><b>City:</b> &nbsp; &nbsp; ".$row->city."</li><br>"; ?>
             <?php echo "<li><b>State:</b> &nbsp; &nbsp; ".$row->state."</li><br>"; ?>
             <?php echo "<li><b>Zip Code:</b> &nbsp; &nbsp; ".$row->zip."</li><br>"; ?>
