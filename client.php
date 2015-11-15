@@ -2,17 +2,44 @@
   $pageTitle = 'Batchpad.com - Profile';
   include('header.php');
   include('db_connect.php');
+  if(isset($_SESSION['logged_in_user_id'])){
   $id= $_GET['id'];
   $select_id = "SELECT * FROM users WHERE user_id = $id";
   $select_id_result = $mysqli->query($select_id);
-
+  }
+  ?>
+  <div id="categorymenu">
+        <nav class="subnav">
+            <ul class="nav-pills categorymenu container">
+                <li><a class="home" href="home.php"><i class="icon-home icon-white font18"></i> <span> Home</span></a></li>
+                <li><a href="catalog.php?page=1">Shop</a></li>
+                <li><a href="about.php">about</a></li>
+                <li><a href="contact.php">Contact Us</a> </li>
+                <?php
+                if(isset($_SESSION['logged_in_user_access'])&&($_SESSION['logged_in_user_access'] == "admin")) {
+                print "<li><a class='active' href='admin.php'>Admin</a> </li>";
+                }
+				if(isset($_SESSION['logged_in_user_access'])&&($_SESSION['logged_in_user_access'] == "customer")) {
+                print "<li><a href='client.php?id=".$_SESSION['logged_in_user_id']."'>My Account</a> </li>";
+                }
+                ?>
+                <li class="pull-right">
+                    <form action="search.php" method="post" class="form-search top-search">
+                        <input type="text" name="search" class="input-small search-query" placeholder="Search Here…">
+                        <button class="btn btn-orange btn-small tooltip-test" data-original-title="Search"><i class="icon-search icon-white"></i></button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </div>
+<?php
 	if(!isset($_SESSION['logged_in']) || ($_SESSION['logged_in_user_access'] == 'admin') || ($_SESSION['logged_in_user_access'] == 'superuser') ) {
 
-		print "This is for customer information, Login as the test user account to view content!.";
+		print "This is for customer information, Login as the test user account to view content! or go to the <a class='clickable' href='admin.php'>Admin page </a>to view user information.";
 		
 	}else if($_SESSION['logged_in_user_access'] == 'customer') {
 ?>
-<!-- Header End -->
+
 <div id="maincontainer">
   <section id="product">
     <div class="container">
@@ -26,6 +53,7 @@
       </ul>
       <div class="row">        
         <!-- Register Account-->
+        <?php $row = $select_id_result->fetch_object(); ?>
         <div class="col-lg-9 col-md-9 col-xs-12 col-sm-12">
           <h1 class="heading1"><span class="maintext"> <i class="icon-signin"></i> My Account details</span></h1>
           <ul class="unstyled listoption2">
@@ -49,23 +77,10 @@
           <div class="sidewidt">
             <h1 class="heading1"><span class="maintext"> <i class="icon-user"></i> Account</span></h1>
             <ul class="nav nav-list categories">
-              <li>
-                <a href="client.php"> My Account</a>
-              </li>
-              <li>
-                <a href="signup.php">Edit Account</a>
-              </li>
-              <li>
-                <a href="#">Recover Password</a>
-              </li>
-              <li><a href="#">Order History</a>
-              </li>
-              <li>
-                <a href="#"> Edit Payment Options</a>
-              </li>
-              <li>
-                <a href="logout.php">Logout</a>
-              </li>
+              <li><a href="client.php"> My Account</a></li>
+              <li><?php echo '<a href="editinfo.php?id='.$id.'">Edit Account</a>'; ?></li>
+              <li><a href="#">Recover Password</a></li>
+              <li><a href="logout.php">Logout</a></li>
             </ul>
           </div>
         </aside>

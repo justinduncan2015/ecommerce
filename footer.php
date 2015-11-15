@@ -7,7 +7,7 @@
           <h2> <i class="icon-link"></i> SiteMap </h2>
           <ul>
             <li><a href="home.php">Home</a> </li>
-            <li><a href="client.php">My Account</a> </li>
+            <?php echo '<li><a href="client.php?id='.$_SESSION["logged_in_user_id"].'">My Account</a> </li>'; ?>
             <li><a href="catalog.php?page=1">Shop</a> </li>
             <li><a href="contact.php">Contact Us</a> </li>
             <li><a href="about.php">About</a></li>
