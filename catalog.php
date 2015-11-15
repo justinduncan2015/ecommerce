@@ -148,7 +148,7 @@ $current_url = urlencode($url="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_
 
                 elseif($sort=='Price'){
                     $all = "SELECT * FROM products
-                     ORDER BY cost ASC LIMIT $startResults, $view";
+                     ORDER BY price ASC LIMIT $startResults, $view";
                 }
 
                 else{
@@ -370,6 +370,15 @@ $(document).ready(function() {
   });
 
 });
+function change(){
+    	document.getElementById("view_form").submit();
+		
+	}
+
+	function change2(){
+    	document.getElementById("sort_form").submit();
+		
+	}
 </script>
 
 <?php

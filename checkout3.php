@@ -1,111 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<title>BatchPad Checkout - Justin Duncan</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<meta name="author" content="">
-<link href="http://fonts.googleapis.com/css?family=Noto+Sans:400,700" rel="stylesheet" type="text/css">
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="css/font-awesome.min.css">
-<link href="css/style.css" rel="stylesheet">
-<link href="css/prettyPhoto.css" rel="stylesheet" media="screen">
-<link href="css/portfolio.css" rel="stylesheet">
-<link rel="stylesheet" href="layerslider/css/layerslider.css" type="text/css">
-<link rel="stylesheet" href="layerslider/css/layersliderstyle.css" type="text/css">
-
-<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-<!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-<!-- fav -->
-<link rel="shortcut icon" href="assets/ico/favicon.ico">
-</head>
-<body>
-<!-- Header Start -->
-<header>
-<div class="headerstrip">
-    <div class="container">
-    <a class="logo pull-left" href="home.php"><img title="BatchPad" alt="BatchPad" src="img/logo.png"></a>
-        <!-- Top Nav Start -->
-        <div class="pull-right">
-        <div class="navbar" id="topnav">
-                <div class="navbar-inner">
-                    <ul class="nav" >
-                        <li><a class="myaccount" href="client.php"><i class="icon-user"></i> My Account </a> </li>
-                        <li class="dropdown hover carticon "> <a href="cart.html" class="dropdown-toggle" > <i class="icon-shopping-cart font18"></i> Shopping Cart <span class="label label-orange font14">1 item(s)</span> - $589.50 <b class="caret"></b></a>
-                    <ul class="dropdown-menu topcartopen ">
-                        <li>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td class="image"><a href="product.html"><img width="50" height="50" src="img/prodcut-40x40.jpg" alt="product" title="product"></a></td>
-                                        <td class="name"><a href="product.html">product</a></td>
-                                        <td class="quantity">x&nbsp;1</td>
-                                        <td class="total">$589.50</td>
-                                        <td class="remove"><i class="icon-remove"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="image"><a href="product.html"><img width="50" height="50" src="img/prodcut-40x40.jpg" alt="product" title="product"></a></td>
-                                        <td class="name"><a href="product.html">product</a></td>
-                                        <td class="quantity">x&nbsp;1</td>
-                                        <td class="total">$589.50</td>
-                                        <td class="remove"><i class="icon-remove "></i></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td class="textright"><b>Sub-Total:</b></td>
-                                        <td class="textright">$500.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="textright"><b>Eco Tax (-2.00):</b></td>
-                                        <td class="textright">$2.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="textright"><b>VAT (17.5%):</b></td>
-                                        <td class="textright">$87.50</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="textright"><b>Total:</b></td>
-                                        <td class="textright">$589.50</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div class="well pull-right buttonwrap"> <a class="btn btn-orange" href="cart.html">View Cart</a></div>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-                </div>
-            </div>
-        </div>
-        <!-- Top Nav End -->
-    </div>
+<?php
+$pageTitle = 'Batchpad.com - Checkout';
+include_once('header.php');
+?>
+<div id="categorymenu">
+	<nav class="subnav">
+		<ul class="nav-pills categorymenu container">
+			<li><a class="active home" href="home.html"><i class="icon-home icon-white font18"></i> <span> Home</span></a></li>
+			<li><a href="catalog.html">Shop</a></li>
+			<li><a href="about.html">about</a></li>
+			<li><a href="contact.html">Contact Us</a> </li>
+			<li class="pull-right">
+    		<form action="search.php" method="post" class="form-search top-search">
+        		<input type="text" name="search" class="input-small search-query" placeholder="Search Here…">
+        		<button class="btn btn-orange btn-small tooltip-test" data-original-title="Search"><i class="icon-search icon-white"></i></button>
+    		</form>
+			</li>
+		</ul>
+	</nav>
 </div>
-    <div id="categorymenu">
-<nav class="subnav">
-<ul class="nav-pills categorymenu container">
-<li><a class="active home" href="home.html"><i class="icon-home icon-white font18"></i> <span> Home</span></a></li>
-<li><a href="catalog.html">Shop</a></li>
-<li><a href="about.html">about</a></li>
-<li><a href="contact.html">Contact Us</a> </li>
-<li class="pull-right">
-    <form action="search.php" method="post" class="form-search top-search">
-        <input type="text" name="search" class="input-small search-query" placeholder="Search Here…">
-        <button class="btn btn-orange btn-small tooltip-test" data-original-title="Search"><i class="icon-search icon-white"></i></button>
-    </form>
-</li>
-</ul>
-</nav>
-</div>
-    
-</header>
-
-
 <div id="maincontainer">
   <section id="product">
     <div class="container">
@@ -125,20 +37,10 @@
         <!-- Account Login-->
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
         <h2 class="heading1"><span class="maintext">Checkout</span></h2>
-        <div class="checkoutsteptitle">Payment  Method</div>
+        <div class="checkoutsteptitle">Personal information</div>
         <div class="checkoutstep">
-          <p>Please select the preferred payment method to use on this order.</p>
-          <div class="radio-inline">
-          <label class=" inline">
-            <input type="radio" value="option1">
-            Credit Card</label>
-            <label class=" inline">
-            <input type="radio" value="option1">
-            Paypal</label>
-            <label class=" inline">
-            <input type="radio" value="option1">
-            Android Pay</label>
-            </div>
+          <p>Please ensure these details are correct before continuing.</p>
+          
           <br>
         </div>
         <div class="checkoutsteptitle">Confirm Order </div>

@@ -82,9 +82,21 @@ font-weight: normal; }
 #layerslider3 .plus, #layerslider3 .plus2 { text-align: center; width: 20px; height: 20px; font-size: 2px; line-height: 20px; }
 #layerslider3 .plus { color: #3b173d; }
 #layerslider3 .plus2 { color: #1e73be; }
-#layerslider3 .text, #layerslider3 .text2 { font-size: 20px; background: #666; color:#fff; padding:5px 15px }
-#layerslider3 .text { color: #fff; background: #666; color:#fff }
-#layerslider3 .text2 { color: #fff; background: #666; color:#fff }
+#layerslider3 .text, #layerslider3 .text2 {
+	font-size: 20px;
+	background: #CB4C21;
+	color: #fff;
+	padding: 5px 15px
+}
+#layerslider3 .text {
+	color: #fff;
+	background: #CB4C21;
+	color: #fff
+}
+#layerslider3 .text2 {
+	color: #fff;
+	color: #fff
+}
 /* Layer Slider 5 */
 #layerslider5 .ls-layer > * { position:absolute }
 #layerslider5 .sh { height: 36px; line-height: 36px; color: #333; font-size: 25px; white-space: nowrap; }

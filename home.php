@@ -3,8 +3,6 @@
   	include('header.php');
   	include('db_connect.php');
 ?>
-
-<!-- Header End -->
 <div id="categorymenu">
         <nav class="subnav">
             <ul class="nav-pills categorymenu container">
@@ -42,7 +40,7 @@
                     <h5 class="ls-s-1 text2" style=" top:47px; left: 105px; slidedirection : fade; slideoutdirection : fade; durationout : 750; easingin : easeOutQuint; delayin : 300; scalein : .8; scaleout : .8; showuntil : 4000;"> New Selections of Furniture Every Week </h5>
                 </div>
                 <div class="ls-layer" style="slidedirection: right; transition2d: 92,93,105; "> <img src="layerslider/gallery/banner1.jpg" class="ls-bg" alt="Slide background">
-                    <h5 class="ls-s-1 text2" style=" top:47px; left: 105px; slidedirection : fade; slideoutdirection : fade; durationout : 750; easingin : easeOutQuint; delayin : 300; scalein : .8; scaleout : .8; showuntil : 4000;"> Check out our Bachelor Pad Outdoor Decorating Blog </h5>
+                    <h5 class="ls-s-1 text2" style=" top:47px; left: 105px; slidedirection : fade; slideoutdirection : fade; durationout : 750; easingin : easeOutQuint; delayin : 300; scalein : .8; scaleout : .8; showuntil : 4000;"> Check Out Our Featured Items </h5>
                 </div>
             </div>
         </div>
@@ -83,7 +81,7 @@ while(($row = $myFeatured->fetch_object())&&($zero<=$view)){
             <ul class="thumbnails">
                 <li class="col-lg-3 col-md-3 col-xs-12 col-sm-6 span3">
                     <h1 class="heading1"><span class="maintext orange"><i class="icon-thumbs-up"></i> Latest Products</span></h1>
-                    <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard. Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                    <p> We bring you new items every week. We are excited to offer you the latest and greatest products from the hottest designers. We have exclusive access to most products before they hit the market. Check back every week for brand new items!</p>
                 </li>
 <?php
 	$new = 'SELECT * FROM products WHERE new = "yes"';

@@ -46,9 +46,11 @@ $pageTitle = 'Batchpad.com - Checkout';
           <section class="newcustomer">
             <h3 class="heading3">New Customer </h3>
             <div class="loginbox">
+            <form method="get">
               <label class="inline"><input type="radio" value="option1">Register Account </label>
               <br>
               <label class="inline"><input type="radio" value="option2"> Guest Checkout </label>
+              </form>
               <p><br>By creating an account you will be able to shop faster, be up to date on an order's status, and keep track of the orders you have previously made.</p>
               <br>
               <div class="list-inline"><a href="checkout2.php" class="btn btn-orange">Continue</a> &nbsp; Already a customer? <a href="#myModal" data-toggle="modal"> &nbsp; Sign-in</a></div></div>
