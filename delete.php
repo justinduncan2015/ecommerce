@@ -129,6 +129,9 @@ include ('db_connect.php');
                 if(isset($_SESSION['logged_in_user_access'])&&($_SESSION['logged_in_user_access'] == "admin")) {
                 print "<li><a class='active' href='admin.php'>Admin</a> </li>";
                 }
+				if(isset($_SESSION['logged_in_user_access'])&&($_SESSION['logged_in_user_access'] == "customer")) {
+                print "<li><a href='client.php?id=".$_SESSION['logged_in_user_id']."'>My Account</a> </li>";
+                }
                 ?>
                 <li class="pull-right">
                     <form action="search.php" method="get" class="form-search top-search">

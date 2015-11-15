@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <?php
   $pageTitle = 'Batchpad.com - Home';
@@ -26,6 +27,36 @@
         </nav>
     </div>   
 
+=======
+<?php
+include_once('header.php');
+$pageTitle = 'Batchpad.com - Checkout';
+?>
+<div id="categorymenu">
+    <nav class="subnav">
+        <ul class="nav-pills categorymenu container">
+            <li><a class="home active" href="home.php"><i class="icon-home icon-white font18"></i> <span> Home</span></a></li>
+            <li><a href="catalog.php?page=1">Shop</a></li>
+            <li><a href="about.php">about</a></li>
+            <li><a href="contact.php">Contact Us</a> </li>
+            <?php
+            if(isset($_SESSION['logged_in_user_access'])&&($_SESSION['logged_in_user_access'] == "admin")) {
+            print "<li><a href='admin.php'>Admin</a> </li>";
+            }
+            if(isset($_SESSION['logged_in_user_access'])&&($_SESSION['logged_in_user_access'] == "customer")) {
+            print "<li><a href='client.php?id=".$_SESSION['logged_in_user_id']."'>My Account</a> </li>";
+            }
+            ?>
+            <li class="pull-right">
+                <form action="search.php" method="post" class="form-search top-search">
+                    <input type="text" name="search" class="input-small search-query" placeholder="Search Here…">
+                    <button class="btn btn-orange btn-small tooltip-test" data-original-title="Search"><i class="icon-search icon-white"></i></button>
+                </form>
+            </li>
+        </ul>
+    </nav>
+</div> 
+>>>>>>> origin/master
 <div id="maincontainer">
   <section id="product">
     <div class="container">
@@ -42,6 +73,7 @@
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
         <h2 class="heading1"><span class="maintext">Checkout</span></h2>
         <div class="checkoutsteptitle">Step 1: Checkout Options </div>
+<<<<<<< HEAD
         <div class="checkoutstep ">
         <!-- Sign-in Modal -->
          <div class="modal fade" id="myModal" tabindex="-1" role="dialog"  aria-hidden="true">
@@ -77,6 +109,10 @@
         </div>
         <!-- /.modal -->
           <section class="newcustomer ">
+=======
+        <div class="checkoutstep ">        
+          <section class="newcustomer">
+>>>>>>> origin/master
             <h3 class="heading3">New Customer </h3>
             <div class="loginbox">
               <form method="post" action="">
