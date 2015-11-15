@@ -47,44 +47,7 @@
     </div> 
 <? }
 ?>
-      <?php
-    if(isset($_SESSION["cart_products"])) //check session var
-    {
-        $total = 0; //set initial total value
-        $b = 0; //var for zebra stripe table 
-        foreach ($_SESSION["cart_products"] as $cart_itm)
-        {
-            //set variables to use in content below
-            // $product_name = $cart_itm["product_name"];
-            // $product_qty = $cart_itm["product_qty"];
-            // $price = $cart_itm["price"];
-            // $product_sku = $cart_itm["product_sku"];
-            // $image_url = $cart_itm ["image_url"];
-            // $product_code = $cart_itm["product_code"];
-            // $subtotal = ($price * $product_qty); //calculate 
-            // $tax = ($subtotal *'1.065');
-            
-           
-        }
-        // $grand_total = $total + $shipping_cost; //grand total including shipping cost
-        // foreach($taxes as $key => $value){ //list and calculate all taxes in array
-        //         $tax_amount     = round($total * ($value / 100));
-        //         $tax_item[$key] = $tax_amount;
-        //         $grand_total    = $grand_total + $tax_amount;  //add tax val to grand total
-        // }
-        
-        
-        // $list_tax = '';
-        // foreach($tax_item as $key => $value){ //List all taxes
-        //     $list_tax .= $key. ' : '. $currency. sprintf("%01.2f", $value).'<br />';
-        // }
-        // $shipping_cost = ($shipping_cost)?'Shipping Cost : '.$currency. sprintf("%01.2f", $shipping_cost).'<br />':'';
-        
-    }
-    
-            
-
-?>
+     
       <div class="cart-info">
         <table class="table table-striped table-bordered">
         <form method="post" action="cart_update.php">
@@ -126,7 +89,7 @@
             echo '<td class="description">'.$description.'</td>';
             echo '<td class="quantity"><input type="text" size="2" maxlength="2" name="product_qty['.$product_code.']" value="'.$product_qty.'" class="col-lg-3 col-md-3 col-xs-6 col-sm-3"></td>';
             echo '<td class="total"> <a href="#" class="mr10"> <i class="tooltip-test font24 icon-refresh " data-original-title="Update"> </i> </a> 
-               <a href="#"><i class="tooltip-test font24 icon-remove-circle" data-original-title="Remove"> </i></a></td>';
+               <i class="tooltip-test font24 icon-remove-circle" data-original-title="Remove" name="remove_code[]" value="'.$product_code.'"> </i></td>';
             echo '<td class="price">'.$price.'</td>';
             echo '<td class="total">'.$subtotal.'</td>';
             echo '<td><input type="checkbox" name="remove_code[]" value="'.$product_code.'" /></td>';
