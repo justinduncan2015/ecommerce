@@ -37,7 +37,7 @@
       <h1 class="heading1"><span class="maintext"> <i class="icon-shopping-cart"></i> Shopping Cart</span></h1>
       <!-- Cart-->
       <?php 
-      if($_SESSION["cart_products"]==null){ ?>
+      if(($_SESSION["cart_products"]==null)||(isset($_SESSION["cart_products"]))){ ?>
     <br> 
    
     <div class='cart-info'>
