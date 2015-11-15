@@ -83,6 +83,11 @@ while(($row = $myFeatured->fetch_object())&&($zero<=$view)){
                     <h1 class="heading1"><span class="maintext orange"><i class="icon-thumbs-up"></i> Latest Products</span></h1>
                     <p> We bring you new items every week. We are excited to offer you the latest and greatest products from the hottest designers. We have exclusive access to most products before they hit the market. Check back every week for brand new items!</p>
                 </li>
+                
+     <style type="text/css">
+	 	img { min-height: 270px; }
+	 	.price { width: 201px; }
+	</style>
 <?php
 	$new = 'SELECT * FROM products WHERE new = "yes"';
 	$myNew = $mysqli->query($new);
