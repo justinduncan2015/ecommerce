@@ -13,10 +13,10 @@ if(isset($_POST["type"]) && $_POST["type"]=='add' && $_POST["product_qty"]>0)
     unset($new_product['return_url']); 
     
     //we need to get product name and price from database.
-    $statement = $mysqli->prepare("SELECT product_name, price, image_url,product_sku, qty_stock,description FROM products WHERE product_sku=? LIMIT 1");
+    $statement = $mysqli->prepare("SELECT product_name, price, image_url,product_sku, description, qty_stock FROM products WHERE product_sku=? LIMIT 1");
     $statement->bind_param('s', $new_product['product_code']);
     $statement->execute();
-    $statement->bind_result($product_name, $price,$image_url,$product_sku,$qty_stock,$description);
+    $statement->bind_result($product_name, $price,$image_url,$product_sku ,$description,$qty_stock);
     
     while($statement->fetch()){
         
@@ -25,7 +25,9 @@ if(isset($_POST["type"]) && $_POST["type"]=='add' && $_POST["product_qty"]>0)
         $new_product["price"] = $price;
         $new_product["image_url"] = $image_url;
         $new_product["product_sku"] = $product_sku;
+        $new_product["description"] = $description;
         $new_product["qty_stock"] = $qty_stock;
+
 
         
         if(isset($_SESSION["cart_products"])){  //if session var already exist
