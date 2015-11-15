@@ -1,134 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<title>BatchPad Cart - Justin Duncan</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<meta name="author" content="Justin Duncan">
-<link href="http://fonts.googleapis.com/css?family=Noto+Sans:400,700" rel="stylesheet" type="text/css">
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="css/font-awesome.min.css">
-<link href="css/style.css" rel="stylesheet">
-<link href="css/prettyPhoto.css" rel="stylesheet" media="screen">
-<link href="css/portfolio.css" rel="stylesheet">
-<link rel="stylesheet" href="layerslider/css/layerslider.css" type="text/css">
-<link rel="stylesheet" href="layerslider/css/layersliderstyle.css" type="text/css">
+<?php
 
-<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-<!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-</head>
-<body>
-<!-- Header Start -->
-<header>
-    <div class="headerstrip">
-        <div class="container">
-            <a class="logo pull-left" href="home.php"><img title="BatchPad" alt="BatchPad" src="img/logo.png"></a>
-            <!-- Top Nav Start -->
-            <div class="pull-right">
-                <div class="navbar" id="topnav">
-                    <div class="navbar-inner">                                                	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"  aria-hidden="true">
-          						<div class="modal-dialog">
-            						<div class="modal-content">
-              							<div class="modal-header">
-                							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                							<h4 class="modal-title">Please Sign-in</h4>
-              							</div>
-              							<!-- contents of Sign-in modal -->
-              							<div class="modal-body"> 
-              								<div class="form-group">
-                    							<label class="control-label" >Username<span class="red">*</span></label>
-                    							<div class="controls">
-                      								<input type="text" class=""  value="">
-                    							</div>
-                  							</div>
-                  							<div class="form-group">
-                    							<label class="control-label" >Password<span class="red">*</span></label>
-                    							<div class="controls">
-                      								<input type="text" class=""  value="">
-                    							</div>
-                  							</div>
-              							</div>
-              							<div class="modal-footer">
-                							<button type="button" class="btn btn-orange" data-dismiss="modal">Cancel</button>
-                							<button type="button" class="btn btn-primary">Sign-in</button>
-              							</div>
-            						</div>
-            						<!-- /.modal-content --> 
-          						</div>
-          						<!-- /.modal-dialog --> 
-        					</div>
-        					<!-- /.modal --><ul class="nav" >
-                        	<li class="text-nopad text-center"><a href="register.php">Sign-up</a></li>
-                            <li class="text-nopad"><p>or</p></li>
-                        	<li class="text-nopad"><a href="#myModal" data-toggle="modal"> &nbsp; login</a></li>
-                            <li class="dropdown hover carticon "> <a href="cart.php" class="dropdown-toggle" > <i class="icon-shopping-cart font18"></i> Shopping Cart <span class="label label-orange font14">2 item(s)</span> - $1,790.00 <b class="caret"></b></a>
-                        <ul class="dropdown-menu topcartopen ">
-                            <li>
-                                <table>
-                                    <tbody>
-                                        <tr>
-                                            <td class="image"><a href="product.php"><img width="50" height="50" src="img/prodcut-40x40.jpg" alt="product" title="product"></a></td>
-                                            <td class="name"><a href="product.php">product goes here</a></td>
-                                            <td class="quantity">x&nbsp;1</td>
-                                            <td class="total">$589.50</td>
-                                            <td class="remove"><i class="icon-remove"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="image"><a href="product.php"><img width="50" height="50" src="img/prodcut-40x40.jpg" alt="product" title="product"></a></td>
-                                            <td class="name"><a href="product.php">product goes here</a></td>
-                                            <td class="quantity">x&nbsp;1</td>
-                                            <td class="total">$589.50</td>
-                                            <td class="remove"><i class="icon-remove "></i></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <table>
-                                    <tbody>
-                                        <tr>
-                                            <td class="textright"><b>Sub-Total:</b></td>
-                                            <td class="textright">$1.7900.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="textright"><b>Tax (6.00%):</b></td>
-                                            <td class="textright">$123.20</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="textright"><b>Total:</b></td>
-                                            <td class="textright">$1,813.20</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <div class="well pull-right buttonwrap"> <a class="btn btn-orange" href="cart.php">View Cart</a></div>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- Top Nav End -->
-        </div>
-    </div>
-    <div id="categorymenu">
-        <nav class="subnav">
-            <ul class="nav-pills categorymenu container">
-                <li><a href="home.php"><i class="icon-home icon-white font18"></i> <span> Home</span></a></li>
-                <li><a href="catalog.php?page=1">Shop</a></li>
-                <li><a href="about.php">about</a></li>
-                <li><a href="contact.php">Contact Us</a> </li>
-                <li class="pull-right">
-                	<form action="search.php" method="get" class="form-search top-search">
-                    	<input type="text" class="input-small search-query" placeholder="Search Here…">
-                    	<button class="btn btn-orange btn-small tooltip-test" data-original-title="Search"><i class="icon-search icon-white"></i></button>
-                    </form>
-                </li>
-            </ul>
-        </nav>
-    </div>   
-</header>
+ include('header.php');
+ include_once('db_connect.php');
+ include_once('cart_update.php');
+ 
+?>
+
+<div id="categorymenu">
+  <nav class="subnav">
+    <ul class="nav-pills categorymenu container">
+      <li><a href="home.php"><i class="icon-home icon-white font18"></i> <span> Home</span></a></li>
+      <li><a href="catalog.php">Shop</a></li>
+      <li><a href="about.php">about</a></li>
+      <li><a href="contact.php">Contact Us</a> </li>
+      <li class="pull-right">
+        <form action="search.php" method="get" class="form-search top-search">
+          <input type="text" class="input-small search-query" placeholder="Search Here…">
+          <button class="btn btn-orange btn-small tooltip-test" data-original-title="Search"><i class="icon-search icon-white"></i></button>
+        </form>
+      </li>
+    </ul>
+  </nav>
+</div>   
 
 <!-- Header End -->
 <div id="maincontainer">
@@ -144,8 +38,56 @@
       </ul>       
       <h1 class="heading1"><span class="maintext"> <i class="icon-shopping-cart"></i> Shopping Cart</span></h1>
       <!-- Cart-->
+      <?php 
+      if($_SESSION["cart_products"]==null){ ?>
+    <br> 
+   
+    <div class='cart-info'>
+        There are currently no items in your cart.
+    </div> 
+<? }
+?>
+      <?php
+    if(isset($_SESSION["cart_products"])) //check session var
+    {
+        $total = 0; //set initial total value
+        $b = 0; //var for zebra stripe table 
+        foreach ($_SESSION["cart_products"] as $cart_itm)
+        {
+            //set variables to use in content below
+            // $product_name = $cart_itm["product_name"];
+            // $product_qty = $cart_itm["product_qty"];
+            // $price = $cart_itm["price"];
+            // $product_sku = $cart_itm["product_sku"];
+            // $image_url = $cart_itm ["image_url"];
+            // $product_code = $cart_itm["product_code"];
+            // $subtotal = ($price * $product_qty); //calculate 
+            // $tax = ($subtotal *'1.065');
+            
+           
+        }
+        // $grand_total = $total + $shipping_cost; //grand total including shipping cost
+        // foreach($taxes as $key => $value){ //list and calculate all taxes in array
+        //         $tax_amount     = round($total * ($value / 100));
+        //         $tax_item[$key] = $tax_amount;
+        //         $grand_total    = $grand_total + $tax_amount;  //add tax val to grand total
+        // }
+        
+        
+        // $list_tax = '';
+        // foreach($tax_item as $key => $value){ //List all taxes
+        //     $list_tax .= $key. ' : '. $currency. sprintf("%01.2f", $value).'<br />';
+        // }
+        // $shipping_cost = ($shipping_cost)?'Shipping Cost : '.$currency. sprintf("%01.2f", $shipping_cost).'<br />':'';
+        
+    }
+    
+            
+
+?>
       <div class="cart-info">
         <table class="table table-striped table-bordered">
+        <form method="post" action="cart_update.php">
           <tr>
             <th class="image">Image</th>
             <th class="name">Product Name</th>
@@ -156,155 +98,119 @@
             <th class="total">Total</th>
            
           </tr>
-          <tr>
-            <td class="image"><a href="#"><img title="product" alt="product" src="img/prodcut-40x40.jpg" height="50" width="50"></a></td>
-            <td  class="name"><a href="#">Product a</a></td>
-            <td class="model">Purchased Product</td>
-            <td class="quantity"><input type="text" size="1" value="1" name="quantity[40]" class="col-lg-3 col-md-3 col-xs-6 col-sm-3">
-             
-             </td>
-             <td class="total"> <a href="#" class="mr10"> <i class="tooltip-test font24 icon-refresh " data-original-title="Update"> </i> </a> 
-              <a href="#"><i class="tooltip-test font24 icon-remove-circle" data-original-title="Remove"> </i></a></td>
-           
-             
-            <td class="price">$120.68</td>
-            <td class="total">$120.68</td>
-             
-          </tr>
-          
           
           <tr>
-            <td class="image"><a href="#"><img title="product" alt="product" src="img/prodcut-40x40.jpg" height="50" width="50"></a></td>
-            <td  class="name"><a href="#">Product b</a></td>
-            <td class="model">Purchased Product</td>
-            <td class="quantity"><input type="text" size="1" value="1" name="quantity[40]" class="col-lg-3 col-md-3 col-xs-6 col-sm-3">
-             
-             </td>
-             <td class="total"> <a href="#" class="mr10"> <i class="tooltip-test font24 icon-refresh " data-original-title="Update"> </i> </a> 
-              <a href="#"><i class="tooltip-test font24 icon-remove-circle" data-original-title="Remove"> </i></a></td>
-           
-             
-            <td class="price">$120.68</td>
-            <td class="total">$120.68</td>
-             
+          <div class="cart-view-table-back">
+<form method="post" action="process.php">
+  <tbody>
+    <?php
+     //include_once("config.php"); //include config file
+    if(isset($_SESSION["cart_products"])) //check session var
+    {
+        $total = 0; //set initial total value
+        $b = 0; //var for zebra stripe table 
+        foreach ($_SESSION["cart_products"] as $cart_itm)
+        {
+            //set variables to use in content below
+            $product_name = $cart_itm["product_name"];
+            $product_qty = $cart_itm["product_qty"];
+            $price = $cart_itm["price"];
+            $product_sku = $cart_itm["product_sku"];
+            $description = $cart_itm["description"];
+            $product_code = $cart_itm["product_code"];
+            $image_url = $cart_itm["image_url"];
+            $subtotal = ($price * $product_qty); //calculate Price x Qty
+            
+            echo '<td class="image"><a href="#"><img title="product" alt="product" src="'.$image_url.'" height="50" width="50"></a></td>';
+            echo '<td class ="name">'.$product_name.'</td>';
+            echo '<td class="description">'.$description.'</td>';
+            echo '<td class="quantity"><input type="text" size="2" maxlength="2" name="product_qty['.$product_code.']" value="'.$product_qty.'" class="col-lg-3 col-md-3 col-xs-6 col-sm-3"></td>';
+            echo '<td class="total"> <a href="#" class="mr10"> <i class="tooltip-test font24 icon-refresh " data-original-title="Update"> </i> </a> 
+               <a href="#"><i class="tooltip-test font24 icon-remove-circle" data-original-title="Remove"> </i></a></td>';
+            echo '<td class="price">'.$price.'</td>';
+            echo '<td class="total">'.$subtotal.'</td>';
+            echo '<td><input type="checkbox" name="remove_code[]" value="'.$product_code.'" /></td>';
+            echo '</tr>';
+           }?>
+
+  </tbody>
+  
+</div>
           </tr>
-          <tr>
-            <td class="image"><a href="#"><img title="product" alt="product" src="img/prodcut-40x40.jpg" height="50" width="50"></a></td>
-            <td  class="name"><a href="#">Product c</a></td>
-            <td class="model">Purchased Product</td>
-            <td class="quantity"><input type="text" size="1" value="1" name="quantity[40]" class="col-lg-3 col-md-3 col-xs-6 col-sm-3">
-             
-             </td>
-             <td class="total"> <a href="#" class="mr10"> <i class="tooltip-test font24 icon-refresh " data-original-title="Update"> </i> </a> 
-              <a href="#"><i class="tooltip-test font24 icon-remove-circle" data-original-title="Remove"> </i></a></td>
-           
-             
-            <td class="price">$120.68</td>
-            <td class="total">$120.68</td>
-             
-          </tr>
-           <tr>
-            <td class="image"><a href="#"><img title="product" alt="product" src="img/prodcut-40x40.jpg" height="50" width="50"></a></td>
-            <td  class="name"><a href="#">Product c</a></td>
-            <td class="model">Purchased Product</td>
-            <td class="quantity"><input type="text" size="1" value="1" name="quantity[40]" class="col-lg-3 col-md-3 col-xs-6 col-sm-3">
-             
-             </td>
-             <td class="total"> <a href="#" class="mr10"> <i class="tooltip-test font24 icon-refresh " data-original-title="Update"> </i> </a> 
-              <a href="#"><i class="tooltip-test font24 icon-remove-circle" data-original-title="Remove"> </i></a></td>
-           
-             
-            <td class="price">$120.68</td>
-            <td class="total">$120.68</td>
-             
-          </tr>
-          
-          
-          <tr>
-            <td class="image"><a href="#"><img title="product" alt="product" src="img/prodcut-40x40.jpg" height="50" width="50"></a></td>
-            <td  class="name"><a href="#">Product d</a></td>
-            <td class="model">Purchased Product</td>
-            <td class="quantity"><input type="text" size="1" value="1" name="quantity[40]" class="col-lg-3 col-md-3 col-xs-6 col-sm-3">
-             
-             </td>
-             <td class="total"> <a href="#" class="mr10"> <i class="tooltip-test font24 icon-refresh " data-original-title="Update"> </i> </a> 
-              <a href="#"><i class="tooltip-test font24 icon-remove-circle" data-original-title="Remove"> </i></a></td>
-           
-             
-            <td class="price">$120.68</td>
-            <td class="total">$120.68</td>
-             
-          </tr>
-          <tr>
-            <td class="image"><a href="#"><img title="product" alt="product" src="img/prodcut-40x40.jpg" height="50" width="50"></a></td>
-            <td  class="name"><a href="#">Product e</a></td>
-            <td class="model">Purchased Product</td>
-            <td class="quantity"><input type="text" size="1" value="1" name="quantity[40]" class="col-lg-3 col-md-3 col-xs-6 col-sm-3">
-             
-             </td>
-             <td class="total"> <a href="#" class="mr10"> <i class="tooltip-test font24 icon-refresh " data-original-title="Update"> </i> </a> 
-              <a href="#"><i class="tooltip-test font24 icon-remove-circle" data-original-title="Remove"> </i></a></td>
-           
-             
-            <td class="price">$120.68</td>
-            <td class="total">$120.68</td>
-             
-          </tr>
-          
-           <tr>
-            <td class="image"><a href="#"><img title="product" alt="product" src="img/prodcut-40x40.jpg" height="50" width="50"></a></td>
-            <td  class="name"><a href="#">Product f</a></td>
-            <td class="model">Purchased Product</td>
-            <td class="quantity"><input type="text" size="1" value="1" name="quantity[40]" class="col-lg-3 col-md-3 col-xs-6 col-sm-3">
-             
-             </td>
-             <td class="total"> <a href="#" class="mr10"> <i class="tooltip-test font24 icon-refresh " data-original-title="Update"> </i> </a> 
-              <a href="#"><i class="tooltip-test font24 icon-remove-circle" data-original-title="Remove"> </i></a></td>
-           
-             
-            <td class="price">$120.68</td>
-            <td class="total">$120.68</td>
-             
-          </tr>
-           <tr>
-            <td class="image"><a href="#"><img title="product" alt="product" src="img/prodcut-40x40.jpg" height="50" width="50"></a></td>
-            <td  class="name"><a href="#">Product g</a></td>
-            <td class="model">Purchased Product</td>
-            <td class="quantity"><input type="text" size="1" value="1" name="quantity[40]" class="col-lg-3 col-md-3 col-xs-6 col-sm-3">
-             
-             </td>
-             <td class="total"> <a href="#" class="mr10"> <i class="tooltip-test font24 icon-refresh " data-original-title="Update"> </i> </a> 
-              <a href="#"><i class="tooltip-test font24 icon-remove-circle" data-original-title="Remove"> </i></a></td>
-           
-             
-            <td class="price">$120.68</td>
-            <td class="total">$120.68</td>
-             
-          </tr>
-          
-           
         </table>
-      </div>
+       <div class="cart_edit large-6 medium-6 small-6 columns">
+                
+                    <ul>
+                        <li>
+                            <button type="submit" formaction="cart_update.php">Update</button>
+                        </li>
+
+                    </ul>
+            
+                </div>
+            </div>
+            </div>
+             
+             <div class="large-3 medium-4 small-12 columns">
+             <input type="hidden" name="return_url" value="<?php 
+            $current_url = urlencode($url="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
+            echo $current_url; ?>" />
+            
+            <div class="total_box large-12 medium-12 small-12 columns">
+<?
+        
+                    $grand_total = $total + $shipping_handling; //grand total including shipping cost
+                    foreach($taxes as $key => $value){ //list and calculate taxes
+                            $tax_amount     = round($total) * ($value);
+                            $tax_item[$key] = $tax_amount;
+                            $grand_total    = round($grand_total + $tax_amount,2);  //add tax val to grand total
+                    }
+
+                    foreach($shipping as $key => $value){ //list and calculate taxes in array
+                            $ship_amount     = round($total) * ($value / 20);
+                            $ship_item[$key] = $ship_amount;
+                            $grand_total    = round($grand_total + $ship_amount,2);  //add shipping val to grand total
+                    }
+
+                    $list_tax       = '';
+                    foreach($tax_item as $key => $value){ //List all taxes
+                        $list_tax .= $key. sprintf("%01.2f", $value).'<br />';
+                    }
+
+                    $shipping_handling       = '';
+                    foreach($ship_item as $key => $value){ //List all taxes
+                        $shipping_handling  .= $key. sprintf("%01.2f", $value).'<br />';
+                    }
+                }
+                $sub_total = round($grand_total-$list_tax-$shipping_handling,2);
+
+                $_SESSION['grand_total']=$grand_total;
+                $_SESSION['subtotal']=$sub_total;
+                $_SESSION['shipping']=$shipping_handling;
+                $_SESSION['tax']=$list_tax;
+             ?>
+                </div>
       <div class="container">
       <div class="pull-right">
           <div class="">
             <table class="table table-striped table-bordered ">
               <tr>
                 <td><span class="extra bold">Sub-Total :</span></td>
-                <td><span class="bold">$101.03</span></td>
+                <?php echo'<td><span class="bold">'.$currency.$subtotal.'</span></td>'?>
               </tr>
               <tr>
                 <td><span class="extra bold">Eco Tax (-5.00) :</span></td>
-                <td><span class="bold">$11.60</span></td>
+                <?php echo '<td><span class="bold">'.$list_tax.'</span></td>'?>
               </tr>
               <tr>
                 <td><span class="extra bold totalamout">Total :</span></td>
-                <td><span class="bold totalamout">$112.63</span></td>
+                <?php echo  '<td><span class="bold totalamout">'.$subtotal.'</span></td>'?>
               </tr>
             </table>
+            </form>
             <div class="list-inline">
             <a href="checkout.php"><input type="submit" value="CheckOut" class="btn btn-orange pull-right mb10"></a>
-            <a href="catalog.php?page=1"><input type="submit" value="Continue Shopping" class="btn btn-orange pull-right mr10"></a>
+            <a href="catalog.php"><input type="submit" value="Continue Shopping" class="btn btn-orange pull-right mr10"></a>
             </div>
           </div>
         </div>
@@ -312,6 +218,7 @@
     </div>
   </section>
 </div>
+
 
 <footer id="footer">
     <section class="footersocial">
@@ -322,7 +229,7 @@
                     <ul>
                         <li><a href="home.php">Home</a> </li>
                         <li><a href="client.php">My Account</a> </li>
-                        <li><a href="catalog.php?page=1">Shop</a> </li>
+                        <li><a href="catalog.php">Shop</a> </li>
                         <li><a href="contact.php">Contact Us</a> </li>
                         <li><a href="about.php">About</a></li>
                         <li><a href="cart.php">My Cart</a> </li>
@@ -445,14 +352,5 @@
     rw.src = p + "//" + a + "external" + f + ".js?ck=" + ck;
     s.parentNode.insertBefore(rw, s);
     }(document, new Date(), "script", "rating-widget.com/"));</script>
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-69797602-1', 'auto');
-  ga('send', 'pageview');
-</script>
 </body>
 </html>
