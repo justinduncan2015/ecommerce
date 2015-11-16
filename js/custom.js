@@ -74,10 +74,8 @@ $('document').ready(function(){
 	});
 	
 // Checkout steps
-	$('.checkoutsteptitle').addClass('down').next('.checkoutstep').fadeIn()
-	$('.checkoutsteptitle').live('click', function()
-	{		
-	$("select, input:checkbox, input:radio, input:file").css('display', 'blcok');	
+	$('.checkoutsteptitle').addClass('down').next('.checkoutstep').fadeIn();		
+	$("select, input:checkbox, input:radio, input:file").css('display', 'block');	
 		$(this).toggleClass('down').next('.checkoutstep').slideToggle()
 	});
 		

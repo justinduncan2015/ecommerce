@@ -124,8 +124,8 @@ $pageTitle = 'Batchpad.com - Products';
                                         <div class="tab-pane" id="review">
                                         <h3>Write a Review</h3>
                                         <?php
-                    											echo '<h5 class="text-nopad">You must <a class="orange" href="register.php">Register</a> to leave a review!</h5><br>';
-                    											echo 'Already a member? <a class="orange" href="#myModal" data-toggle="modal"> &nbsp; Sign-in</a>';
+                    					echo '<h5 class="text-nopad">You must <a class="orange" href="register.php">Register</a> to leave a review!</h5><br>';
+                    					echo 'Already a member? <a class="orange" href="#myModal" data-toggle="modal"> &nbsp; Sign-in</a>';
                     										}
                     										?>
                                     </div>

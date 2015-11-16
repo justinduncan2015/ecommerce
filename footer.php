@@ -68,7 +68,7 @@
     ================================================== --> 
 <!-- Placed at the end of the document so the pages load faster --> 
 <script src="js/jquery.js"></script>
-<script src="js/jquery-migrate.min.js"></script> 
+<script src="js/jquery-migrate.min.js"></script>
 <script type="text/javascript" src="js/jquery.easing.js"></script> 
 <script src="js/respond.min.js"></script> 
 <script src="js/bootstrap.min.js"></script> 
@@ -148,7 +148,13 @@ function check_username_ajax(username){
     });
 }
 });
+function change(){
+    document.getElementById("view_form").submit();
+}
 
+function change2(){
+    document.getElementById("sort_form").submit();
+}
 //Google Analytics
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -156,6 +162,48 @@ function check_username_ajax(username){
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
   ga('create', 'UA-69797602-1', 'auto');
   ga('send', 'pageview');
+</script>
+<script>
+$(document).ready(function() {
+	function hideProducts(){
+        $( ".furniture").hide();
+		$( ".kitchen" ).hide();
+		$( ".electronic" ).hide();
+		$( ".bathroom" ).hide();
+		$( ".bedroom" ).hide();
+		$( ".livingroom" ).hide();
+	}
+  $(".categoryBtnFurniture").click(function(){
+	hideProducts();
+	$(".furniture").show(800);
+    });
+
+  $(".categoryBtnKitchen").on("click", function(){
+    hideProducts();
+    $(".kitchen").show(800);
+  });
+
+  $(".categoryBtnElectronics").on("click", function(){
+    hideProducts();
+    $(".electronic").show(800);
+  });
+
+  $(".categoryBtnBathroom").on("click", function(){
+    hideProducts();
+    $(".bathroom").show(800);
+  });
+
+  $(".categoryBtnBedroom").on("click", function(){
+    hideProducts();
+    $(".bedroom").show(800);
+  });
+
+  $(".categoryBtnLivingroom").on("click", function(){
+    hideProducts();
+    $(".livingroom").show(800);
+  });
+
+});
 </script>
 <?php
 mysqli_close($mysqli);

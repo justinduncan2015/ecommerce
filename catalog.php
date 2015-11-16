@@ -1,6 +1,5 @@
 <?php
-// session_start();
-// print_r ($_POST);
+$pageTitle = 'Batchpad.com - Shop';
 if((isset($_POST['view'])&&($_POST['view']))||(isset($_POST['sort'])&&($_POST['sort']))){
 	header("location:catalog.php?page=1");
 }
@@ -164,10 +163,10 @@ $current_url = urlencode($url="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_
                     $limit_zero=23;
                     while(($row = $myAll->fetch_object())&&($zero<=$limit_zero)){
 							        $zero++;
-                    echo "<li>";
+                    echo "<li class='".$row->category."'>";
                     echo "<div class='thumbnail'>\n";
                     echo "<div class='row'>\n";
-                    echo "<form method='post'".$row->category." action='cart_update.php'>\n";
+                    echo "<form method='post' action='cart_update.php'>\n";
                     echo "\t\t\t\t\t<div class='product_image'>\n";
                     echo "<div class='col-lg-4 col-md-4 col-xs-12 col-sm-6 span3'><a href='product.php?id=".$row->product_id."'><img src='".$row->image_url."' alt='".$row->product_name."'></a></div>";
                     echo "<div class='col-lg-6 col-md-6 col-xs-12 col-sm-12'><a class='prdocutname' href='product.php?id=".$row->product_id."'>".$row->product_name."</a>";
@@ -197,10 +196,10 @@ elseif($view==36){
 	$limit_zero=35;
         while(($row = $myAll->fetch_object())&&($zero<=$limit_zero)){
               $zero++;
-                    echo "<li>";
+                    echo "<li class='".$row->category."'>";
                     echo "<div class='thumbnail'>\n";
                     echo "<div class='row'>\n";
-                    echo "<form method='post'".$row->category." action='cart_update.php'>\n";
+                    echo "<form method='post' action='cart_update.php'>\n";
                     echo "\t\t\t\t\t<div class='product_image'>\n";
                     echo "<div class='col-lg-4 col-md-4 col-xs-12 col-sm-6 span3'><a href='product.php?id=".$row->product_id."'><img src='".$row->image_url."' alt='".$row->product_name."'></a></div>";
                     echo "<div class='col-lg-6 col-md-6 col-xs-12 col-sm-12'><a class='prdocutname' href='product.php?id=".$row->product_id."'>".$row->product_name."</a>";
@@ -227,10 +226,10 @@ else{
 	$limit_zero=11;
         while(($row = $myAll->fetch_object())&&($zero<=$limit_zero)){
               $zero++;
-			  echo "<li>";
+			  echo "<li class='".$row->category."'>";
 			  echo "<div class='thumbnail'>\n";
 			  echo "<div class='row'>\n";
-			  echo "<form method='post'".$row->category." action='cart_update.php'>\n";
+			  echo "<form method='post' action='cart_update.php'>\n";
 			  echo "\t\t\t\t\t<div class='product_image'>\n";
 			  echo "<div class='col-lg-4 col-md-4 col-xs-12 col-sm-6 span3'><a href='product.php?id=".$row->product_id."'><img src='".$row->image_url."' alt='".$row->product_name."'></a></div>";
 			  echo "<div class='col-lg-6 col-md-6 col-xs-12 col-sm-12'><a class='prdocutname' href='product.php?id=".$row->product_id."'>".$row->product_name."</a>";
@@ -261,7 +260,6 @@ else{
                         echo '<a href="?page='.($page - 1).'">Prev</a>'; 
                     ?>
                     </li>
-                   
                     <?php  for($i = 1; $i <= $totalPages; $i++){
    					if($i == $page)
       					echo '<li class="active"><a><strong>'.$i.'</strong></a></li>&nbsp';
@@ -298,71 +296,6 @@ else{
     </div>
   </section>
 </div>
-<script>
-$(document).ready(function() {
-  
-  $(".categoryBtnFurniture").on("click", function(){
-    hideProducts();
-    $(".furniture").show();
-  });
-
-  $(".categoryBtnKitchen").on("click", function(){
-    hideProducts();
-    $(".kitchen").show();
-  });
-
-  $(".categoryBtnElectronics").on("click", function(){
-    hideProducts();
-    $(".electronic").show();
-  });
-
-  $(".categoryBtnBathroom").on("click", function(){
-    hideProducts();
-    $(".bathroom").show();
-  });
-
-  $(".categoryBtnBedroom").on("click", function(){
-    hideProducts();
-    $(".bedroom").show();
-  });
-
-  $(".categoryBtnLivingroom").on("click", function(){
-    hideProducts();
-    $(".livingroom").show();
-  });
-
-  $("#navFurn").on("click", function(){
-    hideProducts();
-    $(".furniture").show();
-  });
-
-  $("#navKit").on("click", function(){
-    hideProducts();
-    $(".kitchen").show();
-  });
-
-  $("#navElect").on("click", function(){
-    hideProducts();
-    $(".electronic").show();
-  });
-
-  $("#navBath").on("click", function(){
-    hideProducts();
-    $(".bathroom").show();
-  });
-
-  $("#navBed").on("click", function(){
-    hideProducts();
-    $(".bedroom").show();
-  });
-
-  $("#navLiv").on("click", function(){
-    hideProducts();
-    $(".livingroom").show();
-  });
-
-});
-</script>
 <?php
 include('footer.php');
 ?>
