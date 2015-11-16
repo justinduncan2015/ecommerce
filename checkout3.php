@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <?php
+$pageTitle = 'Batchpad.com - Checkout';
  include_once('header.php');
  include_once('db_connect.php');
  include_once('cart_update.php');
+ if(isset($_SESSION["cart_products"])){
  $cart_itm = $_SESSION["cart_products"];
+ }
 ?>
 <html lang="en">
 <head>
