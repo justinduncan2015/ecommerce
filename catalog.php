@@ -74,7 +74,7 @@ $current_url = urlencode($url="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_
         			//$myNew = mysql_query($new,$con);  
               while(($row = $myNew->fetch_object()) && ($zero<=$limit)){
 	              $zero++;
-	              echo "<li> <img width='50' height='50' src=" .$row->image_url. " alt='product' title='product'> <a class='productname' href='product.php?id=".$row->product_id."'>" .$row->product_name. "</a><span class='procategory'>Furniture</span> <span class='price'>" . $row->price. "</span> </li>";
+	              echo "<li> <img width='50' height='50' src='".$row->image_url."' alt='product' title='product'> <a class='productname' href='product.php?id='".$row->product_id."'>".$row->product_name."</a><span class='procategory'>Furniture</span><span class='price'>".$row->price."</span></li>";
               }
             ?>
             </ul>
@@ -165,130 +165,91 @@ $current_url = urlencode($url="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_
                     while(($row = $myAll->fetch_object())&&($zero<=$limit_zero)){
 							        $zero++;
                     echo "<li>";
-                      echo "<div class='thumbnail'>";
-                        echo "<div class='row'>";
-                          echo "<form method='post'".$row->category."";
-                            if($row->qty_stock>0){
-                            print "action='cart_update.php'";
-                            }else{
-                              echo "action='".$_SERVER['PHP_SELF']."#'";
-                            }
-                          ?>>  
-                          <?
-                          print "\t\t\t\t\t<div class='product_image'>\n";
-                          echo "<div class='col-lg-4 col-md-4 col-xs-12 col-sm-6 span3'><a href='product.php?id=".$row->product_id."'><img src=\"".$row->image_url."\" alt=\"".$row->product_name." Image\"></a></div>";      
-                          echo "<div class='col-lg-6 col-md-6 col-xs-12 col-sm-12'><a class='prdocutname' href='product.php?id=".$row->product_id."'>" .$row->product_name. "</a>";
-                          echo "<div class='productdiscrption'>" .$row->description. "<br></div>";
-                          if($row->qty_stock<=0)
-                                {echo "\t\t\t\t\t<p><span class='red'>Out of Stock</span> | $".$row->price."</p>\n";}
-                          else{
-                                echo "\t\t\t\t\t<p><span class='green'>In Stock</span> | $".$row->price."</p></div>\n";  
-                                };
-                        
-                         echo "<div class='rw-ui-container' data-urid=" . $row->product_id. "></div>";
-                          echo "\t\t\t\t\t<div>\n";
-                          echo "<input type='hidden' name='product_qty' value='1' />";
-                          echo "<input type='hidden' name='product_code' value=".$row->product_sku." />";
-                          echo "<input type='hidden' name='type' value='add' />";
-                          echo "<input type='hidden' name='return_url' value=".$current_url." />"; 
-                          echo "\t\t\t\t\t\t<button type='submit'class='btn btn-orange btn-small addtocartbutton'>Add to Cart</button>\n"; 
-                          echo "\t\t\t\t\t</div>\n";?>
+                    echo "<div class='thumbnail'>\n";
+                    echo "<div class='row'>\n";
+                    echo "<form method='post'".$row->category." action='cart_update.php'>\n";
+                    echo "\t\t\t\t\t<div class='product_image'>\n";
+                    echo "<div class='col-lg-4 col-md-4 col-xs-12 col-sm-6 span3'><a href='product.php?id=".$row->product_id."'><img src='".$row->image_url."' alt='".$row->product_name."'></a></div>";
+                    echo "<div class='col-lg-6 col-md-6 col-xs-12 col-sm-12'><a class='prdocutname' href='product.php?id=".$row->product_id."'>".$row->product_name."</a>";
+                    echo "<div class='productdiscrption'>".$row->description."<br></div>";
+					echo "\t\t\t\t\t<p><span class='green'>In Stock</span> $".$row->price."</p></div>\n";  
+					echo "<div class='rw-ui-container' data-urid=".$row->product_id."></div>";
+                    echo "\t\t\t\t\t<div>\n";
+                    echo "<input type='hidden' name='product_qty' value='1' />";
+                    echo "<input type='hidden' name='product_code' value=".$row->product_sku." />";
+                    echo "<input type='hidden' name='type' value='add' />";
+                    echo "<input type='hidden' name='return_url' value=".$current_url."/>"; 
+                    echo "\t\t\t\t\t\t<button type='submit'class='btn btn-orange btn-small addtocartbutton'>Add to Cart</button>\n"; 
+                    echo "\t\t\t\t\t</div>\n";
+					?>
                          </form>
                          </div>
                          </div>
                          </li>
-                            
-               <?
+					<?php
                       
 }  
     
 } 
 
 elseif($view==36){
-    
-  $zero=0;
-                 $limit_zero=35;
-
+	$zero=0;
+	$limit_zero=35;
         while(($row = $myAll->fetch_object())&&($zero<=$limit_zero)){
               $zero++;
                     echo "<li>";
-                      echo "<div class='thumbnail'>";
-                        echo "<div class='row'>";
-                         echo "<form method='post' ".$row->category.""; 
-                      if($row->qty_stock>0){
-                        print "action='cart_update.php'";
-                      }else{
-                        echo "action='".$_SERVER['PHP_SELF']."#'";
-                      }
-                      echo ">";
-                    
-                 print "\t\t\t\t\t<div class='product_image'>\n";
-                 echo "<div class='col-lg-4 col-md-4 col-xs-12 col-sm-6 span3'><a href='product.php?id=".$row->product_id."'><img src=\"".$row->image_url."\" alt=\"".$row->product_name." Image\"></a></div>";      
-                 echo "<div class='col-lg-6 col-md-6 col-xs-12 col-sm-12'><a class='prdocutname' href='product.php?id=".$row->product_id."'>" .$row->product_name. "</a>";
-                 echo "<div class='productdiscrption'>" .$row->description. "<br></div>";
-                  if($row->qty_stock<=0)
-                        {echo "\t\t\t\t\t<p><span class='red'>Out of Stock</span> | $".$row->price."</p>\n";}
-                  else{
-                        echo "\t\t\t\t\t<p><span class='green'>In Stock</span> | $".$row->price."</p></div>\n";  
-                        };
-              
-               echo "<div class='rw-ui-container' data-urid=" . $row->product_id. "></div>";
-                echo "\t\t\t\t\t<div>\n";
-                echo "<input type='hidden' name='product_qty' value='1' />";
-                echo "<input type='hidden' name='product_code' value=".$row->product_sku." />";
-                echo "<input type='hidden' name='type' value='add' />";
-                echo "<input type='hidden' name='return_url' value=".$current_url." />";
-                echo "\t\t\t\t\t\t<button type='submit' class='btn btn-orange btn-small addtocartbutton'>Add to Cart</button>\n"; 
-                echo "\t\t\t\t\t</div>\n";?>
+                    echo "<div class='thumbnail'>\n";
+                    echo "<div class='row'>\n";
+                    echo "<form method='post'".$row->category." action='cart_update.php'>\n";
+                    echo "\t\t\t\t\t<div class='product_image'>\n";
+                    echo "<div class='col-lg-4 col-md-4 col-xs-12 col-sm-6 span3'><a href='product.php?id=".$row->product_id."'><img src='".$row->image_url."' alt='".$row->product_name."'></a></div>";
+                    echo "<div class='col-lg-6 col-md-6 col-xs-12 col-sm-12'><a class='prdocutname' href='product.php?id=".$row->product_id."'>".$row->product_name."</a>";
+                    echo "<div class='productdiscrption'>".$row->description."<br></div>";
+					echo "\t\t\t\t\t<p><span class='green'>In Stock</span> $".$row->price."</p></div>\n";  
+					echo "<div class='rw-ui-container' data-urid=".$row->product_id."></div>";
+                    echo "\t\t\t\t\t<div>\n";
+                    echo "<input type='hidden' name='product_qty' value='1' />";
+                    echo "<input type='hidden' name='product_code' value=".$row->product_sku." />";
+                    echo "<input type='hidden' name='type' value='add' />";
+                    echo "<input type='hidden' name='return_url' value=".$current_url."/>"; 
+                    echo "\t\t\t\t\t\t<button type='submit'class='btn btn-orange btn-small addtocartbutton'>Add to Cart</button>\n"; 
+                    echo "\t\t\t\t\t</div>\n";
+					?>
                </form>
                </div>
                </div>
                </li>
-                   <?php } }
+               <?php } }
 else{
-				$zero=1;
+	$zero=1;
 						
-						/* While loop sending back 12 item view */
-            $limit_zero=11;
-
+	/* While loop sending back 12 item view */
+	$limit_zero=11;
         while(($row = $myAll->fetch_object())&&($zero<=$limit_zero)){
               $zero++;
-          ?>
-                    <li>
-                      <div class="thumbnail">
-                        <div class="row">
-                         <form method="post" 
-                      
-                      <? if($row->qty_stock>0){print "action='cart_update.php'";} 
-                else{echo "action='".$_SERVER['PHP_SELF']."#'";}?>>
-                    
-                    
-                <?
-                 print "\t\t\t\t\t<div class='product_image'>\n";
-                 echo "<div class='col-lg-4 col-md-4 col-xs-12 col-sm-6 span3'><a href='product.php?id=".$row->product_id."'><img src=\"".$row->image_url."\" alt=\"".$row->product_name." Image\"></a></div>";      
-                 echo "<div class='col-lg-6 col-md-6 col-xs-12 col-sm-12'><a class='prdocutname' href='product.php?id=".$row->product_id."'>" .$row->product_name. "</a>";
-                 echo "<div class='productdiscrption'>" .$row->description. "<br></div>";
-                  if($row->qty_stock<=0)
-                        {echo "\t\t\t\t\t<p><span class='red'>Out of Stock</span> | $".$row->price."</p>\n";}
-                  else{
-                        echo "\t\t\t\t\t<p><span class='green'>In Stock</span> | $".$row->price."</p></div>\n";  
-                        };
-              
-               echo "<div class='rw-ui-container' data-urid=" . $row->product_id. "></div>";
-                echo "\t\t\t\t\t<div>\n";
-                echo "<input type='hidden' name='product_qty' value='1' />";
-                echo "<input type='hidden' name='product_code' value=".$row->product_sku." />";
-                echo "<input type='hidden' name='type' value='add' />";
-                echo "<input type='hidden' name='return_url' value=".$current_url." />";
-                echo "\t\t\t\t\t\t<button type='submit'class='btn btn-orange btn-small addtocartbutton'>Add to Cart</button>\n"; 
-                echo "\t\t\t\t\t</div>\n";?>
-               </form>
-               </div>
-               </div>
-               </li>
-                    
-                   <?php } } ?>
-                  </ul>
+			  echo "<li>";
+			  echo "<div class='thumbnail'>\n";
+			  echo "<div class='row'>\n";
+			  echo "<form method='post'".$row->category." action='cart_update.php'>\n";
+			  echo "\t\t\t\t\t<div class='product_image'>\n";
+			  echo "<div class='col-lg-4 col-md-4 col-xs-12 col-sm-6 span3'><a href='product.php?id=".$row->product_id."'><img src='".$row->image_url."' alt='".$row->product_name."'></a></div>";
+			  echo "<div class='col-lg-6 col-md-6 col-xs-12 col-sm-12'><a class='prdocutname' href='product.php?id=".$row->product_id."'>".$row->product_name."</a>";
+			  echo "<div class='productdiscrption'>".$row->description."<br></div>";
+			  echo "\t\t\t\t\t<p><span class='green'>In Stock</span> $".$row->price."</p></div>\n";  
+			  echo "<div class='rw-ui-container' data-urid=".$row->product_id."></div>";
+			  echo "\t\t\t\t\t<div>\n";
+			  echo "<input type='hidden' name='product_qty' value='1' />";
+			  echo "<input type='hidden' name='product_code' value=".$row->product_sku." />";
+			  echo "<input type='hidden' name='type' value='add' />";
+			  echo "<input type='hidden' name='return_url' value=".$current_url."/>"; 
+			  echo "\t\t\t\t\t\t<button type='submit'class='btn btn-orange btn-small addtocartbutton'>Add to Cart</button>\n"; 
+			  echo "\t\t\t\t\t</div>\n";?>
+              </form>
+              </div>
+              </div>
+              </li> 
+              <?php } } ?>
+              </ul>
 
 
                   <div class="pull-right">
