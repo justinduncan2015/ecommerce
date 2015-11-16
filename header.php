@@ -41,7 +41,8 @@ include('db_connect.php');
                         	<li class="text-nopad text-center"><a href="register.php">Sign-up</a></li>
                             <li class="text-nopad"><p>or</p></li>
                         	<li class="text-nopad"><a href="login.php"> &nbsp; login</a></li>
-                            <li class="dropdown hover carticon "> <a href="cart.php" class="dropdown-toggle" > <i class="icon-shopping-cart font18"></i> Shopping Cart <span class="label label-orange font14"><?php
+                            <li class="dropdown hover carticon "> <a href="cart.php" class="dropdown-toggle" > <i class="icon-shopping-cart font18"></i> Shopping Cart <span class="label label-orange font14">
+							<?php
 							if(isset($_SESSION['cart_products'])){
                             echo count($_SESSION['cart_products']);}?> Items <b class="caret"></b></a></li>
                             
@@ -49,7 +50,11 @@ include('db_connect.php');
 							}else if(isset($_SESSION['logged_in'])) {
 							print "<li class='text-nopad red'><p>Hello, ".$_SESSION['logged_in_firstname']."!</p></li>"; ?>
                         	<li class="text-nopad"><p> &nbsp; Not you?</p></li>
-                            <li class="text-nopad"><a href="logout.php"> &nbsp; Logout</a></li>  
+                            <li class="text-nopad"><a href="logout.php"> &nbsp; Logout</a></li>
+							<li class="dropdown hover carticon "> <a href="cart.php" class="dropdown-toggle" > <i class="icon-shopping-cart font18"></i> Shopping Cart <span class="label label-orange font14">
+							<?php
+							if(isset($_SESSION['cart_products'])){
+                            echo count($_SESSION['cart_products']);}?> Items <b class="caret"></b></a></li>  
 							<?php } ?>
                     </li>
                 </ul>

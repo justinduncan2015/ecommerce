@@ -53,20 +53,19 @@ $pageTitle = 'Batchpad.com - Checkout';
         <!-- Account Login-->
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
         <h2 class="heading1"><span class="maintext">Checkout</span></h2>
-        <div class="checkoutsteptitle">Shipping Info</div>
+        <div class="checkoutsteptitle">Personal Info</div>
         <div class="checkoutstep">
         <ul class="table-bordered">
-        	<?php $row = $select_id_result->fetch_object(); ?>
-            <?php echo "<li><b>First Name:</b> &nbsp; &nbsp; ".$row->first_name."</li><br>"; ?>
-            <?php echo "<li><b>Last Name:</b> &nbsp; &nbsp; ".$row->last_name."</li><br>"; ?>
-            <?php echo "<li><b>Address 1:</b> &nbsp; &nbsp; ".$row->address1."</li><br>"; ?>
-            <?php echo "<li><b>Address 2:</b> &nbsp; &nbsp; ".$row->address2."</li><br>"; ?>
-            <?php echo "<li><b>City:</b> &nbsp; &nbsp; ".$row->city."</li><br>"; ?>
-            <?php echo "<li><b>State:</b> &nbsp; &nbsp; ".$row->state."</li><br>"; ?>
-            <?php echo "<li><b>Zip Code:</b> &nbsp; &nbsp; ".$row->zip."</li><br>"; ?>
-            <?php echo "<li><b>Telephone:</b> &nbsp; &nbsp; ".$row->telephone."</li><br>"; ?>
-            <?php echo "<li><b>Mobile:</b> &nbsp; &nbsp; ".$row->mobile."</li><br>"; ?>
-            <?php echo "<li><b>Company:</b> &nbsp; &nbsp; ".$row->company."</li><br>"; ?>
+            <?php echo "<li><b>First Name:</b> &nbsp; &nbsp; ".$_SESSION['logged_in_firstname']."</li><br>"; ?>
+            <?php echo "<li><b>Last Name:</b> &nbsp; &nbsp; ".$_SESSION['logged_in_lastname']."</li><br>"; ?>
+            <?php echo "<li><b>Address 1:</b> &nbsp; &nbsp; ".$_SESSION['logged_in_address1']."</li><br>"; ?>
+            <?php echo "<li><b>Address 2:</b> &nbsp; &nbsp; ".$_SESSION['logged_in_address2']."</li><br>"; ?>
+            <?php echo "<li><b>City:</b> &nbsp; &nbsp; ".$_SESSION['logged_in_city']."</li><br>"; ?>
+            <?php echo "<li><b>State:</b> &nbsp; &nbsp; ".$_SESSION['logged_in_state']."</li><br>"; ?>
+            <?php echo "<li><b>Zip Code:</b> &nbsp; &nbsp; ".$_SESSION['logged_in_zip']."</li><br>"; ?>
+            <?php echo "<li><b>Telephone:</b> &nbsp; &nbsp; ".$_SESSION['logged_in_telephone']."</li><br>"; ?>
+            <?php echo "<li><b>Mobile:</b> &nbsp; &nbsp; ".$_SESSION['logged_in_mobile']."</li><br>"; ?>
+            <?php echo "<li><b>Company:</b> &nbsp; &nbsp; ".$_SESSION['logged_in_company']."</li><br>"; ?>
           </ul>
         </div>
         <div class="checkoutsteptitle">Confirm Order </div>
@@ -161,11 +160,8 @@ echo $current_url; ?>" />
                     </tr>
                 </tbody>
             </table>
-            <form action="#">
-            <input  type="submit" class="btn btn-orange pull-right" value="CheckOut">
-            </form>
-            <form action="catalog.php">
-            <input type="submit" class="btn btn-orange pull-right mr10" value="Continue Shopping">
+            <form action="process.php">
+            <button class="btn btn-orange dw_button add checkout_button" type="submit" name="submitbutt" >Checkout</button>
             </form>
           </div>
         </div>
