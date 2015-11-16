@@ -1,7 +1,7 @@
 <?php 
 $pageTitle = "Batchpad.com - Thank you!";
 include('header.php');
-$pageTitle = 'Batchpad.com - Register';
+
 ?>
 <div id="categorymenu">
         <nav class="subnav">
@@ -19,7 +19,10 @@ $pageTitle = 'Batchpad.com - Register';
             </ul>
         </nav>
     </div>
-<?php if(!isset($_SESSION['logged_in'])){ ?>
+<?php if(!isset($_SESSION['logged_in'])){ 
+
+
+?>
 <div id="maincontainer">
   <section id="product">
     <div class="container">
@@ -32,12 +35,12 @@ $pageTitle = 'Batchpad.com - Register';
         <li class="active">Register Account</li>
       </ul>
       <div class="row">        
-<p>Thank you for Registering. You will be redirected in <span id="counter">10</span> second(s).</p>
+<p>Thank you for Registering. You will be redirected to login in <span id="counter">10</span> second(s).</p>
 <script type="text/javascript">
 function countdown() {
     var i = document.getElementById('counter');
     if (parseInt(i.innerHTML)<=1) {
-        location.href = 'home.php';
+        location.href = 'login.php';
     }
     i.innerHTML = parseInt(i.innerHTML)-1;
 }

@@ -50,21 +50,21 @@
         <!-- Account Login-->
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
         <h2 class="heading1"><span class="maintext">Checkout</span></h2>
-        <div class="checkoutsteptitle">Payment  Method</div>
+        <div class="checkoutsteptitle">Shipping Info</div>
         <div class="checkoutstep">
-          <p>Please select the preferred payment method to use on this order.</p>
-          <div class="radio-inline">
-          <label class=" inline">
-            <input type="radio" value="option1">
-            Credit Card</label>
-            <label class=" inline">
-            <input type="radio" value="option1">
-            Paypal</label>
-            <label class=" inline">
-            <input type="radio" value="option1">
-            Android Pay</label>
-            </div>
-          <br>
+        <ul class="table-bordered">
+        	<?php $row = $select_id_result->fetch_object(); ?>
+            <?php echo "<li><b>First Name:</b> &nbsp; &nbsp; ".$row->first_name."</li><br>"; ?>
+            <?php echo "<li><b>Last Name:</b> &nbsp; &nbsp; ".$row->last_name."</li><br>"; ?>
+            <?php echo "<li><b>Address 1:</b> &nbsp; &nbsp; ".$row->address1."</li><br>"; ?>
+            <?php echo "<li><b>Address 2:</b> &nbsp; &nbsp; ".$row->address2."</li><br>"; ?>
+            <?php echo "<li><b>City:</b> &nbsp; &nbsp; ".$row->city."</li><br>"; ?>
+            <?php echo "<li><b>State:</b> &nbsp; &nbsp; ".$row->state."</li><br>"; ?>
+            <?php echo "<li><b>Zip Code:</b> &nbsp; &nbsp; ".$row->zip."</li><br>"; ?>
+            <?php echo "<li><b>Telephone:</b> &nbsp; &nbsp; ".$row->telephone."</li><br>"; ?>
+            <?php echo "<li><b>Mobile:</b> &nbsp; &nbsp; ".$row->mobile."</li><br>"; ?>
+            <?php echo "<li><b>Company:</b> &nbsp; &nbsp; ".$row->company."</li><br>"; ?>
+          </ul>
         </div>
         <div class="checkoutsteptitle">Confirm Order </div>
         <div class="checkoutstep">
