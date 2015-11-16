@@ -1,5 +1,5 @@
 <?php
-session_start(); //start session
+if(!isset($_SESSION)){session_start();}
 include_once("db_connect.php"); //include config file
 
 //add product to session or create new one
