@@ -100,12 +100,13 @@
             $product_qty = $cart_itm["product_qty"];
             $price = $cart_itm["price"];
             $product_code = $cart_itm["product_code"];
+            $description = $cart_itm["description"];
             $image_url = $cart_itm["image_url"];
             $subtotal = ($price * $product_qty); //calculate Price x Qty
             
            echo '<td class="image"><a href="#"><img title="product" alt="product" src="'.$image_url.'" height="50" width="50"></a></td>';
             echo '<td class ="name">'.$product_name.'</td>';
-            echo '<td class="description">'.$product_desc.'</td>';
+            echo '<td class="description">'.$description.'</td>';
             echo '<td class="quantity"><input type="text" size="2" maxlength="2" name="product_qty['.$product_code.']" value="'.$product_qty.'" class="col-lg-3 col-md-3 col-xs-6 col-sm-3"></td>';
             echo '<td class="total"> <a href="#" class="mr10"> <i class="tooltip-test font24 icon-refresh " data-original-title="Update"> </i> </a> 
                <a href="#"><i class="tooltip-test font24 icon-remove-circle" data-original-title="Remove"> </i></a></td>';
