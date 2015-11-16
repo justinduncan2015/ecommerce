@@ -175,10 +175,10 @@ $current_url = urlencode($url="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_
 					echo "<div class='rw-ui-container' data-urid=".$row->product_id."></div>";
                     echo "\t\t\t\t\t<div>\n";
                     echo "<input type='hidden' name='product_qty' value='1' />";
-                    echo "<input type='hidden' name='product_code' value=".$row->product_sku." />";
+                    echo "<input type='hidden' name='product_code' value='".$row->product_sku."' />";
                     echo "<input type='hidden' name='type' value='add' />";
-                    echo "<input type='hidden' name='return_url' value=".$current_url."/>"; 
-                    echo "\t\t\t\t\t\t<button type='submit'class='btn btn-orange btn-small addtocartbutton'>Add to Cart</button>\n"; 
+                    echo "<input type='hidden' name='return_url' value='".$current_url."'/>"; 
+                    echo "\t\t\t\t\t\t<button type='submit' class='btn btn-orange btn-small addtocartbutton'>Add to Cart</button>\n"; 
                     echo "\t\t\t\t\t</div>\n";
 					?>
                          </form>

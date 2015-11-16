@@ -103,7 +103,7 @@
             $image_url = $cart_itm["image_url"];
             $subtotal = ($price * $product_qty); //calculate Price x Qty
             
-           echo '<td class="image"><a href="#"><img title="product" alt="product" src="'.$image_url.'" height="50" width="50"></a></td>';
+            echo '<td class="image"><a href="#"><img title="product" alt="product" src="'.$image_url.'" height="50" width="50"></a></td>';
             echo '<td class ="name">'.$product_name.'</td>';
             echo '<td class="description">'.$product_desc.'</td>';
             echo '<td class="quantity"><input type="text" size="2" maxlength="2" name="product_qty['.$product_code.']" value="'.$product_qty.'" class="col-lg-3 col-md-3 col-xs-6 col-sm-3"></td>';
@@ -146,11 +146,11 @@ echo $current_url; ?>" />
                     </tr>
                     <tr>
                         <td class="textright"><b>Eco Tax (-2.00):</b></td>
-                            <?php echo '<td><span class="bold">'.$tax.'</span></td>'?>
+                            <?php echo '<td><span class="bold">'.$tax_amount.'</span></td>'?>
                         </tr>
                     <tr>
-                        <td class="textright"><b>VAT (17.5%):</b></td>
-                        <td class="textright">$87.50</td>
+                        <td class="textright"><b>Shipping</b></td>
+                        <?php '<td class="textright">'.$shipping_handling.'</td>'; ?>
                     </tr>
                     <tr>
                     <td class="textright"><b>Total:</b></td>
