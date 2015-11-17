@@ -1,4 +1,5 @@
 <?php
+if(!isset($_SESSION['logged_in'])){
 include_once('header.php');
 $pageTitle = 'Batchpad.com - Checkout';
 ?>
@@ -94,4 +95,7 @@ $pageTitle = 'Batchpad.com - Checkout';
 </div>
 <?php
 include('footer.php');
+}else{
+header('location: checkout3.php');	
+}
 ?>

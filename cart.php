@@ -9,7 +9,7 @@
   <nav class="subnav">
     <ul class="nav-pills categorymenu container">
       <li><a href="home.php"><i class="icon-home icon-white font18"></i> <span> Home</span></a></li>
-      <li><a href="catalog.php">Shop</a></li>
+      <li><a href="catalog.php?page=1">Shop</a></li>
       <li><a href="about.php">about</a></li>
       <li><a href="contact.php">Contact Us</a> </li>
       <li class="pull-right">
