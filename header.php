@@ -13,6 +13,7 @@ include('db_connect.php');
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="css/font-awesome.min.css">
 <link href="css/style.css" rel="stylesheet">
+<link rel="shortcut icon" type="image/ico" href="img/favicon.ico" />
 <link href="css/star-rating.css" rel="stylesheet">
 <link href="css/prettyPhoto.css" rel="stylesheet" media="screen">
 <link href="css/portfolio.css" rel="stylesheet">
