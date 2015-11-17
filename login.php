@@ -6,7 +6,8 @@ if(isset($_SESSION['url'])){
 }else{ 
    $url = "home.php";
 }
-include("db_connect.php");?>
+include("db_connect.php");
+include("header.php");?>
 <?php
           if(isset($_POST['submit'])&&(!isset($_SESSION['logged_in']))) {
 			  // query to select all users/passwords
@@ -38,67 +39,10 @@ include("db_connect.php");?>
 				}
 			}
 			?>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<title><?php echo $pageTitle ?></title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<meta name="author" content="Justin Duncan">
-<link href="http://fonts.googleapis.com/css?family=Noto+Sans:400,700" rel="stylesheet" type="text/css">
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="css/font-awesome.min.css">
-<link href="css/style.css" rel="stylesheet">
-<link href="css/prettyPhoto.css" rel="stylesheet" media="screen">
-<link href="css/portfolio.css" rel="stylesheet">
-<link rel="stylesheet" href="layerslider/css/layerslider.css" type="text/css">
-<link rel="stylesheet" href="layerslider/css/layersliderstyle.css" type="text/css">
-<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-<!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-</head>
-<body>
-<!-- Header Start -->
-<header>
-    <div class="headerstrip">
-        <div class="container">
-            <a class="logo pull-left" href="home.php"><img title="BatchPad" alt="BatchPad" src="img/logo.png"></a>
-            <!-- Top Nav Start -->
-            <div class="pull-right">
-                <div class="navbar" id="topnav">
-                    <div class="navbar-inner">
-                        <ul class="nav" >
-                        	<?php 
-							if(!isset($_SESSION['logged_in'])) { 
-							?>
-                            
-                        	<li class="text-nopad text-center"><a href="register.php">Sign-up</a></li>
-                            <li class="text-nopad"><p>or</p></li>
-                        	<li class="text-nopad"><a href="login.php"> &nbsp; login</a></li>
-                            <li class="dropdown hover carticon "> <a href="cart.php" class="dropdown-toggle" > <i class="icon-shopping-cart font18"></i> Shopping Cart <span class="label label-orange font14">2 item(s)</span> - $1,790.00 <b class="caret"></b></a>
-                            
-                            <?php
-							}else if(isset($_SESSION['logged_in'])) {
-							print "<li class='text-nopad red'><p>Hello, ".$_SESSION['logged_in_firstname']."!</p></li>"; ?>
-                        	<li class="text-nopad"><p> &nbsp; Not you?</p></li>
-                            <li class="text-nopad"><a href="logout.php"> &nbsp; Logout</a></li>  
-							<?php } ?>
-                    </li>
-                </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- Top Nav End -->
-        </div>
-    </div>
-</header>
-<!-- Header End -->
-<link href="css/style.css" rel="stylesheet" type="text/css">
-    <div id="categorymenu">
+<div id="categorymenu">
         <nav class="subnav">
             <ul class="nav-pills categorymenu container">
-                <li><a class="home" href="home.php"><i class="icon-home icon-white font18"></i> <span> Home</span></a></li>
+                <li><a class="home active" href="home.php"><i class="icon-home icon-white font18"></i> <span> Home</span></a></li>
                 <li><a href="catalog.php?page=1">Shop</a></li>
                 <li><a href="about.php">about</a></li>
                 <li><a href="contact.php">Contact Us</a> </li>
@@ -106,19 +50,19 @@ include("db_connect.php");?>
                 if(isset($_SESSION['logged_in_user_access'])&&($_SESSION['logged_in_user_access'] == "admin")) {
                 print "<li><a href='admin.php'>Admin</a> </li>";
                 }
-				if(isset($_SESSION['logged_in_user_access'])&&($_SESSION['logged_in_user_access'] == "customer")) {
+        if(isset($_SESSION['logged_in_user_access'])&&($_SESSION['logged_in_user_access'] == "customer")) {
                 print "<li><a href='client.php?id=".$_SESSION['logged_in_user_id']."'>My Account</a> </li>";
                 }
                 ?>
                 <li class="pull-right">
-                    <form action="search.php" method="get" class="form-search top-search">
-                        <input type="text" class="input-small search-query" placeholder="Search Here…">
+                    <form action="search.php" method="post" class="form-search top-search">
+                        <input type="text" name="search" class="input-small search-query" placeholder="Search Here…">
                         <button class="btn btn-orange btn-small tooltip-test" data-original-title="Search"><i class="icon-search icon-white"></i></button>
                     </form>
                 </li>
             </ul>
         </nav>
-    </div>
+    </div>   
 <div id="maincontainer">
   <section id="product">
     <div class="container">
