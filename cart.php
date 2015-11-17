@@ -84,8 +84,8 @@
             echo '<td class="quantity"><input type="text" size="2" maxlength="2" name="product_qty['.$product_code.']" value="'.$product_qty.'" class="col-lg-3 col-md-3 col-xs-6 col-sm-3"></td>';
             echo '<td class="total"> <a href="#" class="mr10"> <i class="tooltip-test font24 icon-refresh " data-original-title="Update"> </i> </a> 
                <i class="tooltip-test font24 icon-remove-circle" data-original-title="Remove" name="remove_code[]" value="'.$product_code.'"> </i></td>';
-            echo '<td class="price">'.$price.'</td>';
-            echo '<td class="total">'.$subtotal.'</td>';
+            echo '<td class="price">'.$currency.$price.'</td>';
+            echo '<td class="total">'.$currency.$subtotal.'</td>';
             echo '<td><input type="checkbox" name="remove_code[]" value="'.$product_code.'" /></td>';
             echo '</tr>';
             $total = ($total + $subtotal);
@@ -120,9 +120,7 @@
 
 <div class="total_box large-12 medium-12 small-12 columns">
 			<?php
-        foreach($ship_item as $key => $value){ //List all taxes
-            $shipping_handling  .= $key. sprintf("%01.2f", $value).'<br />';
-        }
+        
 
         $grand_total = $total + $shipping_handling; //grand total including shipping cost
         foreach($taxes as $key => $value){ //list and calculate taxes
@@ -140,6 +138,10 @@
         $list_tax       = '';
         foreach($tax_item as $key => $value){ //List all taxes
             $list_tax .= $key. sprintf("%01.2f", $value).'<br />';
+        }
+         $shipping_handling   = '';
+        foreach($ship_item as $key => $value){ //List all taxes
+            $shipping_handling  .= $key. sprintf("%01.2f", $value).'<br />';
         }
 
         
@@ -159,17 +161,17 @@
             <div class="table table-striped table-bordered ">
               <ul>
                 <li><span class="extra bold">Sub-Total :</span></li>
-                <?php echo'<td><span class="bold">'.$subtotal.'</span></td>';
+                <?php echo'<td><span class="bold">'.$currency.$sub_total.'</span></td>';
 				?>
               </ul>
               <ul>
                 <li><span class="extra bold">Eco Tax (-5.00) :</span></li>
-                <?php echo '<td><span class="bold">'.$list_tax.'</span></td>';
+                <?php echo '<td><span class="bold">'.$currency.$list_tax.'</span></td>';
 				?>
               </ul>
               <ul>
                 <li><span class="extra bold totalamout">Total :</span></li>
-                <?php echo  '<td><span class="bold totalamout">'.$grand_total.'</span></td>';
+                <?php echo  '<td><span class="bold totalamout">'.$currency.$grand_total.'</span></td>';
 				?>
               </ul>
             </div>

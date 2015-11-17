@@ -155,6 +155,11 @@ $pageTitle = 'Batchpad.com - Checkout';
             $total = ($total + $subtotal); //add subtotal to total var
         }
    $grand_total = $total + $shipping_cost; //grand total including shipping cost
+   foreach($shipping_handling as $key => $value){ //list and calculate taxes in array
+                $ship_amount     = round($total) * ($value / 20);
+                $ship_item[$key] = $ship_amount;
+                $grand_total    = round($grand_total + $ship_amount,2);  //add shipping val to grand total
+        }
         foreach($taxes as $key => $value){ //list and calculate all taxes in array
                 $tax_amount     = round($total * ($value / 100));
                 $tax_item[$key] = $tax_amount;
@@ -185,7 +190,7 @@ echo $current_url; ?>" />
                     </tr>
                     <tr>
                         <td class="textright"><b>Eco Tax (-2.00):</b></td>
-                            <?php echo '<td><span class="bold">'.$tax_amount.'</span></td>'?>
+                            <?php echo '<td><span class="bold">'.$list_tax.'</span></td>'?>
                         </tr>
                     <tr>
                         <td class="textright"><b>Shipping</b></td>
