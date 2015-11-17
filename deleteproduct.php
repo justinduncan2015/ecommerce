@@ -126,52 +126,52 @@ include ('db_connect.php');
 	 	$row = $myProduct->fetch_object();
 		?>
 		<h1 class="heading1"><span class="maintext"> <i class="icon-signin"></i> Product Deletion</span></h1>
-			<table class="table table-striped table-bordered table-condensed">
-			<thead class="">
-				<th>product&nbsp;Id</th>
-                <th>Product Name</th>
-                <th>Description</th>
-                <th>Sku</th>
-                <th>Qty</th>
-                <th>Cost</th>
-                <th>Price</th>
-                <th>Image Location</th>
-                <th>On&nbsp;Sale?</th>
-                <th>Featured?</th>
-                <th>New Product?</th>
-			</thead>
-        <tbody>
+			<div class="table table-striped table-bordered table-condensed">
+			<div class="thead">
+				<li>product&nbsp;Id</li>
+                <li>Product Name</li>
+                <li>Description</li>
+                <li>Sku</li>
+                <li>Qty</li>
+                <li>Cost</li>
+                <li>Price</li>
+                <li>Image Location</li>
+                <li>On&nbsp;Sale?</li>
+                <li>Featured?</li>
+                <li>New Product?</li>
+			</div>
+        <div class="tbody">
 <?php
-echo "<tr>";
-echo "<td>" .$row->product_id. "</td>";
-echo "<td>" .$row->product_name."</td>";
-echo "<td>" .$row->description. "</td>";
-echo "<td>" .$row->product_sku. "</td>";
-echo "<td>" .$row->qty_stock. "</td>";
-echo "<td>" .$row->cost."</td>";
-echo "<td>" .$row->price."</td>";
-echo "<td>" .$row->image_url."</td>";
+echo "<ul>";
+echo "<li>" .$row->product_id. "</li>";
+echo "<li>" .$row->product_name."</li>";
+echo "<li>" .$row->description. "</li>";
+echo "<li>" .$row->product_sku. "</li>";
+echo "<li>" .$row->qty_stock. "</li>";
+echo "<li>" .$row->cost."</li>";
+echo "<li>" .$row->price."</li>";
+echo "<li>" .$row->image_url."</li>";
 //if the person accountable is not null display N/A
 if($row->sale == NULL){	
-	echo "<td>" . "" . "</td>";
+	echo "<li>" . "" . "</li>";
 }else{
-	echo "<td>" . $row->sale. "</td>";	
+	echo "<li>" . $row->sale. "</li>";	
 }
 if($row->featured == NULL){	
-	echo "<td>" . "" . "</td>";
+	echo "<li>" . "" . "</li>";
 }else{
-	echo "<td>" . $row->featured. "</td>";	
+	echo "<li>" . $row->featured. "</li>";	
 }
 if($row->new == NULL){	
-	echo "<td>" . "" . "</td>";
+	echo "<li>" . "" . "</li>";
 }else{
-	echo "<td>" . $row->new. "</td>";	
+	echo "<li>" . $row->new. "</li>";	
 }
 
-echo "</tr>";
+echo "</ul>";
 ?>
-</tbody>
-</table>
+</div>
+</div>
         <form method="post" action="">
             <h4>Do you really want to delete this product?</h4> 
             <input name="product_to_delete" id="product_to_delete" type="hidden" value="<?php print $_GET['id']; ?>" /><br />

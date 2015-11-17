@@ -186,7 +186,7 @@ include ('db_connect.php');
             </div>
         <div class="tbody">
 <?php
-echo "<tr>";
+echo "<ul>";
 echo "<li>" .$row->user_id. "</li>";
 echo "<li>" .$row->username."</li>";
 echo "<li>" .$row->password. "</li>";
@@ -211,7 +211,7 @@ if($row->company == NULL){
 	echo "<li>" . $row->company. "</li>";	
 }
 
-echo "</tr>";
+echo "</ul>";
 ?>
 </div>
 </div>
