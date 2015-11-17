@@ -20,7 +20,11 @@ include("header.php");
             </ul>
         </nav>
     </div>
-    	<img class='fixed' src='img/error-404.png' alt='not found'><span>This area is for administrators only, please sign in to view content.</span>
+    <div class="centeralign">
+    	<br><h3 class="red">This area is for administrators only, please sign in to view content.</h3><br><hr>
+        <br><img class='fixed' src='img/liam.jpg' alt='not found'><br><hr><br>
+        <h3 class="red">If you are here to do Batchpad.com harm, I will find you, and I will kill you!</h3><br>
+        </div>
 
 <?php
 	}else if($_SESSION['logged_in_user_access'] == 'admin') {

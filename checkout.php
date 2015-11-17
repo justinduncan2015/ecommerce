@@ -1,6 +1,7 @@
 <?php
 include_once('header.php');
 $pageTitle = 'Batchpad.com - Checkout';
+print $_SESSION['logged_in'];
 ?>
 <div id="categorymenu">
     <nav class="subnav">
