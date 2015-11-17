@@ -2,6 +2,7 @@
 session_start();
 include_once("db_connect.php");
 include_once("paypal.class.php");
+include_once("cart_update.php");
 
 $paypalmode = ($PayPalMode=='sandbox') ? '.sandbox' : '';
 
@@ -205,10 +206,19 @@ if(isset($_GET["token"]) && isset($_GET["PayerID"]))
         <li class="active"> Cart</li>
       </ul>       
 <h1 class="heading1"><span class="maintext"> <i class="icon-shopping-cart"></i> Shopping Cart</span></h1>
-             <h2>Success</h2>
+             <h2 class="green">Success</h2>
            <?php 
-		    include('cart_update');
-		    if(isset($_SESSION["cart_products"])){
+		    echo 'Your Transaction ID : '.urldecode($httpParsedResponseAr["PAYMENTINFO_0_TRANSACTIONID"]);
+                if('Completed' == $httpParsedResponseAr["PAYMENTINFO_0_PAYMENTSTATUS"])
+                {
+                    echo '<div style="color:green">Payment Received! Your product will be sent to you very soon!</div>';
+                }
+                elseif('Pending' == $httpParsedResponseAr["PAYMENTINFO_0_PAYMENTSTATUS"])
+                {
+                    echo '<div style="color:red">Transaction Complete, but payment is still pending! '.
+                    'You need to manually authorize this payment in your <a target="_new" href="http://www.paypal.com">Paypal Account</a></div>';
+                }
+				if(isset($_SESSION["cart_products"])){
             $total = 0; //set initial total value
             $b = 0; //var for zebra stripe table 
             foreach ($_SESSION["cart_products"] as $cart_itm){
@@ -221,25 +231,16 @@ if(isset($_GET["token"]) && isset($_GET["PayerID"]))
             $image_url = $cart_itm["image_url"];
             $subtotal = ($price * $product_qty);
 		   
-		   echo 'Your Transaction ID : '.urldecode($httpParsedResponseAr["PAYMENTINFO_0_TRANSACTIONID"]);
-		    echo '<ul class="list-inline">';
-            echo '<li class="image"><a href="#"><img title="product" alt="product" src="'.$cart_itm["image_url"].'" height="50" width="50"></a></li>';
-            echo '<li class ="name">'.$product_name.'</li>';
-            echo '<li class="description">'.$description.'</li>';
-            echo '<li class="price">'.$price.'</li>';
-            echo '<li class="total">'.$subtotal.'</li>';
+		   
+		   echo '<div class="col-lg-6 col-md-6 col-sm-9 col-xs-12">';
+		   echo '<h3 class="bold">Thanks for your purchase of this item:</h3>';
+		    echo '<ul class="list-inline table-bordered">';
+            echo '<li class="image"><a href="#"><img title="product" alt="product" src="'.$image_url.'" height="100" width="100"></a></li>';
+            echo '<li class ="name"><h3>'.$product_name.'</h3></li>';
+            echo '<li class="total pull-right"><h2 class="green">'.$price.'</h2></li>';
 			echo '</ul>';
+			echo '</div><br>';
 			}}
-                if('Completed' == $httpParsedResponseAr["PAYMENTINFO_0_PAYMENTSTATUS"])
-                {
-                    echo '<div style="color:green">Payment Received! Your product will be sent to you very soon!</div>';
-                }
-                elseif('Pending' == $httpParsedResponseAr["PAYMENTINFO_0_PAYMENTSTATUS"])
-                {
-                    echo '<div style="color:red">Transaction Complete, but payment is still pending! '.
-                    'You need to manually authorize this payment in your <a target="_new" href="http://www.paypal.com">Paypal Account</a></div>';
-                }
-
                 // we can retrive transection details using either GetTransactionDetails or GetExpressCheckoutDetails
                 // GetTransactionDetails requires a Transaction ID, and GetExpressCheckoutDetails requires Token returned by SetExpressCheckOut
                 $padata =   '&TOKEN='.urlencode($token);
