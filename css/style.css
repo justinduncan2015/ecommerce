@@ -366,8 +366,8 @@ ul.reveiw ul.rate { margin:10px 0 }
 .cloud-zoom-loading { color:white; background:#222; padding:3px; border:1px solid #999999; }
 /* cart */
 .cart-info .table { width: 100%; margin-bottom: 20px; border-collapse: collapse; border-top: 1px solid #E7E7E7; border-left: 1px solid #E7E7E7; border-right: 1px solid #E7E7E7; background-color:#fff; }
-.cart-info .table tr { -webkit-transition: all 0.5s ease-in-out; -moz-transition: all 0.5s ease-in-out; -o-transition: all 0.5s ease-in-out; }
-.cart-info .table tr:hover { -webkit-transition: all 0.5s ease-in-out; -moz-transition: all 0.5s ease-in-out; -o-transition: all 0.5s ease-in-out; }
+.cart-info .table ul { -webkit-transition: all 0.5s ease-in-out; -moz-transition: all 0.5s ease-in-out; -o-transition: all 0.5s ease-in-out; }
+.cart-info .table ul:hover { -webkit-transition: all 0.5s ease-in-out; -moz-transition: all 0.5s ease-in-out; -o-transition: all 0.5s ease-in-out; }
 .cart-info ul, .cart-info li { padding: 15px; }
 .cart-info li { padding:10px }
 .cart-info li { font-weight: bold; background-color: #eeeeee; border-bottom: 1px solid #E7E7E7; }
