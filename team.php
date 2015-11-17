@@ -65,8 +65,7 @@ $_SESSION['url'] = $_SERVER['REQUEST_URI'];
             </li>
             <li class="col-lg-4 col-md-4 col-xs-6 col-sm-6">
                 <div>
-                   <i class="icon-upload font72"style="
-    padding-right: 10px; width:150px; height: 120px;"></i>
+                  <img src="img/team5.png" style="padding-right: 10px; width:150px; height:130px;" alt="team5"/>
     <h4>Justin Duncan</h4>
     <h5 style="padding-bottom: 50px;">Lead Developer</h5>
                     
