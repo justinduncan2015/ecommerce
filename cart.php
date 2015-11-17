@@ -46,19 +46,19 @@
 <?php }else{ ?>
      
       <div class="cart-info">
-        <table class="table table-striped table-bordered">
+        <div class="table table-striped table-bordered">
         <form method="post" action="cart_update.php">
-          <tr>
-            <th class="image">Image</th>
-            <th class="name">Product Name</th>
-            <th class="model">Model</th>
-            <th class="quantity">Qty</th>
-            <th class="total">Action</th>
-            <th class="price">Unit Price</th>
-            <th class="total">Total</th>
-            <th class="delete">Remove</th>
-          </tr>
-          <tr>
+          <ul>
+            <li class="image">Image</li>
+            <li class="name">Product Name</li>
+            <li class="model">Model</li>
+            <li class="quantity">Qty</li>
+            <li class="total">Action</li>
+            <li class="price">Unit Price</li>
+            <li class="total">Total</li>
+            <li class="delete">Remove</li>
+          </ul>
+          <ul>
           <div class="cart-view-table-back">
 <form method="post" action="process.php">
   <tbody>
@@ -95,8 +95,8 @@
   </tbody>
   
 </div>
-          </tr>
-        </table>
+          </ul>
+        </div>
        <div class="cart_edit large-6 medium-6 small-6 columns">
                 
                     <ul>
