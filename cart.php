@@ -94,7 +94,7 @@
         ?>
   </tbody>
 </div>
-<<<<<<< HEAD
+
           </ul>
         </div>
        <div class="cart_edit large-6 medium-6 small-6 columns">
@@ -102,21 +102,13 @@
                     <ul>
                         <li>
                             <button type="submit" formaction="cart_update.php">Update</button>
-                        </li>
-=======
-</tr>
-</table>
-  <div class="cart_edit large-6 medium-6 small-6 columns">    
-    <ul>
-        <li><button type="submit" formaction="cart_update.php">Update</button></li>
-    </ul>          
+                        </li>          
   </div>
   <div class="large-3 medium-4 small-12 columns">
   <input type="hidden" name="return_url" value="<?php $current_url = urlencode($url="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
   echo $current_url; ?>" />
   </div>
   </form>
->>>>>>> origin/master
 
 <div class="total_box large-12 medium-12 small-12 columns">
 			<?php
