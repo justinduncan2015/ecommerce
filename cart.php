@@ -46,19 +46,19 @@
 <?php }else{ ?>
      
       <div class="cart-info">
-        <div class="table table-striped table-bordered">
+        <table class="table table-striped table-bordered">
         <form method="post" action="cart_update.php">
-          <ul>
-            <li class="image">Image</li>
-            <li class="name">Product Name</li>
-            <li class="model">Model</li>
-            <li class="quantity">Qty</li>
-            <li class="total">Action</li>
-            <li class="price">Unit Price</li>
-            <li class="total">Total</li>
-            <li class="delete">Remove</li>
-          </ul>
-          <ul>
+          <td>
+            <th class="image">Image</li>
+            <th class="name">Product Name</th>
+            <th class="model">Model</th>
+            <th class="quantity">Qty</th>
+            <th class="total">Action</th>
+            <th class="price">Unit Price</th>
+            <th class="total">Total</th>
+            <th class="delete">Remove</th>
+          </td>
+          <td>
           <div class="cart-view-table-back">
 <form method="post" action="process.php">
   <tbody>
@@ -93,9 +93,9 @@
           } 
         ?>
   </tbody>
-</div>
+</table>
 
-          </ul>
+          </td>
         </div>
        <div class="cart_edit large-6 medium-6 small-6 columns">
                 
@@ -150,23 +150,23 @@
       <div class="container">
       <div class="pull-right">
           <div class="">
-            <div class="table table-striped table-bordered ">
-              <ul>
-                <li><span class="extra bold">Sub-Total :</span></li>
+            <table class="table table-striped table-bordered ">
+              <td>
+                <th><span class="extra bold">Sub-Total :</span></th>
                 <?php echo'<td><span class="bold">'.$currency.$sub_total.'</span></td>';
 				?>
-              </ul>
-              <ul>
-                <li><span class="extra bold">Eco Tax (-5.00) :</span></li>
+              </td>
+              <td>
+                <th><span class="extra bold">Eco Tax (-5.00) :</span></th>
                 <?php echo '<td><span class="bold">'.$currency.$list_tax.'</span></td>';
 				?>
-              </ul>
-              <ul>
-                <li><span class="extra bold totalamout">Total :</span></li>
+              </td>
+              <td>
+                <th><span class="extra bold totalamout">Total :</span></th>
                 <?php echo  '<td><span class="bold totalamout">'.$currency.$grand_total.'</span></td>';
 				?>
-              </ul>
-            </div>
+              </td>
+            </table>
             </form>
             <div class="list-inline">
             <?php
