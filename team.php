@@ -53,14 +53,14 @@ $_SESSION['url'] = $_SERVER['REQUEST_URI'];
             <ul class="aboutus row">
                <li class="col-lg-4 col-md-4 col-xs-6 col-sm-6">
                 <div>
-                    <img src="img/leader.png" style="padding-right: 10px; width:150px; height:130px;"/>
+                    <img src="img/leader.png" style="padding-right: 10px; width:150px; height:130px;" alt="team1"/>
                     <h4>Devin Robbins</h4>
                     <h5 style="padding-bottom: 50px;">Team Leader</h5>
                     
                 </div>
                 <br>
                 <div>
-                    <img src="img/team3.png" style="padding-right: 10px; width:150px; height:130px;"/>
+                    <img src="img/team3.png" style="padding-right: 10px; width:150px; height:130px;" alt="team2"/>
                     <h4>Alicia White</h4>
                     <h5 class="text-faded">Assistant Team Leader</h5>
                     
@@ -77,7 +77,7 @@ $_SESSION['url'] = $_SERVER['REQUEST_URI'];
             
            
                 <div>
-                    <img src="img/team1.png" style="padding-right: 10px; width:150px; height:130px;"/>
+                    <img src="img/team1.png" style="padding-right: 10px; width:150px; height:130px;" alt="team3"/>
                     <h4 >Julie Bartee</h4> 
                     <h5 >Assistant Developer</h5>
                     
@@ -92,7 +92,7 @@ $_SESSION['url'] = $_SERVER['REQUEST_URI'];
                     
                 </div>
                 <div>
-                    <img src="img/team2.png" style="padding-right: 10px; width:140px; height:130px;"/>
+                    <img src="img/team2.png" style="padding-right: 10px; width:140px; height:130px;" alt="team4"/>
                     <h4>Thao Phan<h4>
                     <h5>Assistant Developer/Designer</h5>
                      

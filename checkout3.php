@@ -81,19 +81,21 @@ $pageTitle = 'Batchpad.com - Checkout';
         </div>
         <div class="checkoutsteptitle">Confirm Order </div>
         <div class="checkoutstep">
-        <div class="cart-info">
-        <table class="table table-striped table-bordered">
+
+      
+            <div class="cart-info">
+        <div class="table table-striped table-bordered">
         <form method="post" action="cart_update.php">
-          <tr>
-            <th class="image">Image</th>
-            <th class="name">Product Name</th>
-            <th class="model">Model</th>
-            <th class="quantity">Qty</th>
-              <th class="total">Action</th>
-            <th class="price">Unit Price</th>
-            <th class="total">Total</th>
+          <ul>
+            <li class="image">Image</li>
+            <li class="name">Product Name</li>
+            <li class="model">Model</li>
+            <li class="quantity">Qty</li>
+              <li class="total">Action</li>
+            <li class="price">Unit Price</li>
+            <li class="total">Total</li>
            
-          </tr>
+          </ul>
           
           <tr>
           <div class="cart-view-table-back">
@@ -128,6 +130,11 @@ $pageTitle = 'Batchpad.com - Checkout';
             $total = ($total + $subtotal); //add subtotal to total var
         }
    $grand_total = $total + $shipping_cost; //grand total including shipping cost
+   foreach($shipping_handling as $key => $value){ //list and calculate taxes in array
+                $ship_amount     = round($total) * ($value / 20);
+                $ship_item[$key] = $ship_amount;
+                $grand_total    = round($grand_total + $ship_amount,2);  //add shipping val to grand total
+        }
         foreach($taxes as $key => $value){ //list and calculate all taxes in array
                 $tax_amount     = round($total * ($value / 100));
                 $tax_item[$key] = $tax_amount;
@@ -163,6 +170,7 @@ echo $current_url; ?>" />
                         <?php echo'<td><span class="bold">'.$subtotal.'</span></td>'?>
                     </tr>
                     <tr>
+<<<<<<< HEAD
                         <td class="textright"><b>Tax (.065%):</b></td>
                             <?php echo '<td><span class="bold">'.$tax_amount.'</span></td>'?>
                         </tr>

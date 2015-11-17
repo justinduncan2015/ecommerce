@@ -46,19 +46,19 @@
 <?php }else{ ?>
      
       <div class="cart-info">
-        <table class="table table-striped table-bordered">
+        <div class="table table-striped table-bordered">
         <form method="post" action="cart_update.php">
-          <tr>
-            <th class="image">Image</th>
-            <th class="name">Product Name</th>
-            <th class="model">Model</th>
-            <th class="quantity">Qty</th>
-            <th class="total">Action</th>
-            <th class="price">Unit Price</th>
-            <th class="total">Total</th>
-            <th class="delete">Remove</th>
-          </tr>
-          <tr>
+          <ul>
+            <li class="image">Image</li>
+            <li class="name">Product Name</li>
+            <li class="model">Model</li>
+            <li class="quantity">Qty</li>
+            <li class="total">Action</li>
+            <li class="price">Unit Price</li>
+            <li class="total">Total</li>
+            <li class="delete">Remove</li>
+          </ul>
+          <ul>
           <div class="cart-view-table-back">
 <form method="post" action="process.php">
   <tbody>
@@ -84,8 +84,8 @@
             echo '<td class="quantity"><input type="text" size="2" maxlength="2" name="product_qty['.$product_code.']" value="'.$product_qty.'" class="col-lg-3 col-md-3 col-xs-6 col-sm-3"></td>';
             echo '<td class="total"> <a href="#" class="mr10"> <i class="tooltip-test font24 icon-refresh " data-original-title="Update"> </i> </a> 
                <i class="tooltip-test font24 icon-remove-circle" data-original-title="Remove" name="remove_code[]" value="'.$product_code.'"> </i></td>';
-            echo '<td class="price">'.$price.'</td>';
-            echo '<td class="total">'.$subtotal.'</td>';
+            echo '<td class="price">'.$currency.$price.'</td>';
+            echo '<td class="total">'.$currency.$subtotal.'</td>';
             echo '<td><input type="checkbox" name="remove_code[]" value="'.$product_code.'" /></td>';
             echo '</tr>';
             $total = ($total + $subtotal);
@@ -94,6 +94,16 @@
         ?>
   </tbody>
 </div>
+<<<<<<< HEAD
+          </ul>
+        </div>
+       <div class="cart_edit large-6 medium-6 small-6 columns">
+                
+                    <ul>
+                        <li>
+                            <button type="submit" formaction="cart_update.php">Update</button>
+                        </li>
+=======
 </tr>
 </table>
   <div class="cart_edit large-6 medium-6 small-6 columns">    
@@ -106,12 +116,11 @@
   echo $current_url; ?>" />
   </div>
   </form>
+>>>>>>> origin/master
 
 <div class="total_box large-12 medium-12 small-12 columns">
 			<?php
-        foreach($ship_item as $key => $value){ //List all taxes
-            $shipping_handling  .= $key. sprintf("%01.2f", $value).'<br />';
-        }
+        
 
         $grand_total = $total + $shipping_handling; //grand total including shipping cost
         foreach($taxes as $key => $value){ //list and calculate taxes
@@ -130,6 +139,10 @@
         foreach($tax_item as $key => $value){ //List all taxes
             $list_tax .= $key. sprintf("%01.2f", $value).'<br />';
         }
+         $shipping_handling   = '';
+        foreach($ship_item as $key => $value){ //List all taxes
+            $shipping_handling  .= $key. sprintf("%01.2f", $value).'<br />';
+        }
 
         
     
@@ -145,23 +158,23 @@
       <div class="container">
       <div class="pull-right">
           <div class="">
-            <table class="table table-striped table-bordered ">
-              <tr>
-                <td><span class="extra bold">Sub-Total :</span></td>
-                <?php echo'<td><span class="bold">'.$subtotal.'</span></td>';
+            <div class="table table-striped table-bordered ">
+              <ul>
+                <li><span class="extra bold">Sub-Total :</span></li>
+                <?php echo'<td><span class="bold">'.$currency.$sub_total.'</span></td>';
 				?>
-              </tr>
-              <tr>
-                <td><span class="extra bold">Eco Tax (-5.00) :</span></td>
-                <?php echo '<td><span class="bold">'.$list_tax.'</span></td>';
+              </ul>
+              <ul>
+                <li><span class="extra bold">Eco Tax (-5.00) :</span></li>
+                <?php echo '<td><span class="bold">'.$currency.$list_tax.'</span></td>';
 				?>
-              </tr>
-              <tr>
-                <td><span class="extra bold totalamout">Total :</span></td>
-                <?php echo  '<td><span class="bold totalamout">'.$grand_total.'</span></td>';
+              </ul>
+              <ul>
+                <li><span class="extra bold totalamout">Total :</span></li>
+                <?php echo  '<td><span class="bold totalamout">'.$currency.$grand_total.'</span></td>';
 				?>
-              </tr>
-            </table>
+              </ul>
+            </div>
             </form>
             <div class="list-inline">
             <?php

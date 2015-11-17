@@ -69,20 +69,20 @@ include("header.php");
         <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
         
           <h1 class="heading1"><span class="maintext"> <i class="icon-signin"></i> Products List</span></h1>
-<table class="table table-striped table-bordered table-condensed">
-<thead class="">
-<th>product&nbsp;Id</th>
-<th>Product Name</th>
-<th>Description</th>
-<th>Sku</th>
-<th>Qty</th>
-<th>Cost</th>
-<th>Price</th>
-<th>Image Location</th>
-<th>On&nbsp;Sale?</th>
-<th>Featured?</th>
-<th>New Product?</th>
-</thead>
+<div class="table table-striped table-bordered table-condensed">
+<ul class="">
+<li>product&nbsp;Id</li>
+<li>Product Name</li>
+<li>Description</li>
+<li>Sku</li>
+<li>Qty</li>
+<li>Cost</li>
+<li>Price</li>
+<li>Image Location</li>
+<li>On&nbsp;Sale?</li>
+<li>Featured?</li>
+<li>New Product?</li>
+</ul>
 <tbody>
 <?php
 $page = (int) $_GET['page'];
@@ -154,33 +154,35 @@ echo "</tr>";
                     </li>
                 </ul>            
        </div>
+
+</div>
 <div class="pull-left">
 <a class="btn btn-orange" href="insertproduct.php">Insert New Product</a>
 </div><br><br>
 <h1 class="heading1"><span class="maintext"> <i class="icon-signin"></i> Customers List</span></h1>
-<table class="table table-striped table-bordered table-condensed">
-<thead>
+<div class="table table-striped table-bordered table-condensed">
+<ul>
 <?php
 if($_SESSION['logged_in_user_access'] == 'admin'){
-echo '<th>Edit</th>';
-echo '<th>User Id</th>';
+echo '<li>Edit</li>';
+echo '<li>User Id</li>';
 }else{
-echo '<th>User Id</th>';
+echo '<li>User Id</li>';
 } ?>
-<th>Username</th>
-<th>Password</th>
-<th>First Name</th>
-<th>Last Name</th>
-<th>E-Mail</th>
-<th>Address 1</th>
-<th>Address 2</th>
-<th>City</th>
-<th>State</th>
-<th>Zip</th>
-<th>Telephone</th>
-<th>Mobile</th>
-<th>Company</th>
-</thead>
+<li>Username</li>
+<li>Password</li>
+<li>First Name</li>
+<li>Last Name</li>
+<li>E-Mail</li>
+<li>Address 1</li>
+<li>Address 2</li>
+<li>City</li>
+<li>State</li>
+<li>Zip</li>
+<li>Telephone</li>
+<li>Mobile</li>
+<li>Company</li>
+</ul>
 <tbody>
 <?php
 	$select_customers = "SELECT * FROM users WHERE access_level = 'customer'";
@@ -220,22 +222,22 @@ echo "</tr>";
 }
 ?>
 </tbody>
-</table>
+</div>
 <h1 class="heading1"><span class="maintext"> <i class="icon-signin"></i> Admins and Users List</span></h1>
-<table class="table table-striped table-bordered table-condensed">
-<thead>
+<div class="table table-striped table-bordered table-condensed">
+<ul>
 <?php
 if($_SESSION['logged_in_user_access'] == 'admin'){
-echo '<th>Edit</th>';
-echo '<th>User Id</th>';
+echo '<li>Edit</li>';
+echo '<li>User Id</li>';
 }else{
-echo '<th>User Id</th>';
+echo '<li>User Id</li>';
 } ?>
-<th>Username</th>
-<th>Password</th>
-<th>First Name</th>
-<th>Last Name</th>
-<th>E-Mail</th>
+<li>Username</li>
+<li>Password</li>
+<li>First Name</li>
+<li>Last Name</li>
+<li>E-Mail</li>
 <tbody>
 <?php
 	$select_users = "SELECT * FROM users WHERE access_level != 'customer'";

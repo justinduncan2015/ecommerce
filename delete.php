@@ -69,40 +69,40 @@ include ('db_connect.php');
                             
                         <ul class="dropdown-menu topcartopen ">
                             <li>
-                                <table>
-                                    <tbody>
-                                        <tr>
-                                            <td class="image"><a href="product.php"><img width="50" height="50" src="img/prodcut-40x40.jpg" alt="product" title="product"></a></td>
-                                            <td class="name"><a href="product.php">product goes here</a></td>
-                                            <td class="quantity">x&nbsp;1</td>
-                                            <td class="total">$589.50</td>
-                                            <td class="remove"><i class="icon-remove"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="image"><a href="product.php"><img width="50" height="50" src="img/prodcut-40x40.jpg" alt="product" title="product"></a></td>
-                                            <td class="name"><a href="product.php">product goes here</a></td>
-                                            <td class="quantity">x&nbsp;1</td>
-                                            <td class="total">$589.50</td>
-                                            <td class="remove"><i class="icon-remove "></i></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <table>
-                                    <tbody>
-                                        <tr>
-                                            <td class="textright"><b>Sub-Total:</b></td>
-                                            <td class="textright">$1.7900.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="textright"><b>Tax (6.00%):</b></td>
-                                            <td class="textright">$123.20</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="textright"><b>Total:</b></td>
-                                            <td class="textright">$1,813.20</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <div class="table">
+                                    <div class="tbody">
+                                        <ul>
+                                            <li class="image"><a href="product.php"><img width="50" height="50" src="img/prodcut-40x40.jpg" alt="product" title="product"></a></li>
+                                            <li class="name"><a href="product.php">product goes here</a></li>
+                                            <li class="quantity">x&nbsp;1</li>
+                                            <li class="total">$589.50</li>
+                                            <li class="remove"><i class="icon-remove"></i></li>
+                                        </ul>
+                                        <ul>
+                                            <li class="image"><a href="product.php"><img width="50" height="50" src="img/prodcut-40x40.jpg" alt="product" title="product"></a></li>
+                                            <li class="name"><a href="product.php">product goes here</a></li>
+                                            <li class="quantity">x&nbsp;1</li>
+                                            <li class="total">$589.50</li>
+                                            <li class="remove"><i class="icon-remove "></i></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="table">
+                                    <div class="tbody">
+                                        <ul>
+                                            <li class="textright"><b>Sub-Total:</b></li>
+                                            <li class="textright">$1.7900.00</li>
+                                        </ul>
+                                        <ul>
+                                            <li class="textright"><b>Tax (6.00%):</b></li>
+                                            <li class="textright">$123.20</li>
+                                        </ul>
+                                        <ul>
+                                            <li class="textright"><b>Total:</b></li>
+                                            <li class="textright">$1,813.20</li>
+                                        </ul>
+                                    </div>
+                                </div>
                                 <div class="well pull-right buttonwrap"> <a class="btn btn-orange" href="cart.php">View Cart</a></div>
                             </li>
                         </ul>
@@ -167,54 +167,54 @@ include ('db_connect.php');
 	 	$row = $myUser->fetch_object();
 		?>
 		<h1 class="heading1"><span class="maintext"> <i class="icon-signin"></i> Users List</span></h1>
-			<table class="table table-striped table-bordered table-condensed">
-			<thead>
-                <th>User Id</th>
-                <th>Username</th>
-                <th>Password</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>E-Mail</th>
-                <th>Address 1</th>
-                <th>Address 2</th>
-                <th>City</th>
-                <th>State</th>
-                <th>Zip</th>
-                <th>Telephone</th>
-                <th>Mobile</th>
-                <th>Company</th>
-            </thead>
-        <tbody>
+			<div class="table table-striped table-bordered table-condensed">
+			<div class="thead">
+                <li>User Id</li>
+                <li>Username</li>
+                <li>Password</li>
+                <li>First Name</li>
+                <li>Last Name</li>
+                <li>E-Mail</li>
+                <li>Address 1</li>
+                <li>Address 2</li>
+                <li>City</li>
+                <li>State</li>
+                <li>Zip</li>
+                <li>Telephone</li>
+                <li>Mobile</li>
+                <li>Company</li>
+            </div>
+        <div class="tbody">
 <?php
 echo "<tr>";
-echo "<td>" .$row->user_id. "</td>";
-echo "<td>" .$row->username."</td>";
-echo "<td>" .$row->password. "</td>";
-echo "<td>" .$row->first_name. "</td>";
-echo "<td>" .$row->last_name. "</td>";
-echo "<td>" .$row->email."</td>";
-echo "<td>" .$row->address1."</td>";
-echo "<td>" .$row->address2."</td>";
-echo "<td>" .$row->city."</td>";
-echo "<td>" .$row->state."</td>";
-echo "<td>" .$row->zip."</td>";
-echo "<td>" .$row->telephone."</td>";
+echo "<li>" .$row->user_id. "</li>";
+echo "<li>" .$row->username."</li>";
+echo "<li>" .$row->password. "</li>";
+echo "<li>" .$row->first_name. "</li>";
+echo "<li>" .$row->last_name. "</li>";
+echo "<li>" .$row->email."</li>";
+echo "<li>" .$row->address1."</li>";
+echo "<li>" .$row->address2."</li>";
+echo "<li>" .$row->city."</li>";
+echo "<li>" .$row->state."</li>";
+echo "<li>" .$row->zip."</li>";
+echo "<li>" .$row->telephone."</li>";
 //if the field is NULL display nothing
 if($row->mobile == NULL){	
-	echo "<td>" . "" . "</td>";
+	echo "<li>" . "" . "</li>";
 }else{
-	echo "<td>" . $row->mobile. "</td>";	
+	echo "<li>" . $row->mobile. "</li>";	
 }
 if($row->company == NULL){	
-	echo "<td>" . "" . "</td>";
+	echo "<li>" . "" . "</li>";
 }else{
-	echo "<td>" . $row->company. "</td>";	
+	echo "<li>" . $row->company. "</li>";	
 }
 
 echo "</tr>";
 ?>
-</tbody>
-</table>
+</div>
+</div>
         <form method="post" action="">
             <h4>Do you really want to delete this user?</h4> 
             <input name="user_to_delete" id="user_to_delete" type="hidden" value="<?php print $_GET['id']; ?>" /><br />
