@@ -156,23 +156,23 @@
       <div class="container">
       <div class="pull-right">
           <div class="">
-            <table class="table table-striped table-bordered ">
-              <tr>
-                <td><span class="extra bold">Sub-Total :</span></td>
+            <div class="table table-striped table-bordered ">
+              <ul>
+                <li><span class="extra bold">Sub-Total :</span></li>
                 <?php echo'<td><span class="bold">'.$subtotal.'</span></td>';
 				?>
-              </tr>
-              <tr>
-                <td><span class="extra bold">Eco Tax (-5.00) :</span></td>
+              </ul>
+              <ul>
+                <li><span class="extra bold">Eco Tax (-5.00) :</span></li>
                 <?php echo '<td><span class="bold">'.$list_tax.'</span></td>';
 				?>
-              </tr>
-              <tr>
-                <td><span class="extra bold totalamout">Total :</span></td>
+              </ul>
+              <ul>
+                <li><span class="extra bold totalamout">Total :</span></li>
                 <?php echo  '<td><span class="bold totalamout">'.$grand_total.'</span></td>';
 				?>
-              </tr>
-            </table>
+              </ul>
+            </div>
             </form>
             <div class="list-inline">
             <?php
