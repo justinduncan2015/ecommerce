@@ -184,7 +184,11 @@ echo $current_url; ?>" />
                         <?php echo'<td><span class="bold">'.$subtotal.'</span></td>'?>
                     </tr>
                     <tr>
+<<<<<<< HEAD
                         <td class="textright"><b>Eco Tax (-2.00):</b></td>
+=======
+                        <td class="textright"><b>Tax (.065%):</b></td>
+>>>>>>> origin/master
                             <?php echo '<td><span class="bold">'.$tax_amount.'</span></td>'?>
                         </tr>
                     <tr>
