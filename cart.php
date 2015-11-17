@@ -48,8 +48,8 @@
       <div class="cart-info">
         <table class="table table-striped table-bordered">
         <form method="post" action="cart_update.php">
-          <td>
-            <th class="image">Image</li>
+          <tr>
+            <th class="image">Image</th>
             <th class="name">Product Name</th>
             <th class="model">Model</th>
             <th class="quantity">Qty</th>
@@ -57,8 +57,8 @@
             <th class="price">Unit Price</th>
             <th class="total">Total</th>
             <th class="delete">Remove</th>
-          </td>
-          <td>
+          </tr>
+          <tr>
           <div class="cart-view-table-back">
 <form method="post" action="process.php">
   <tbody>
@@ -151,21 +151,21 @@
       <div class="pull-right">
           <div class="">
             <table class="table table-striped table-bordered ">
-              <td>
-                <th><span class="extra bold">Sub-Total :</span></th>
+              <tr>
+                <td><span class="extra bold">Sub-Total :</span></td>
                 <?php echo'<td><span class="bold">'.$currency.$sub_total.'</span></td>';
 				?>
-              </td>
-              <td>
-                <th><span class="extra bold">Eco Tax (-5.00) :</span></th>
+              </tr>
+              <tr>
+                <td><span class="extra bold">Eco Tax (-5.00) :</span></td>
                 <?php echo '<td><span class="bold">'.$currency.$list_tax.'</span></td>';
 				?>
-              </td>
-              <td>
-                <th><span class="extra bold totalamout">Total :</span></th>
+              </tr>
+              <tr>
+                <td><span class="extra bold totalamout">Total :</span></td>
                 <?php echo  '<td><span class="bold totalamout">'.$currency.$grand_total.'</span></td>';
 				?>
-              </td>
+              </tr>
             </table>
             </form>
             <div class="list-inline">

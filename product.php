@@ -135,8 +135,8 @@ $pageTitle = 'Batchpad.com - Products';
                                 </div>
                             </div>
                             <div class="productprice">
-                                <?php echo '<div class="productpageprice"> <span class="spiral"></span>'.$row->cost.'</div>';
-                                	  echo '<div class="productpageoldprice">Old price : '.$row->price.'</div>'; ?>
+                                <?php echo '<div class="productpageprice"> <span class="spiral"></span>$'.$row->cost.'</div>';
+                                	  echo '<div class="productpageoldprice">Old price : $'.$row->price.'</div>'; ?>
                                 </div>
                                 <?php
                                   echo "<form method='post' action='cart_update.php'>\n";
