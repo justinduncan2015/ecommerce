@@ -1113,6 +1113,9 @@ ul.bestseller, #latestnews ul, #popular ul, .tab-content ul {padding-left:0px!im
 	width: 150px;
 	padding: 0 15px 0 0
 }
+ul.tab > li {
+	display: inline-block;
+}
 .radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"] { margin: 0 5px 0 0; float: none }
 .radio, .checkbox { display: inline-block; padding-left : 0px; margin-top: 0px }
 .radio + .radio, .checkbox + .checkbox { margin-top: 0px }

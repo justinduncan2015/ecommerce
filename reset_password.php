@@ -1,11 +1,10 @@
 <?php
 session_start();
 $pageTitle = 'Batchpad.com - Login';
-if(isset($_SESSION['url'])){ 
+if(isset($_SESSION['url'])) 
    $url = $_SESSION['url']; // holds url for last page visited.
-}else{ 
+else 
    $url = "home.php";
-}
 include("db_connect.php");?>
 <?php
           if(isset($_POST['submit'])&&(!isset($_SESSION['logged_in']))) {
@@ -33,7 +32,7 @@ include("db_connect.php");?>
 						$_SESSION['logged_in_telephone']    = $row->telephone;
 						$_SESSION['logged_in_mobile']       = $row->mobile;
 						$_SESSION['logged_in_company']      = $row->company;
-						header("location: ". $url);	
+						header("location: ".$url);	
 					}
 				}
 			}
@@ -99,15 +98,15 @@ include("db_connect.php");?>
         <nav class="subnav">
             <ul class="nav-pills categorymenu container">
                 <li><a class="home" href="home.php"><i class="icon-home icon-white font18"></i> <span> Home</span></a></li>
-                <li><a href="catalog.php?page=1">Shop</a></li>
+                <li><a href="catalog.php">Shop</a></li>
                 <li><a href="about.php">about</a></li>
                 <li><a href="contact.php">Contact Us</a> </li>
                 <?php
                 if(isset($_SESSION['logged_in_user_access'])&&($_SESSION['logged_in_user_access'] == "admin")) {
-                print "<li><a href='admin.php'>Admin</a> </li>";
+                print "<li><a class='active' href='admin.php'>Admin</a> </li>";
                 }
 				if(isset($_SESSION['logged_in_user_access'])&&($_SESSION['logged_in_user_access'] == "customer")) {
-                print "<li><a href='client.php?id=".$_SESSION['logged_in_user_id']."'>My Account</a> </li>";
+                print "<li><a class='active' href='client.php'>My Account</a> </li>";
                 }
                 ?>
                 <li class="pull-right">
@@ -135,24 +134,42 @@ include("db_connect.php");?>
         <div class="col-lg-9 col-md-9 col-xs-12 col-sm-12">
         
         	<div class="login-container">
-          <h1 class="heading1"><span class="maintext"> <i class="icon-signin"></i> Please Login</span></h1><br /> 
+          <h1 class="heading1"><span class="maintext"> <i class="icon-signin"></i> Reset password</span></h1><br /> 
           <fieldset>
           <div class="control-group">
-          	<form method="post" action="">
-          		<label class="control-label" >Username<span class="red">&nbsp;*</span></label>
-          		<div class="controls">
-          			<input name="username" id="username" type="text" placeholder="Username or Email"/>
-          		</div>
+          	<?php echo'
+        <form action="reset.php" method="POST">
+        <label class="control-label" >Email Address<span class="red">&nbsp;*</span></label>
+              <div class="controls">
+                <input name="email" type="text" placeholder="Username or Email"/>
+              </div>
           </div>
           <br />
           <div class="control-group">
-          	<label class="control-label" >Password<span class="red">&nbsp;*</span></label>
-          		<div class="controls">
-                	<input name="password" id="password" type="password" placeholder="Password"/>
+            <label class="control-label" >New Password<span class="red">&nbsp;*</span></label>
+              <div class="controls">
+                  <input name="password"  type="password" placeholder="Password"/>
                 </div>
           </div>
-            <div class="pull-left">
-            <?php
+
+          <br />
+          <div class="control-group">
+            <label class="control-label" >Confirm Password<span class="red">&nbsp;*</span></label>
+              <div class="controls">
+                  <input name="confirmpassword"  type="password" placeholder="Password"/>
+                </div>
+          </div>
+         <input type="hidden" name="q" value="';
+          if (isset($_GET["q"])){
+            echo $_GET["q"];
+          }
+            echo'" /><input type ="submit" name="ReseetPasswordForm" value="Reset Password" />
+            </form>';
+            
+          
+          ?>
+
+            <!--<?php
           if(isset($_POST['submit'])&&(!isset($_SESSION['logged_in']))) {
 			  // query to select all users/passwords
 			$select_users = "SELECT * FROM users";
@@ -170,15 +187,9 @@ include("db_connect.php");?>
 					}
 				}
 			}
-			?>
+			?>-->
 					
-				<input name="submit" id="submit" type="submit" class="btn btn-success" value="&nbsp; Sign-in &nbsp;" />
-                <input action="action" type="button" class="btn btn-danger" value=" Cancel " onclick="window.history.go(-1); return false;" />
-                <span class="registerbox">Not a member yet? &nbsp;<a href="register.php">Sign-up!</a></span>
-                </div>
-                </fieldset>
-				</form>
-            </div>
+				
           <div class="clearfix"></div>
           <br>
         </div>        
