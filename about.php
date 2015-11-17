@@ -42,7 +42,11 @@ $_SESSION['url'] = $_SERVER['REQUEST_URI'];
                 </li>
                 <li class="active">About Us</li>
             </ul>
-            <h1 class="heading1"><span class="maintext"><i class="icon-shopping-cart"></i> About Us</span></h1>
+            <ul class="tab">
+            <li><h1 class="heading1"><a href="about.php">About Us</span></a><span class="divider">/</span></h1></li>
+            <li> <h1 class="heading1"><a href="team.php">Our Team</span></a><span class="divider">/</span></h1></li>
+            <li> <h1 class="heading1"><a href="policy.php">Our Policy</span></a></h1></li>
+            </ul>
             <!-- Section Start-->
             <section class="row" id="about">
             <ul class="aboutus row">
@@ -78,6 +82,8 @@ $_SESSION['url'] = $_SERVER['REQUEST_URI'];
                     We're working hard everyday to keep our company growing strong and worldwide so that people around the world can come to Batchpad and find what they need, and get what they want with the high quality products in the pleasant prices and service.  
                 </div>
             </section>
+
+            
             </div>
     <!-- Section End--> 
     

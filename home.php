@@ -2,6 +2,8 @@
 	$pageTitle = 'Batchpad.com - Home';
   	include('header.php');
   	include('db_connect.php');
+
+    $current_url = urlencode($url="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
 ?>
 <div id="categorymenu">
         <nav class="subnav">
@@ -67,7 +69,13 @@ while(($row = $myFeatured->fetch_object())&&($zero<=$view)){
 	echo "<div class='thumbnail'><span class='sale tooltip-test'> <i class='icon-money font24'></i> <br>";
 	echo "Sale</span> <a href='product.php?id=".$row->product_id."'><img alt='sale' width='300' height='222' src=".$row->image_url."></a>";
 	echo "<div class='price'><div class='pricenew'>".$row->cost."</div><div class='priceold'>".$row->price."</div><div class='ratingstar'><div class='rw-ui-container' data-urid=".$row->product_id."></div></div></div>";
-	echo "<a  class='btn btn-orange btn-small addtocartbutton'>Add to Cart</a> </div>";
+    echo "<form method='post' action='cart_update.php'>\n";
+    echo "<input type='hidden' name='product_qty' value='1' />";
+    echo "<input type='hidden' name='product_code' value='".$row->product_sku."' />";
+    echo "<input type='hidden' name='type' value='add' />";
+    echo "<input type='hidden' name='return_url' value='".$current_url."'/>"; 
+	echo "\t\t\t\t\t\t<button type='submit' class='btn btn-orange btn-small addtocartbutton'>Add to Cart</button>\n";
+    echo "</form>";
 	echo "</li>";
 }
 ?>
@@ -99,7 +107,13 @@ while(($row = $myNew->fetch_object())&&($zero<=$view)){
 	echo "<div class='thumbnail'><span class='new tooltip-test'> <i class='icon-calendar font24'></i> <br>";
 	echo "New</span> <a href='product.php?id=".$row->product_id."'><img id='imgsale' alt='sale' width='300' height='222' src=" . $row->image_url . "></a>";
 	echo "<div class='price'><div class='pricenew'>" . $row->cost . "</div><div class='priceold'>" . $row->price . "</div><div class='ratingstar'><div class='rw-ui-container' data-urid=" .$row->product_id. "></div></div></div>";
-	echo "<a  class='btn btn-orange btn-small addtocartbutton'>Add to Cart</a> </div>";
+	echo "<form method='post' action='cart_update.php'>\n";
+    echo "<input type='hidden' name='product_qty' value='1' />";
+    echo "<input type='hidden' name='product_code' value='".$row->product_sku."' />";
+    echo "<input type='hidden' name='type' value='add' />";
+    echo "<input type='hidden' name='return_url' value='".$current_url."'/>"; 
+    echo "\t\t\t\t\t\t<button type='submit' class='btn btn-orange btn-small addtocartbutton'>Add to Cart</button>\n";
+    echo "</form>";
 	echo "</li>";
 }
 ?>

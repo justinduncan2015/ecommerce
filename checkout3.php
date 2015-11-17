@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <?php
 $pageTitle = 'Batchpad.com - Checkout';
  include_once('header.php');
@@ -66,6 +66,42 @@ $pageTitle = 'Batchpad.com - Checkout';
             <?php echo "<li><b>Telephone:</b> &nbsp; &nbsp; ".$_SESSION['logged_in_telephone']."</li><br>"; ?>
             <?php echo "<li><b>Mobile:</b> &nbsp; &nbsp; ".$_SESSION['logged_in_mobile']."</li><br>"; ?>
             <?php echo "<li><b>Company:</b> &nbsp; &nbsp; ".$_SESSION['logged_in_company']."</li><br>"; ?>
+        <ul>
+        <?php
+            if(isset($_SESSION['logged_in'])){
+                $row = $select_id_result->fetch_object();
+                echo "<li><b>First Name:</b> &nbsp; &nbsp; ".$row->first_name."</li><br>";
+                echo "<li><b>Last Name:</b> &nbsp; &nbsp; ".$row->last_name."</li><br>";
+                echo "<li><b>Address 1:</b> &nbsp; &nbsp; ".$row->address1."</li><br>";
+                echo "<li><b>Address 2:</b> &nbsp; &nbsp; ".$row->address2."</li><br>";
+                echo "<li><b>City:</b> &nbsp; &nbsp; ".$row->city."</li><br>";
+                echo "<li><b>State:</b> &nbsp; &nbsp; ".$row->state."</li><br>";
+                echo "<li><b>Zip Code:</b> &nbsp; &nbsp; ".$row->zip."</li><br>";
+                echo "<li><b>Telephone:</b> &nbsp; &nbsp; ".$row->telephone."</li><br>";
+                echo "<li><b>Mobile:</b> &nbsp; &nbsp; ".$row->mobile."</li><br>";
+                echo "<li><b>Company:</b> &nbsp; &nbsp; ".$row->company."</li><br>";
+            }else if(!isset($_POST['submit'])){
+                echo "<li class='checkoutsteptitle'>Billing Information</li>";
+                echo "<li><b>First Name:</b> &nbsp; &nbsp; ".$_POST['bFirst']."</li><br>";
+                echo "<li><b>Last Name:</b> &nbsp; &nbsp; ".$_POST['bLast']."</li><br>";
+                echo "<li><b>Address 1:</b> &nbsp; &nbsp; ".$_POST['bAddress1']."</li><br>";
+                echo "<li><b>Address 2:</b> &nbsp; &nbsp; ".$_POST['bAddress2']."</li><br>";
+                echo "<li><b>City:</b> &nbsp; &nbsp; ".$_POST['bCity']."</li><br>";
+                echo "<li><b>State:</b> &nbsp; &nbsp; ".$_POST['bState']."</li><br>";
+                echo "<li><b>Zip Code:</b> &nbsp; &nbsp; ".$_POST['bZip']."</li><br>";
+                echo "<li><b>Country/Region:</b> &nbsp; &nbsp; ".$_POST['bCountry']."</li><br>";
+
+                echo "<li class='checkoutsteptitle'>Shipping Information</li>";
+                echo "<li><b>First Name:</b> &nbsp; &nbsp; ".$_POST['sFirst']."</li><br>";
+                echo "<li><b>Last Name:</b> &nbsp; &nbsp; ".$_POST['sLast']."</li><br>";
+                echo "<li><b>Address 1:</b> &nbsp; &nbsp; ".$_POST['sAddress1']."</li><br>";
+                echo "<li><b>Address 2:</b> &nbsp; &nbsp; ".$_POST['sAddress2']."</li><br>";
+                echo "<li><b>City:</b> &nbsp; &nbsp; ".$_POST['sCity']."</li><br>";
+                echo "<li><b>State:</b> &nbsp; &nbsp; ".$_POST['sState']."</li><br>";
+                echo "<li><b>Zip Code:</b> &nbsp; &nbsp; ".$_POST['sZip']."</li><br>";
+                echo "<li><b>Country/Region:</b> &nbsp; &nbsp; ".$_POST['sCountry']."</li><br>";
+            }
+        ?>
           </ul>
         </div>
         <div class="checkoutsteptitle">Confirm Order </div>
@@ -102,12 +138,13 @@ $pageTitle = 'Batchpad.com - Checkout';
             $product_qty = $cart_itm["product_qty"];
             $price = $cart_itm["price"];
             $product_code = $cart_itm["product_code"];
+            $description = $cart_itm["description"];
             $image_url = $cart_itm["image_url"];
             $subtotal = ($price * $product_qty); //calculate Price x Qty
             
             echo '<td class="image"><a href="#"><img title="product" alt="product" src="'.$image_url.'" height="50" width="50"></a></td>';
             echo '<td class ="name">'.$product_name.'</td>';
-            echo '<td class="description">'.$product_desc.'</td>';
+            echo '<td class="description">'.$description.'</td>';
             echo '<td class="quantity"><input type="text" size="2" maxlength="2" name="product_qty['.$product_code.']" value="'.$product_qty.'" class="col-lg-3 col-md-3 col-xs-6 col-sm-3"></td>';
             echo '<td class="total"> <a href="#" class="mr10"> <i class="tooltip-test font24 icon-refresh " data-original-title="Update"> </i> </a> 
                <a href="#"><i class="tooltip-test font24 icon-remove-circle" data-original-title="Remove"> </i></a></td>';

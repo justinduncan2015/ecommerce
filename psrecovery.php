@@ -1,12 +1,14 @@
 <?php
 session_start();
 $pageTitle = 'Batchpad.com - Login';
-if(isset($_SESSION['url'])){ 
+if(isset($_SESSION['url'])) 
    $url = $_SESSION['url']; // holds url for last page visited.
-}else{ 
+else 
    $url = "home.php";
-}
-include("db_connect.php");?>
+include("db_connect.php");
+mysql_connect("sulley.cah.ucf.edu","ju655443","Jade7369!") or die("couldn't connect");
+mysql_select_db("ju655443") or die("Couldn't connect to db");
+?>
 <?php
           if(isset($_POST['submit'])&&(!isset($_SESSION['logged_in']))) {
 			  // query to select all users/passwords
@@ -33,7 +35,7 @@ include("db_connect.php");?>
 						$_SESSION['logged_in_telephone']    = $row->telephone;
 						$_SESSION['logged_in_mobile']       = $row->mobile;
 						$_SESSION['logged_in_company']      = $row->company;
-						header("location: ". $url);	
+						header("location: ".$url);	
 					}
 				}
 			}
@@ -99,15 +101,15 @@ include("db_connect.php");?>
         <nav class="subnav">
             <ul class="nav-pills categorymenu container">
                 <li><a class="home" href="home.php"><i class="icon-home icon-white font18"></i> <span> Home</span></a></li>
-                <li><a href="catalog.php?page=1">Shop</a></li>
+                <li><a href="catalog.php">Shop</a></li>
                 <li><a href="about.php">about</a></li>
                 <li><a href="contact.php">Contact Us</a> </li>
                 <?php
                 if(isset($_SESSION['logged_in_user_access'])&&($_SESSION['logged_in_user_access'] == "admin")) {
-                print "<li><a href='admin.php'>Admin</a> </li>";
+                print "<li><a class='active' href='admin.php'>Admin</a> </li>";
                 }
 				if(isset($_SESSION['logged_in_user_access'])&&($_SESSION['logged_in_user_access'] == "customer")) {
-                print "<li><a href='client.php?id=".$_SESSION['logged_in_user_id']."'>My Account</a> </li>";
+                print "<li><a class='active' href='client.php'>My Account</a> </li>";
                 }
                 ?>
                 <li class="pull-right">
@@ -134,54 +136,78 @@ include("db_connect.php");?>
         <!-- Register Account-->
         <div class="col-lg-9 col-md-9 col-xs-12 col-sm-12">
         
-        	<div class="login-container">
-          <h1 class="heading1"><span class="maintext"> <i class="icon-signin"></i> Please Login</span></h1><br /> 
-          <fieldset>
+        	
+          <h1 class="heading1"><span class="maintext"> <i class="icon-signin"></i> Forgot password</span></h1><br /> 
+         
+            <?php 
+
+            echo ' 
+            <fieldset>
           <div class="control-group">
-          	<form method="post" action="">
-          		<label class="control-label" >Username<span class="red">&nbsp;*</span></label>
+          	<form method="post" action="psrecovery.php">
+              <label class="control-label" >Enter your username<span class="red">&nbsp;*</span></label>
+              <div class="controls">
+                <input name="username" id="username" type="text" placeholder="Username"/>
+              </div>
+          		<label class="control-label" >Enter your email<span class="red">&nbsp;*</span></label>
           		<div class="controls">
-          			<input name="username" id="username" type="text" placeholder="Username or Email"/>
+          			<input name="email" id="email" type="text" placeholder="Email"/>
           		</div>
           </div>
-          <br />
-          <div class="control-group">
-          	<label class="control-label" >Password<span class="red">&nbsp;*</span></label>
-          		<div class="controls">
-                	<input name="password" id="password" type="password" placeholder="Password"/>
-                </div>
-          </div>
+          
+         
             <div class="pull-left">
-            <?php
-          if(isset($_POST['submit'])&&(!isset($_SESSION['logged_in']))) {
-			  // query to select all users/passwords
-			$select_users = "SELECT * FROM users";
-			$select_users_result = $mysqli->query($select_users);
-				if($mysqli->error) {
-					print "Select query error!  Message: ".$mysqli->error;
-				}					
-				while($row = $select_users_result->fetch_object()) {
-					if ((($_POST['username']) != ($row->username)) && (md5($_POST['password']) != ($row->password))) {
-					// check if user input = a record in the database
-						?>
-						<span class="errormsg">Sorry, Invalid username or password</span>
-                    	<span class="registerbox">Forgot your password?<a href="#"> &nbsp;Click here </a></span><br /><br>
-                        <?php break;	
-					}
-				}
-			}
-			?>
-					
-				<input name="submit" id="submit" type="submit" class="btn btn-success" value="&nbsp; Sign-in &nbsp;" />
-                <input action="action" type="button" class="btn btn-danger" value=" Cancel " onclick="window.history.go(-1); return false;" />
+              
+           
+				<input name="Submit"  type="submit" class="btn btn-success" value="&nbsp; Request Reset &nbsp;" />
+                
                 <span class="registerbox">Not a member yet? &nbsp;<a href="register.php">Sign-up!</a></span>
                 </div>
-                </fieldset>
-				</form>
-            </div>
+               
+				</form> </fieldset>';
+          if(isset($_POST['submit'])){
+            $username = $_POST['username'];
+            $email = $_POST['email'];
+
+            $query = mysql_query("SELECT * FROM users WHERE username ='$username'");
+            $numrow = mysql_num_rows($query);
+
+            if($numrow!=0){
+              while($row = mysql_fetch_assoc($query)){
+                $db_email = $row['email'];
+              }  
+              if($email = $db_email)
+              {
+                $code = rand(100000, 1000000);
+
+                $to = $db_email;
+                $subject ="Password Reset";
+
+                $body= "This is an automated email. Please DO NOT response
+
+                        Click the link below or paste it into your get_browser
+                        http://sulley.cah.ucf.edu/psrecovery.php/?code&username=$username"; 
+
+                        mysql_query("UPDATE users SET passreset = '$code' WHERE username='$username'");
+
+                        mail($to,$subject,$body);
+
+                        echo"Check Your Email";
+              }else
+              {
+                echo "Email is incorrect";
+              }
+            }else{
+              echo "That username doesn't exits";
+            }
+          }
+        ?>
+        
+           
           <div class="clearfix"></div>
           <br>
-        </div>        
+        </div>  
+
         <!-- Sidebar Start-->
         <aside class="col-lg-3 col-md-3 col-xs-12 col-sm-12 span3">
           <div class="sidewidt">
