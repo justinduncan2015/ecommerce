@@ -7,6 +7,8 @@ $pageTitle = 'Batchpad.com - Products';
   $select_review = "SELECT product_id, user_id, first_name, comment, DATE_FORMAT( time_stamp,  '%M %d, %Y') AS time_stamp FROM reviews WHERE product_id ='".$id."' ORDER BY time_stamp ASC";
   $review_result = $mysqli->query($select_review);
   $myProduct = $mysqli->query($select_id);
+
+  $current_url = urlencode($url="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
 ?>
 
 <!-- Header End -->
@@ -136,9 +138,17 @@ $pageTitle = 'Batchpad.com - Products';
                                 <?php echo '<div class="productpageprice"> <span class="spiral"></span>'.$row->cost.'</div>';
                                 	  echo '<div class="productpageoldprice">Old price : '.$row->price.'</div>'; ?>
                                 </div>
-                            <div class="productbtn">
+                                <?php
+                                  echo "<form method='post' action='cart_update.php'>\n";
+                                  echo "<input type='hidden' name='product_qty' value='1' />";
+                                  echo "<input type='hidden' name='product_code' value='".$row->product_sku."' />";
+                                  echo "<input type='hidden' name='type' value='add' />";
+                                  echo "<input type='hidden' name='return_url' value='".$current_url."'/>"; 
+                                  echo "\t\t\t\t\t\t<button type='submit' class='btn btn-orange btn-small addtocartbutton'>Add to Cart</button>\n";
+                                  echo "</form>";?>
+                            <!--<div class="productbtn">
                                 <button class="btn btn-orange tooltip-test" data-original-title="Cart"> <i class="icon-shopping-cart icon-white"></i>  Add to Cart</button>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
                 </div>
