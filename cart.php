@@ -96,17 +96,6 @@
 </div>
 </tr>
 </table>
-
-<?php
-  echo 'product name: '.$product_name;
-  echo 'product quantity: '.$product_qty;
-  echo 'price: '.$price;
-  echo 'product sku: '.$product_sku;
-  echo 'description: '.$description;
-  echo 'product code: '.$product_code;
-  echo 'sub total: '.$subtotal;
-?>
-
   <div class="cart_edit large-6 medium-6 small-6 columns">    
     <ul>
         <li><button type="submit" formaction="cart_update.php">Update</button></li>
@@ -120,8 +109,6 @@
 
 <div class="total_box large-12 medium-12 small-12 columns">
 			<?php
-        $shipping_handling = 1.5;
-        $taxes = array('' => .65, '' => 2);
         foreach($ship_item as $key => $value){ //List all taxes
             $shipping_handling  .= $key. sprintf("%01.2f", $value).'<br />';
         }
