@@ -164,7 +164,12 @@
             </table>
             </form>
             <div class="list-inline">
+            <?php
+            if(!isset($_SESSION['logged_in'])){ ?>
             <a href="checkout.php"><input type="submit" value="CheckOut" class="btn btn-orange pull-right mb10"></a>
+            <?php }else{ ?>
+			<a href="checkout3.php"><input type="submit" value="CheckOut" class="btn btn-orange pull-right mb10"></a>
+            <?php } ?>
             <a href="catalog.php"><input type="submit" value="Continue Shopping" class="btn btn-orange pull-right mr10"></a>
             </div>
           </div>

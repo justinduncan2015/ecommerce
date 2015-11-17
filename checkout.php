@@ -1,7 +1,7 @@
 <?php
-if(!isset($_SESSION['logged_in'])){
 include_once('header.php');
 $pageTitle = 'Batchpad.com - Checkout';
+print $_SESSION['logged_in'];
 ?>
 <div id="categorymenu">
     <nav class="subnav">
@@ -95,7 +95,4 @@ $pageTitle = 'Batchpad.com - Checkout';
 </div>
 <?php
 include('footer.php');
-}else{
-header('location: checkout3.php');	
-}
 ?>
