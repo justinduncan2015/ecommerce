@@ -161,6 +161,11 @@
                 <?php echo '<td><span class="bold">'.$currency.$list_tax.'</span></td>';
 				?>
               </tr>
+               <tr>
+                <td><span class="extra bold">Shipping :</span></td>
+                <?php echo '<td><span class="bold">'.$currency.$shipping_handling.'</span></td>';
+        ?>
+              </tr>
               <tr>
                 <td><span class="extra bold totalamout">Total :</span></td>
                 <?php echo  '<td><span class="bold totalamout">'.$currency.$grand_total.'</span></td>';
