@@ -85,7 +85,14 @@ include("header.php");
 </thead>
 <tbody>
 <?php
-	$select_products = "SELECT * FROM products";
+$page = (int) $_GET['page'];
+        if ($page < 1) $page = 1;
+        $startResults = ($page - 1) * 10;
+        $numberOfRows = mysqli_num_rows($mysqli->query('SELECT * FROM products'));
+        $totalPages = ceil($numberOfRows / 10);
+		$select_products = "SELECT * FROM products
+                                ORDER BY product_name ASC
+                                LIMIT $startResults, 10";
   	$myProducts = $mysqli->query($select_products);
 while($row = $myProducts->fetch_object()){
 echo "<tr>";
@@ -123,6 +130,30 @@ echo "</tr>";
 ?>
 </tbody>
 </table>
+                  <div class="pull-right">
+
+                <ul class="pagination">
+                    <li>
+                    <?php
+                        if($page > 1)
+                        echo '<a href="?page='.($page - 1).'">Prev</a>'; 
+                    ?>
+                    </li>
+                    <?php  for($i = 1; $i <= $totalPages; $i++){
+   					if($i == $page)
+      					echo '<li class="active"><a><strong>'.$i.'</strong></a></li>&nbsp';
+   					else
+      					echo '<li><a href="?page='.$i.'">'.$i.'</a><li>&nbsp';
+					} 
+                    ?>
+
+                   <li>
+                    <?php
+                        echo '<a href="?page='.($page + 1).'">Next</a>'; 
+                    ?>
+                    </li>
+                </ul>            
+       </div>
 <div class="pull-left">
 <a class="btn btn-orange" href="insertproduct.php">Insert New Product</a>
 </div><br><br>

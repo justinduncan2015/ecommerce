@@ -1,5 +1,5 @@
 <?php
-$currency = '&#36;'; //Currency Character or code
+    $currency = '&#36;'; //Currency Character or code
     $shipping_cost      = 5.89; //shipping cost
     $taxes              = array( //List your Taxes percent here. 
                             '' => .065
@@ -9,9 +9,9 @@ $currency = '&#36;'; //Currency Character or code
                             );
 
     $PayPalMode         = 'sandbox'; // sandbox or live
-    $PayPalApiUsername  = 'trav1030-facilitator_api1.knights.ucf.edu'; //PayPal API Username
-    $PayPalApiPassword  = 'UB7C4ZLGNZXPR75F'; //Paypal API password
-    $PayPalApiSignature     = 'AFcWxV21C7fd0v3bYYYRCpSSRl31AbK-8kJ8qTXcPY.PIAkGtPDDlnKe'; //Paypal API Signature
+    $PayPalApiUsername  = 'justinduncan2010_api1.gmail.com'; //PayPal API Username
+    $PayPalApiPassword  = 'R8UGLVP4B7UP9VSM'; //Paypal API password
+    $PayPalApiSignature     = 'ACf10cy2SeOOID8MCu6BbKvG5kSCAXliRu8M0.D.1BG6M5f5su2lz09b'; //Paypal API Signature
     $PayPalCurrencyCode     = 'USD'; //Paypal Currency Code
     $PayPalReturnURL    = 'http://localhost/ecommerce/process.php'; //Point to process.php page
     $PayPalCancelURL    = 'http://localhost/ecommerce/home.php'; //Cancel URL if user clicks cancel
