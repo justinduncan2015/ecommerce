@@ -57,7 +57,7 @@ $_SESSION['url'] = $_SERVER['REQUEST_URI'];
                 </div>
                 <br>
                 <div>
-                    <img src="img/team3.png" style="padding-right: 10px; width:150px; height:130px;" alt="team2"/>
+                    <img src="img/team3.png" style="padding-right: 10px; width:150px; height:130px;" alt="team3"/>
                     <h4>Alicia White</h4>
                     <h5 class="text-faded">Assistant Team Leader</h5>
                     
@@ -65,8 +65,7 @@ $_SESSION['url'] = $_SERVER['REQUEST_URI'];
             </li>
             <li class="col-lg-4 col-md-4 col-xs-6 col-sm-6">
                 <div>
-                   <i class="icon-upload font72"style="
-    padding-right: 10px; width:150px; height: 120px;"></i>
+                  <img src="img/team5.png" style="padding-right: 10px; width:150px; height:130px;" alt="team5"/>
     <h4>Justin Duncan</h4>
     <h5 style="padding-bottom: 50px;">Lead Developer</h5>
                     
@@ -74,7 +73,7 @@ $_SESSION['url'] = $_SERVER['REQUEST_URI'];
             
            
                 <div>
-                    <img src="img/team1.png" style="padding-right: 10px; width:150px; height:130px;" alt="team3"/>
+                    <img src="img/team1.png" style="padding-right: 10px; width:150px; height:130px;" alt="team1"/>
                     <h4 >Julie Bartee</h4> 
                     <h5 >Assistant Developer</h5>
                     
@@ -82,14 +81,13 @@ $_SESSION['url'] = $_SERVER['REQUEST_URI'];
             </li>
             <li class="col-lg-4 col-md-4 col-xs-6 col-sm-6">
                 <div>
-                    <i class="icon-globe font72"style="
-    padding-right: 10px;"></i>
+                    <img src="img/team4.png" style="padding-right: 10px; width=150px; height:130px;" alt="team4"/>
                     <h4>Brian Lewis</h4>
                     <h5 style="padding-bottom: 50px;">Assistant Developer</h5>
                     
                 </div>
                 <div>
-                    <img src="img/team2.png" style="padding-right: 10px; width:140px; height:130px;" alt="team4"/>
+                    <img src="img/team2.png" style="padding-right: 10px; width:140px; height:130px;" alt="team2"/>
                     <h4>Thao Phan<h4>
                     <h5>Assistant Developer/Designer</h5>
                      

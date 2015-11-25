@@ -53,7 +53,7 @@ h2 { font-size:24px }
 .margin-none { margin:0px!important; }
 .clear { clear:both }
 .displayblock { display:block }
-.red { color:#CB4C21 }
+.red { color:#F00 }
 .orange { color:#CB4C21 }
 .footerlinks ul li a, .footerlinks ul li a:hover, .thumbnail .shortlinks a, .shortlinkourteam a, .thumbnail .shortlinks a:hover, .thumbnail .shortlinksourteam a:hover, .flex-control-paging li a, .flex-control-paging li a:hover, ul.categorymenu > li > a, ul.categorymenu > li > a:hover, .dropdown-menu li > a, .dropdown-menu li > a:hover, ul.categorymenu > li > div > ul > li > a, ul.categorymenu > li > div > ul > li > a:hover, #topnav ul li a, #topnav ul li a:hover, .thumbnail a.productcart, .thumbnail a:hover.productcart, input, input:focus, select, select:focus, textarea, textarea:focus { -moz-transition: all .2s ease;
 -webkit-transition: all .2s ease;
@@ -113,18 +113,18 @@ li.dropdown { list-style:none }
 .headerdetails #main-nav ul > li.topcart a { color:#999999; font-size:14px }
 .headerdetails .navbar .nav li.topcart .dropdown-toggle .caret, .navbar .nav li.dropdown.open.topcart .caret { border-bottom-color:#999999; border-top-color:#999999 }
 .headerdetails ul.topcartopen { font-size:12px }
-.headerdetails ul.topcartopen li > .table { border-collapse: collapse; width: 100%; margin-bottom: 5px; padding:10px }
-.headerdetails ul.topcartopen li > .table ul {
+.headerdetails ul.topcartopen li > .takeout { border-collapse: collapse; width: 100%; margin-bottom: 5px; padding:10px }
+.headerdetails ul.topcartopen li > .takeout ul{
 color: #; vertical-align: top; padding: 5px 10px; border-bottom: 1px dashed #E7E7E7; }
-.headerdetails ul.topcartopen li > .table .image { width: 1px; }
-.headerdetails ul.topcartopen li > .table .image img { text-align: left; }
-.headerdetails ul.topcartopen li > .table .name small { color: #999999; }
-.headerdetails ul.topcartopen li > .table .quantity { text-align: right; }
-.headerdetails ul.topcartopen li > .table li.total { text-align: right; }
-.headerdetails ul.topcartopen li > .table .remove { text-align: right; }
-.headerdetails ul.topcartopen li > .table .remove img { cursor: pointer; }
-.headerdetails #header #cart .mini-cart-total > .table { border-collapse: collapse; padding: 5px; float: right; clear: left; margin-bottom: 5px; }
-.headerdetails ul.topcartopen li > .table a { padding:0px; }
+.headerdetails ul.topcartopen li > .takeout .image { width: 1px; }
+.headerdetails ul.topcartopen li > .takeout .image img { text-align: left; }
+.headerdetails ul.topcartopen li > .takeout .name small { color: #999999; }
+.headerdetails ul.topcartopen li > .takeout.quantity { text-align: right; }
+.headerdetails ul.topcartopen li > .takeout ul.total { text-align: right; }
+.headerdetails ul.topcartopen li > .takeout .remove { text-align: right; }
+.headerdetails ul.topcartopen li > .takeout.remove img { cursor: pointer; }
+.headerdetails #header #cart .mini-cart-total > .takeout{ border-collapse: collapse; padding: 5px; float: right; clear: left; margin-bottom: 5px; }
+.headerdetails ul.topcartopen li >  .takeout a { padding:0px; }
 .headerdetails .shoppingcarttop { position:absolute; top:0; right:250px }
 .headerstrip nav.subnav select { display: none; }
 .headerstrip ul.nav { margin-bottom:0px }
@@ -365,28 +365,28 @@ ul.reveiw ul.rate { margin:10px 0 }
 /* This is the loading message. */
 .cloud-zoom-loading { color:white; background:#222; padding:3px; border:1px solid #999999; }
 /* cart */
-.cart-info .table { width: 100%; margin-bottom: 20px; border-collapse: collapse; border-top: 1px solid #E7E7E7; border-left: 1px solid #E7E7E7; border-right: 1px solid #E7E7E7; background-color:#fff; }
-.cart-info .table tr { -webkit-transition: all 0.5s ease-in-out; -moz-transition: all 0.5s ease-in-out; -o-transition: all 0.5s ease-in-out; }
-.cart-info .table tr:hover { -webkit-transition: all 0.5s ease-in-out; -moz-transition: all 0.5s ease-in-out; -o-transition: all 0.5s ease-in-out; }
-.cart-info ul, .cart-info li { padding: 15px; }
-.cart-info li { padding:10px }
-.cart-info li { font-weight: bold; background-color: #eeeeee; border-bottom: 1px solid #E7E7E7; }
-.cart-info li.quantity, .cart-info ul.quantity { text-align: left; }
-.cart-info ul.quantity input {width:auto}
-.cart-info li .price, .cart-info li .total, .cart-info .tbody .price, .cart-info .tbody .total { text-align: right; }
-.cart-info li .quantity a { margin-top:-5px }
-.cart-info .tbody ul { vertical-align: top; border-bottom: 1px solid #E7E7E7; }
-.cart-info .tbody .remove { vertical-align: middle; }
-.cart-info .tbody .remove, .cart-info .tbody .image { text-align: center; }
-.cart-info .tbody .name, .cart-info .tbody .model { text-align: left; }
-.cart-info .tbody span.stock { color: #F00; font-weight: bold; }
+.cart-info .takeouttable table { width: 100%; margin-bottom: 20px; border-collapse: collapse; border-top: 1px solid #E7E7E7; border-left: 1px solid #E7E7E7; border-right: 1px solid #E7E7E7; background-color:#fff; }
+.cart-info .takeouttable table tr { -webkit-transition: all 0.5s ease-in-out; -moz-transition: all 0.5s ease-in-out; -o-transition: all 0.5s ease-in-out; }
+.cart-info .takeouttable table tr:hover { -webkit-transition: all 0.5s ease-in-out; -moz-transition: all 0.5s ease-in-out; -o-transition: all 0.5s ease-in-out; }
+.cart-info td, .cart-info th { padding: 15px; }
+.cart-info th { padding:10px }
+.cart-info th { font-weight: bold; background-color: #eeeeee; border-bottom: 1px solid #E7E7E7; }
+.cart-info th.quantity, .cart-info td.quantity { text-align: left; }
+.cart-info td.quantity input {width:auto}
+.cart-info th .price, .cart-info th .total, .cart-info tbody .price, .cart-info tbody .total { text-align: right; }
+.cart-info th .quantity a { margin-top:-5px }
+.cart-info tbody td { vertical-align: top; border-bottom: 1px solid #E7E7E7; }
+.cart-info tbody .remove { vertical-align: middle; }
+.cart-info tbody .remove, .cart-info tbody .image { text-align: center; }
+.cart-info tbody .name, .cart-info tbody .model { text-align: left; }
+.cart-info tbody span.stock { color: #F00; font-weight: bold; }
 .cart-module .cart-heading { border: 1px solid #E7E7E7; padding: 8px 8px 8px 22px; font-weight: bold; font-size: 12px; margin-bottom: 15px; cursor: pointer; background: #ffffff ; }
 .cart-module .active { background: #ffffff ; }
 .cart-module .cart-content { padding: 0px 0px 15px 0px; display: none; overflow: auto; }
 .cart-module > div { display: none; }
 .cart-total { border-top: 1px solid #E7E7E7; overflow: auto; padding-top: 8px; margin-bottom: 15px; }
-.cart-total .table { float: right; }
-.cart-total ul { padding: 3px; text-align: right; }
+.cart-total .takeouttable table { float: right; }
+.cart-total td { padding: 3px; text-align: right; }
 .cartoptionbox { background:#fff; padding:15px; border:1px solid #ddd; margin-bottom:40px }
 ul.total { font-size:16px; margin-top:5px; margin-right:10px }
 ul.total li { padding:10px 0 }
@@ -923,8 +923,8 @@ nav.subnav ul {display:none}
 .smbanner .col-lg-4 a { margin:10px 0}
 .heading1 .subtext { display:none}
 .productdesc #myTab.nav-tabs li a { padding:8px}
-li.image, li.model, ul.image, ul.model {display:none!important}
-.cart-info ul, .cart-info li {padding:5px}
+th.image, th.model, td.image, td.model {display:none!important}
+.cart-info td, .cart-info th {padding:5px}
 #featuredcarousal > li {width:270px!important; margin:0 auto; float:none!important; display:inline-block}
 #latestcarousal > li {width:270px!important; margin:0 auto; float:none!important; display:inline-block}
 .otherddetails .otherddetailspart {width:30%; border-bottom:none; margin-bottom:8px}
@@ -1013,7 +1013,7 @@ box-shadow :none; }
 .nav-tabs > li > a, .nav-pills > li > a { margin:2px 5px 2px 6px }
 .thumbnail { position:relative; padding:0px; border:none; box-shadow:none; -moz-box-shadow:none; -webkit-box-shadow:none }
 .thumbnail > a { display:block; overflow:hidden }
-table li { color:#333 }
+.takeouttable table th { color:#333 }
 .nav li.dropdown.open a:hover .caret { border-top-color: #CB4C21!important; border-bottom-color: #CB4C21!important; opacity: 1; filter: alpha(opacity=100); }
 
 

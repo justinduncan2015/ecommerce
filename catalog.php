@@ -7,14 +7,37 @@ if(isset($_SESSION['page'])){
                         $sort=$_SESSION['page'];
                     }else{
 						$_SESSION['page']='1';
-					}
+				
+        	}
 include("db_connect.php");
 include("header.php");
 
 $current_url = urlencode($url="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
 
 ?>
-
+<script>/*<![CDATA[*/!window.QUnit && document.write('<script src="js/qunit.js"><\/script>')/*]]>*/</script>
+  <script src="http://simplecartjs.org/js/inject.js"></script>
+  
+    <!-- Your project file goes here -->  
+  <script>/*<![CDATA[*/
+  
+  if( QUnit.urlParams.lib && QUnit.urlParams.ver ){
+    document.write('<script src="https://ajax.googleapis.com/ajax/libs/'+ 
+          QUnit.urlParams.lib + '/' + 
+          QUnit.urlParams.ver + '/' + 
+          QUnit.urlParams.lib + '.js"><\/script>');
+  } else {
+    document.write('<script src="js/jquery.1.6.1.min.js"><\/script>');
+  }
+  
+  if( QUnit.urlParams.commit ){
+    document.write('<script src="js/get-raw-javascript.php?file=https://raw.github.com/wojodesign/simplecart-js/'+ QUnit.urlParams.commit +'/simpleCart.js"><\/script>');
+   // document.write('<script src="js/get-raw-javascript.php?file=https://raw.github.com/wojodesign/simplecart-js/'+ QUnit.urlParams.commit +'/test/test.core.js"><\/script>');
+  } else {
+    document.write('<script src="js/simpleCart.js"><\/script>');
+    //document.write('<script type="text/javascript" src="js/test.core.js"><\/script>');
+  }
+  /*]]>*/</script>
 <div id="categorymenu">
   <nav class="subnav">
     <ul class="nav-pills categorymenu container">
@@ -40,9 +63,20 @@ $current_url = urlencode($url="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_
   </nav>
 </div>   
 
+
 <div id="maincontainer">
   <section id="product">
     <div class="container"> 
+   <!-- <div class="simpleCart_items">
+  <br />
+  SubTotal: <span class="simpleCart_total"></span> <br />
+  Tax: <span class="simpleCart_taxCost"></span> <br />
+  Shipping: <span class="simpleCart_shippingCost"></span> <br />
+  -----------------------------<br />
+  Final Total: <span class="simpleCart_finalTotal"></span> <br />
+
+  <a href="javascript:;" class="simpleCart_checkout">checkout</a> 
+    </div>-->
       <!--  breadcrumb -->
       <ul class="breadcrumb">
         <li> <a href="home.php">Home</a> <span class="divider">/</span> </li>
@@ -166,23 +200,25 @@ $current_url = urlencode($url="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_
                     $limit_zero=23;
                     while(($row = $myAll->fetch_object())&&($zero<=$limit_zero)){
 							        $zero++;
-                    echo "<li class='".$row->category."'>";
-                    echo "<div class='thumbnail'>\n";
-                    echo "<div class='row'>\n";
-                    echo "<form method='post' action='cart_update.php'>\n";
-                    echo "\t\t\t\t\t<div class='product_image'>\n";
-                    echo "<div class='col-lg-4 col-md-4 col-xs-12 col-sm-6 span3'><a href='product.php?id=".$row->product_id."'><img src='".$row->image_url."' alt='".$row->product_name."'></a></div>";
-                    echo "<div class='col-lg-6 col-md-6 col-xs-12 col-sm-12'><a class='prdocutname' href='product.php?id=".$row->product_id."'>".$row->product_name."</a>";
-                    echo "<div class='productdiscrption'>".$row->description."<br></div>";
-					echo "\t\t\t\t\t<p><span class='green'>In Stock</span> $".$row->price."</p></div>\n";  
-					echo "<div class='rw-ui-container' data-urid=".$row->product_id."></div>";
-                    echo "\t\t\t\t\t<div>\n";
-                    echo "<input type='hidden' name='product_qty' value='1' />";
-                    echo "<input type='hidden' name='product_code' value='".$row->product_sku."' />";
-                    echo "<input type='hidden' name='type' value='add' />";
-                    echo "<input type='hidden' name='return_url' value='".$current_url."'/>"; 
-                    echo "\t\t\t\t\t\t<button type='submit' class='btn btn-orange btn-small addtocartbutton'>Add to Cart</button>\n"; 
-                    echo "\t\t\t\t\t</div>\n";
+                   echo "<li class='".$row->category."'>";
+			  echo "<div class='simpleCart_shelfItem'>\n";
+              echo "<h2 style='display: none' class='item_name'>".$row->product_name."</h2>";
+              echo "<h2 style='display: none' class='item_price'>".$row->price."</h2>";
+			  echo "<div class='row'>\n";
+			  echo "<form method='post' action='cart_update.php'>\n";
+			  echo "\t\t\t\t\t<div class='product_image'>\n";
+			  echo "<div class='col-lg-4 col-md-4 col-xs-12 col-sm-6 span3'><a href='product.php?id=".$row->product_id."'><img src='".$row->image_url."' alt='".$row->product_name."'></a></div>";
+			  echo "<div class='col-lg-6 col-md-6 col-xs-12 col-sm-12'><a class='productname' href='product.php?id=".$row->product_id."'>".$row->product_name."</a>";
+			  echo "<div class='productdescription'>".$row->description."<br></div>";
+			  echo "\t\t\t\t\t<p><span class='green'>In Stock</span><span class='item_price' $".$row->price."</span></p></div>\n";  
+			  echo "<div class='rw-ui-container' data-urid=".$row->product_id."></div>";
+			  echo "\t\t\t\t\t<div>\n";
+			  echo "<input type='hidden' name='product_qty' value='1' />";
+			  echo "<input type='hidden' name='product_code' value=".$row->product_sku." />";
+			  echo "<input type='hidden' name='type' value='add' />";
+			  echo "<input type='hidden' name='return_url' value=".$current_url."/>"; 
+			  echo "\t\t\t\t\t\t<input type='button' class='item_add btn btn-orange btn-small addtocartbutton' value='Add to Cart'>\n"; 
+			  echo "\t\t\t\t\t</div>\n";
 					?>
                          </form>
                          </div>
@@ -199,23 +235,25 @@ elseif($view==36){
 	$limit_zero=35;
         while(($row = $myAll->fetch_object())&&($zero<=$limit_zero)){
               $zero++;
-                    echo "<li class='".$row->category."'>";
-                    echo "<div class='thumbnail'>\n";
-                    echo "<div class='row'>\n";
-                    echo "<form method='post' action='cart_update.php'>\n";
-                    echo "\t\t\t\t\t<div class='product_image'>\n";
-                    echo "<div class='col-lg-4 col-md-4 col-xs-12 col-sm-6 span3'><a href='product.php?id=".$row->product_id."'><img src='".$row->image_url."' alt='".$row->product_name."'></a></div>";
-                    echo "<div class='col-lg-6 col-md-6 col-xs-12 col-sm-12'><a class='prdocutname' href='product.php?id=".$row->product_id."'>".$row->product_name."</a>";
-                    echo "<div class='productdiscrption'>".$row->description."<br></div>";
-					echo "\t\t\t\t\t<p><span class='green'>In Stock</span> $".$row->price."</p></div>\n";  
-					echo "<div class='rw-ui-container' data-urid=".$row->product_id."></div>";
-                    echo "\t\t\t\t\t<div>\n";
-                    echo "<input type='hidden' name='product_qty' value='1' />";
-                    echo "<input type='hidden' name='product_code' value=".$row->product_sku." />";
-                    echo "<input type='hidden' name='type' value='add' />";
-                    echo "<input type='hidden' name='return_url' value=".$current_url."/>"; 
-                    echo "\t\t\t\t\t\t<button type='submit'class='btn btn-orange btn-small addtocartbutton'>Add to Cart</button>\n"; 
-                    echo "\t\t\t\t\t</div>\n";
+                  echo "<li class='".$row->category."'>";
+			  echo "<div class='simpleCart_shelfItem'>\n";
+              echo "<h2 style='display: none' class='item_name'>".$row->product_name."</h2>";
+              echo "<h2 style='display: none' class='item_price'>".$row->price."</h2>";
+			  echo "<div class='row'>\n";
+			  echo "<form method='post' action='cart_update.php'>\n";
+			  echo "\t\t\t\t\t<div class='product_image'>\n";
+			  echo "<div class='col-lg-4 col-md-4 col-xs-12 col-sm-6 span3'><a href='product.php?id=".$row->product_id."'><img src='".$row->image_url."' alt='".$row->product_name."'></a></div>";
+			  echo "<div class='col-lg-6 col-md-6 col-xs-12 col-sm-12'><a class='productname' href='product.php?id=".$row->product_id."'>".$row->product_name."</a>";
+			  echo "<div class='productdescription'>".$row->description."<br></div>";
+			  echo "\t\t\t\t\t<p><span class='green'>In Stock</span><span class='item_price' $".$row->price."</span></p></div>\n";  
+			  echo "<div class='rw-ui-container' data-urid=".$row->product_id."></div>";
+			  echo "\t\t\t\t\t<div>\n";
+			  echo "<input type='hidden' name='product_qty' value='1' />";
+			  echo "<input type='hidden' name='product_code' value=".$row->product_sku." />";
+			  echo "<input type='hidden' name='type' value='add' />";
+			  echo "<input type='hidden' name='return_url' value=".$current_url."/>"; 
+			  echo "\t\t\t\t\t\t<input type='button'class='item_add btn btn-orange btn-small addtocartbutton' value='Add to Cart'>\n"; 
+			  echo "\t\t\t\t\t</div>\n";
 					?>
                </form>
                </div>
@@ -230,21 +268,23 @@ else{
         while(($row = $myAll->fetch_object())&&($zero<=$limit_zero)){
               $zero++;
 			  echo "<li class='".$row->category."'>";
-			  echo "<div class='thumbnail'>\n";
+			  echo "<div class='simpleCart_shelfItem'>\n";
+              echo "<h2 style='display: none' class='item_name'>".$row->product_name."</h2>";
+              echo "<h2 style='display: none' class='item_price'>".$row->price."</h2>";
 			  echo "<div class='row'>\n";
 			  echo "<form method='post' action='cart_update.php'>\n";
 			  echo "\t\t\t\t\t<div class='product_image'>\n";
 			  echo "<div class='col-lg-4 col-md-4 col-xs-12 col-sm-6 span3'><a href='product.php?id=".$row->product_id."'><img src='".$row->image_url."' alt='".$row->product_name."'></a></div>";
-			  echo "<div class='col-lg-6 col-md-6 col-xs-12 col-sm-12'><a class='prdocutname' href='product.php?id=".$row->product_id."'>".$row->product_name."</a>";
-			  echo "<div class='productdiscrption'>".$row->description."<br></div>";
-			  echo "\t\t\t\t\t<p><span class='green'>In Stock</span> $".$row->price."</p></div>\n";  
+			  echo "<div class='col-lg-6 col-md-6 col-xs-12 col-sm-12'><a class='productname' href='product.php?id=".$row->product_id."'>".$row->product_name."</a>";
+			  echo "<div class='productdescription'>".$row->description."<br></div>";
+			  echo "\t\t\t\t\t<p><span class='green'>In Stock</span><span class='item_price' $".$row->price."</span></p></div>\n";  
 			  echo "<div class='rw-ui-container' data-urid=".$row->product_id."></div>";
 			  echo "\t\t\t\t\t<div>\n";
 			  echo "<input type='hidden' name='product_qty' value='1' />";
 			  echo "<input type='hidden' name='product_code' value=".$row->product_sku." />";
 			  echo "<input type='hidden' name='type' value='add' />";
 			  echo "<input type='hidden' name='return_url' value=".$current_url."/>"; 
-			  echo "\t\t\t\t\t\t<button type='submit'class='btn btn-orange btn-small addtocartbutton'>Add to Cart</button>\n"; 
+			  echo "\t\t\t\t\t\t<input type='button'class='item_add btn btn-orange btn-small addtocartbutton' value='Add to Cart'>\n"; 
 			  echo "\t\t\t\t\t</div>\n";?>
               </form>
               </div>
@@ -302,3 +342,13 @@ else{
 <?php
 include('footer.php');
 ?>
+<script src="js/simpleCart.js"></script>
+  <script>
+    simpleCart({
+      checkout: { 
+        type: "PayPal" , 
+        email: "you@yours.com" 
+      }
+    }); 
+  </script>
+<script src="js/simpleCartdropdown.js"></script>

@@ -24,6 +24,7 @@
 
 <!-- Header End -->
 <div id="maincontainer">
+    
   <section id="product">
     <div class="container">
      <!--  breadcrumb --> 
@@ -36,145 +37,26 @@
       </ul>       
       <h1 class="heading1"><span class="maintext"> <i class="icon-shopping-cart"></i> Shopping Cart</span></h1>
       <!-- Cart-->
-      <?php 
-      if($_SESSION["cart_products"]==null){ 
-	  ?>
-    <br> 
-    <div class='cart-info'>
-        There are currently no items in your cart.
-    </div> 
-<?php }else{ ?>
-     
-      <div class="cart-info">
-        <div class="table table-striped table-bordered">
-        <form method="post" action="cart_update.php">
-          <ul>
-            <li class="image">Image</li>
-            <li class="name">Product Name</li>
-            <li class="model">Model</li>
-            <li class="quantity">Qty</li>
-            <li class="total">Action</li>
-            <li class="price">Unit Price</li>
-            <li class="total">Total</li>
-            <li class="delete">Remove</li>
-          </ul>
-          <ul>
-          <div class="cart-view-table-back">
-<form method="post" action="process.php">
-  <tbody>
-    <?php
-     //include_once("config.php"); //include config file
-      if(isset($_SESSION["cart_products"])){ //check session var
-        $total = 0; //set initial total value
-        $b = 0; //var for zebra stripe table 
-        foreach ($_SESSION["cart_products"] as $cart_itm){
-            //set variables to use in content below
-            $product_name = $cart_itm["product_name"];
-            $product_qty = $cart_itm["product_qty"];
-            $price = $cart_itm["price"];
-            $product_sku = $cart_itm["product_sku"];
-            $description = $cart_itm["description"];
-            $product_code = $cart_itm["product_code"];
-            $image_url = $cart_itm["image_url"];
-            $subtotal = $price * $product_qty; //calculate Price x Qty
-            
-            echo '<td class="image"><a href="#"><img title="product" alt="product" src="'.$image_url.'" height="50" width="50"></a></td>';
-            echo '<td class ="name">'.$product_name.'</td>';
-            echo '<td class="description">'.$description.'</td>';
-            echo '<td class="quantity"><input type="text" size="2" maxlength="2" name="product_qty['.$product_code.']" value="'.$product_qty.'" class="col-lg-3 col-md-3 col-xs-6 col-sm-3"></td>';
-            echo '<td class="total"> <a href="#" class="mr10"> <i class="tooltip-test font24 icon-refresh " data-original-title="Update"> </i> </a> 
-               <i class="tooltip-test font24 icon-remove-circle" data-original-title="Remove" name="remove_code[]" value="'.$product_code.'"> </i></td>';
-            echo '<td class="price">'.$currency.$price.'</td>';
-            echo '<td class="total">'.$currency.$subtotal.'</td>';
-            echo '<td><input type="checkbox" name="remove_code[]" value="'.$product_code.'" /></td>';
-            echo '</tr>';
-            $total = ($total + $subtotal);
-           }
-          } 
-        ?>
-  </tbody>
-</div>
+      
+     <div class="simpleCart_items">
+  <br />
+  SubTotal: <span class="simpleCart_total"></span> <br />
+  Tax: <span class="simpleCart_taxCost"></span> <br />
+  Shipping: <span class="simpleCart_shippingCost"></span> <br />
+  -----------------------------<br />
+  Final Total: <span class="simpleCart_finalTotal"></span> <br />
 
-          </ul>
-        </div>
-       <div class="cart_edit large-6 medium-6 small-6 columns">
-                
-                    <ul>
-                        <li>
-                            <button type="submit" formaction="cart_update.php">Update</button>
-                        </li>          
-  </div>
-  <div class="large-3 medium-4 small-12 columns">
-  <input type="hidden" name="return_url" value="<?php $current_url = urlencode($url="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
-  echo $current_url; ?>" />
-  </div>
-  </form>
-
-<div class="total_box large-12 medium-12 small-12 columns">
-			<?php
-        
-
-        $grand_total = $total + $shipping_handling; //grand total including shipping cost
-        foreach($taxes as $key => $value){ //list and calculate taxes
-                $tax_amount     = round($total) * ($value);
-                $tax_item[$key] = $tax_amount;
-                $grand_total    = round($grand_total + $tax_amount,2);  //add tax val to grand total
-        }
-
-        foreach($shipping as $key => $value){ //list and calculate taxes in array
-                $ship_amount     = round($total) * ($value / 20);
-                $ship_item[$key] = $ship_amount;
-                $grand_total    = round($grand_total + $ship_amount,2);  //add shipping val to grand total
-        }
-
-        $list_tax       = '';
-        foreach($tax_item as $key => $value){ //List all taxes
-            $list_tax .= $key. sprintf("%01.2f", $value).'<br />';
-        }
-         $shipping_handling   = '';
-        foreach($ship_item as $key => $value){ //List all taxes
-            $shipping_handling  .= $key. sprintf("%01.2f", $value).'<br />';
-        }
-
-        
-    
-    $sub_total = round($grand_total-$list_tax-$shipping_handling,2);
+  <a href="javascript:;" class="simpleCart_checkout">checkout</a> 
+    </div>
+  
 
 
-    $_SESSION['grand_total']=$grand_total;
-    $_SESSION['subtotal']=$sub_total;
-    $_SESSION['shipping']=$shipping_handling;
-    $_SESSION['tax']=$list_tax;
-	 ?>
-                </div>
       <div class="container">
       <div class="pull-right">
           <div class="">
-            <div class="table table-striped table-bordered ">
-              <ul>
-                <li><span class="extra bold">Sub-Total :</span></li>
-                <?php echo'<td><span class="bold">'.$currency.$sub_total.'</span></td>';
-				?>
-              </ul>
-              <ul>
-                <li><span class="extra bold">Eco Tax (-5.00) :</span></li>
-                <?php echo '<td><span class="bold">'.$currency.$list_tax.'</span></td>';
-				?>
-              </ul>
-              <ul>
-                <li><span class="extra bold totalamout">Total :</span></li>
-                <?php echo  '<td><span class="bold totalamout">'.$currency.$grand_total.'</span></td>';
-				?>
-              </ul>
-            </div>
-            </form>
+           
             <div class="list-inline">
-            <?php
-            if(!isset($_SESSION['logged_in'])){ ?>
-            <a href="checkout.php"><input type="submit" value="CheckOut" class="btn btn-orange pull-right mb10"></a>
-            <?php }else{ ?>
-			<a href="checkout3.php"><input type="submit" value="CheckOut" class="btn btn-orange pull-right mb10"></a>
-            <?php } ?>
+         
             <a href="catalog.php"><input type="submit" value="Continue Shopping" class="btn btn-orange pull-right mr10"></a>
             </div>
           </div>
@@ -183,7 +65,16 @@
     </div>
   </section>
 </div>
-<?php } 
+<?php  
 include('footer.php');
 ?>
+    <script src="js/simpleCart.js"></script>
+  <script>
+    simpleCart({
+      checkout: { 
+        type: "PayPal" , 
+        email: "you@yours.com" 
+      }
+    }); 
+  </script>
 
