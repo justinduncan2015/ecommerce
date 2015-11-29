@@ -91,8 +91,9 @@
 					currency				: "USD",
 					language				: "english-us",
 
-					cartStyle				: "div",
+					cartStyle				: "table",
 					cartColumns			: [
+						{ attr: "image", /*label:"Image"*/},
 						{ attr: "name", /*label: "Name" */},
 						{ attr: "price", /*label: "Price",*/ view: 'currency' },
 						{ view: "decrement", label: false },
@@ -835,7 +836,7 @@
 
 				// special fields for items
 				reservedFields: function () {
-					return ['quantity', 'id', 'item_number', 'price', 'name', 'shipping', 'tax', 'taxRate'];
+					return ['quantity', 'id', 'item_number', 'price', 'name','image', 'shipping', 'tax', 'taxRate'];
 				},
 
 				// return values for all reserved fields if they exist
@@ -1697,6 +1698,7 @@
 					}
 					, items: function (selector) {
 						simpleCart.writeCart(selector);
+						simpleCart.trigger("afterCreate");
 					}
 					, tax: function () {
 						return simpleCart.toCurrency(simpleCart.tax());
@@ -1710,6 +1712,10 @@
 					, grandTotal: function () {
 						return simpleCart.toCurrency(simpleCart.grandTotal());
 					}
+				});
+				simpleCart.bind("afterCreate", function(){
+   					$cart_table = $(".simpleCart_items table")
+   					$cart_table.addClass("table").addClass("table-hover")
 				});
 				simpleCart.bindInputs([
 					{	  selector: 'checkout'

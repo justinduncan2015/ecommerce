@@ -39,24 +39,50 @@
       <!-- Cart-->
       
      <div class="simpleCart_items">
-  <br />
-  SubTotal: <span class="simpleCart_total"></span> <br />
-  Tax: <span class="simpleCart_taxCost"></span> <br />
-  Shipping: <span class="simpleCart_shippingCost"></span> <br />
-  -----------------------------<br />
-  Final Total: <span class="simpleCart_finalTotal"></span> <br />
-
-  <a href="javascript:;" class="simpleCart_checkout">checkout</a> 
+ 
     </div>
   
+<table class="table table-hover">
+        <tr>
+    <td id="space">   </td>
+    <td>   </td>
+    <td>   </td>
+    <td>   </td>
+    <td>   </td>
+    <td>   </td>
+    <td><h5>Subtotal</h5></td>
+    <td><div class="simpleCart_total"></div></td>
+</tr>
+<tr>
+    <td>   </td>
+    <td>   </td>
+    <td>   </td>
+    <td>   </td>
+    <td>   </td>
+    <td>   </td>
+    <td><h5>Estimated shipping</h5></td>
+    <td><div class="simpleCart_shipping"></div></td>
+</tr>
+<tr>
+    <td>   </td>
+    <td>   </td>
+    <td>   </td>
+    <td>   </td>
+    <td>   </td>
+    <td>   </td>
+    <td><h4>Total</h4></td>
+    <td><div class="simpleCart_grandTotal"></div></td>
+</tr>
 
+</table>
 
       <div class="container">
+
       <div class="pull-right">
           <div class="">
            
             <div class="list-inline">
-         
+         <a href="checkout.php"><input type="submit" value="Checkout" class="btn btn-orange pull-right mb10"></a>
             <a href="catalog.php"><input type="submit" value="Continue Shopping" class="btn btn-orange pull-right mr10"></a>
             </div>
           </div>

@@ -36,52 +36,56 @@ include('db_connect.php');
                 <div class="navbar" id="topnav">
                     <div class="navbar-inner">
                         <ul class="nav" >
-                        	<?php 
-							if(!isset($_SESSION['logged_in'])) { 
-							?>
+                            <?php 
+                            if(!isset($_SESSION['logged_in'])) { 
+                            ?>
                             
-                        	<li class="text-nopad text-center"><a href="register.php">Sign-up</a></li>
+                            <li class="text-nopad text-center"><a href="register.php">Sign-up</a></li>
                             <li class="text-nopad"><p>or</p></li>
-                        	<li class="text-nopad">
-                            	<a href="login.php"> &nbsp; login</a>
+                            <li class="text-nopad">
+                                <a href="login.php"> &nbsp; login</a>
                             </li>
                             <!--Drop Down Menu -->
                             <!-- <div class="dropdown">
-							  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><i class="icon-shopping-cart font18"></i> Shopping Cart 
-							  <span class="caret"></span></button>
-							  <ul class="dropdown-menu">
-							    <li><a href="#">CSS</a></li>
-							    <li><a href="#">JavaScript</a></li>
-							  </ul>
-							</div> -->
+                              <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><i class="icon-shopping-cart font18"></i> Shopping Cart 
+                              <span class="caret"></span></button>
+                              <ul class="dropdown-menu">
+                                <li><a href="#">CSS</a></li>
+                                <li><a href="#">JavaScript</a></li>
+                              </ul>
+                            </div> -->
                             <li class="dropdown hover carticon "> 
-                            	<a href="cart.php" class="dropdown-toggle" ><i class="icon-shopping-cart font18"></i> Shopping Cart 
-                                <div class="simpleCart_items">
-  								<a href="javascript:;" class="simpleCart_checkout">checkout</a> 
-    							</div></a>
-                            </li>
+                                <div class="dropdown">
+                             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" onclick="location.href='cart.php';" ><i class="icon-shopping-cart font18"></i> Shopping Cart
+                              <span class="caret"></span></button>
+                              <ul class="dropdown-menu">
+                                 <div class="simpleCart_items">
+                                <a href="javascript:;" class="simpleCart_checkout">checkout</a> 
+                                </div>
+                              </ul>
+                            </div>
                             
                             <?php
-							}else if(isset($_SESSION['logged_in'])) {
-							print "<li class='text-nopad red'><p>Hello, ".$_SESSION['logged_in_firstname']."!</p></li>"; ?>
-                        	<li class="text-nopad"><p> &nbsp; Not you?</p></li>
+                            }else if(isset($_SESSION['logged_in'])) {
+                            print "<li class='text-nopad red'><p>Hello, ".$_SESSION['logged_in_firstname']."!</p></li>"; ?>
+                            <li class="text-nopad"><p> &nbsp; Not you?</p></li>
                             <li class="text-nopad"><a href="logout.php"> &nbsp; Logout</a></li>
-							<!--DROPDOWN CART-->
+                            <!--DROPDOWN CART-->
                             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><li class="dropdown hover carticon "><i class="icon-shopping-cart font18"></i> Shopping Cart <span class="label label-orange font14"></span></span></button>
         <ul class="dropdown-menu">
             <!--<a href="cart.php" class="dropdown-toggle" > <i class="icon-shopping-cart font18"></i> Shopping Cart <span class="label label-orange font14">-->
             <!--<li class="dropdown menu-large">-->
-			<div class="simpleCart_items"></div>
+            <div class="simpleCart_items"></div>
                       <ul id="cart" class='clearfix'></ul><li class="divider"></li>
-                        	<div class="btn-group pull-right">
-				<a href="#" class="simpleCart_empty btn btn-sm btn-danger">Clear Cart</a>
-				<a href="#" class="simpleCart_checkout btn btn-sm btn-success">Checkout Now</a>
-				</div>
-		  <!--</li>-->
-							<?php
-							if(isset($_SESSION['cart_products'])){
+                            <div class="btn-group pull-right">
+                <a href="#" class="simpleCart_empty btn btn-sm btn-danger">Clear Cart</a>
+                <a href="#" class="simpleCart_checkout btn btn-sm btn-success">Checkout Now</a>
+                </div>
+          <!--</li>-->
+                            <?php
+                            if(isset($_SESSION['cart_products'])){
                             echo count($_SESSION['cart_products']);}?> <!--Items <b class="caret"></b>--></a></li>  
-							<?php } ?>
+                            <?php } ?>
                     </li>
                 </ul>
                     </div>
